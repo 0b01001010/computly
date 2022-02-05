@@ -15,7 +15,16 @@ const config = {
 		})],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({ precompress: true }),
+		files: {
+			hooks: 'src/hooks',
+		},
+		vite: {
+			define: {
+				'process.env.VITE_BUILD_TIME': JSON.stringify(new Date().toISOString()), // Using this for sitemap.xml
+			},
+			plugins: [imagetools({ force: true })],
+		},
 	}
 };
 

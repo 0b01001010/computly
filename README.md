@@ -5,7 +5,9 @@
 # Development notes
 
 ## Blog
-- Infeluence: https://web.archive.org/web/20120918033349/http://biblioteket.me/
+
+> This is my implementation of [Sveltekit-blog-mdx starter project](https://github.com/rodneylab/sveltekit-blog-mdx)
+
 ### PaperCSS
 
 - Enable dark mode by adding the `dark` class to `<html>` element.
