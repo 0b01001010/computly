@@ -1,9 +1,12 @@
 <script lang="ts">
+	import BlogFooter from '$lib/Components/BlogFooter.svelte';
+	import BlogHeader from '$lib/Components/BlogHeader.svelte';
+
 	import 'papercss/dist/paper.min.css';
 	let darkMode = false;
 </script>
 
-<slot />
+<BlogHeader />
 
 <svg xmlns="http://www.w3.org/2000/svg">
 	<rect fill="#03D5B8" width="540" height="450" /><defs>
@@ -137,6 +140,12 @@
 	/></svg
 >
 
+<main>
+	<slot />
+</main>
+
+<BlogFooter />
+
 <style lang="scss">
 	svg {
 		position: absolute;
@@ -145,5 +154,9 @@
 		width: 100%;
 		height: 100%;
 		z-index: -1;
+	}
+	main {
+		display: flex;
+		justify-content: center;
 	}
 </style>
