@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@use 'sass:math';
+
+@import './variables.scss';
+
+/* HTML elements */
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+html {
+  line-height: $line-height-normal;
+  font-size: $font-size-root;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $font-size-1;
+  color: $color-text;
+  text-rendering: optimizeLegibility;
+}
