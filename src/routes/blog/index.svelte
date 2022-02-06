@@ -2,14 +2,15 @@
 	// Show list of posts
 </script>
 
-<div class="background-primary main-content border border-primary">
+<div class="main-content border border-primary">
 	<h1>Blog posts</h1>
 </div>
 
 <style lang="scss">
 	div.main-content {
 		margin: 2rem auto;
-		width: 100%;
-		max-width: max(960px, 90vw);
+		width: min(960px, 90vw);
+		background-color: white;
+		z-index: 1;
 	}
 </style>

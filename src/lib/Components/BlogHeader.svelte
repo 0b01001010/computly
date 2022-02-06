@@ -4,19 +4,19 @@
 
 <header>
 	<a class="logo" href="/"> Computly </a>
-	<Navbar>
+	<nav>
 		<ul class="inline">
 			<li>
-				<a sveltekit:prefetch href="/">Home</a>
+				<a href="/">Home</a>
 			</li>
 			<li>
 				<a sveltekit:prefetch href="/blog/">Blog</a>
 			</li>
 			<li>
-				<a sveltekit:prefetch href="/about">About</a>
+				<a href="/about">About</a>
 			</li>
 		</ul>
-	</Navbar>
+	</nav>
 </header>
 
 <style lang="scss">
@@ -40,10 +40,13 @@
 		font-size: 20vmin;
 		text-transform: uppercase;
 	}
-	.inline {
+	nav {
+		display: flex;
+		justify-content: center;
+	}
+	nav ul {
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
-		gap: 1rem;
+		gap: 2rem;
 	}
 </style>
