@@ -17,7 +17,7 @@
   > Load and transform images using a toolbox toolbox of custom import directives
 - [sharp](https://github.com/lovell/sharp)
   > High performance Node.js image processing, the fastest module to resize JPEG, PNG, WebP, AVIF and TIFF images. Uses the libvips library.
-- [Dayjs](https://github.com/iamkun/dayjs)
+- [dayjs](https://github.com/iamkun/dayjs)
   > Day.js is a minimalist JavaScript library that parses, validates, manipulates, and displays dates and times for modern browsers with a largely Moment.js-compatible API. If you use Moment.js, you already know how to use Day.js.
 - [front-matter](https://github.com/jxson/front-matter)
   > Extract YAML front matter from strings
