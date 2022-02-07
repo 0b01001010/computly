@@ -52,6 +52,7 @@
 			height: 2rem;
 			background: var(--switch-secondary-color);
 			border-radius: 100vw;
+			box-shadow: inset 1px 1px 5px hsla(0, 0%, 0%, 0.5);
 			input {
 				display: none;
 			}
