@@ -1,4 +1,5 @@
 <script lang="ts">
+	import lazyload from 'vanilla-lazyload';
 	import 'papercss/dist/paper.min.css';
 	import '$lib/styles/index.scss';
 	import { browser } from '$app/env';
@@ -13,6 +14,10 @@
 			$themeStore = browserDarkMode ? 'dark' : 'light';
 		}
 		$themeStore === 'dark' && document.documentElement.classList.toggle('dark');
+
+		if (!document.lazyloadInstance) {
+			document.lazyloadInstance = new lazyload();
+		}
 	}
 </script>
 
