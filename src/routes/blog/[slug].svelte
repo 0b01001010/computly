@@ -9,12 +9,11 @@
 				slug
 			})
 		});
-		const post = await res.json();
-
 		return {
 			status: res.status,
 			props: {
-				post
+				post: await res.json(),
+				page: (await import('../../posts/test.md')).default
 			}
 		};
 	};
@@ -22,14 +21,16 @@
 
 <script lang="ts">
 	import type { Post } from '$lib/types/post';
+	export let page;
+	console.log(page);
 
 	export let post: Post;
-	console.log(post);
 </script>
 
 <svelte:head>
 	<title>{post.title}</title>
 </svelte:head>
 <article>
-	{@html post.body}
+	<!-- {@html post.body} -->
+	<svelte:component this={page} />
 </article>

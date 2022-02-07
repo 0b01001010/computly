@@ -28,7 +28,7 @@ const config = {
 			define: {
 				'process.env.VITE_BUILD_TIME': JSON.stringify(new Date().toISOString()) // Using this for sitemap.xml
 			},
-			plugins: [imagetools({ force: true })]
+			plugins: [imagetools({ force: true })],
 		}
 	}
 };
