@@ -1,7 +1,7 @@
+import { mdsvex } from 'mdsvex';
 import mdsvexConfig from './mdsvex.config.js';
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
-import { mdsvex } from 'mdsvex';
 import { imagetools } from 'vite-imagetools';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -15,7 +15,8 @@ const config = {
 			scss: {
 				prependData: "@import 'src/lib/styles/variables.scss';"
 			}
-		})
+		}),
+		mdsvex(mdsvexConfig)
 	],
 
 	kit: {
