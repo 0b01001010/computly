@@ -49,7 +49,7 @@
 	<title>{errorTitle}</title>
 </svelte:head>
 
-<div class="flex flex-col items-center">
+<div class="error-page">
 	{#if status === 400}
 		<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 598.4 519.4"
 			><path
@@ -478,13 +478,28 @@
 			/></svg
 		>
 	{/if}
-	<h1 class="mx-8 text-4xl text-center">{errorMessage}</h1>
+	<h1>{errorMessage}</h1>
 </div>
 
-<style>
-	svg {
+<style lang="scss">
+	.error-page {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 2rem auto;
+	}
+	.error-page > svg {
 		width: 75%;
 		max-width: 1260px;
 		margin-bottom: 12px;
+		filter: drop-shadow(4px 10px 20px rgba(0, 0, 0, 0.3));
+	}
+	.error-page > h1 {
+		text-align: center;
+		font-size: 6vmin;
+		color: transparent;
+		background: linear-gradient(to right, #ee4c4c, rgb(212, 0, 0));
+		-webkit-background-clip: text;
+		text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.116);
 	}
 </style>
