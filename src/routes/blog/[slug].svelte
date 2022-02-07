@@ -26,6 +26,4 @@
 	export let post: Post;
 </script>
 
-<pre>
-	{post.title}
-</pre>
+<pre>{JSON.stringify(post)}</pre>
