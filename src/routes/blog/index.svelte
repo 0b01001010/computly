@@ -1,8 +1,11 @@
 <script lang="ts">
-	// Show list of posts
+	import { theme as themeStore } from '$lib/stores/theme';
+
+	$: darkMode = $themeStore === 'dark';
+	// Load all posts
 </script>
 
-<div class="main-content border border-primary">
+<div class="main-content border border-primary {darkMode ? 'bg-dark' : 'bg-light'}">
 	<h1>Blog posts</h1>
 </div>
 
@@ -10,7 +13,6 @@
 	div.main-content {
 		margin: 2rem auto;
 		width: min(960px, 90vw);
-		background-color: white;
 		z-index: 1;
 	}
 </style>

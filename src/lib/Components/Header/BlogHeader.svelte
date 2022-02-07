@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Navbar } from 'spaper';
+	import ThemeSwitcher from './ThemeSwitcher.svelte';
 </script>
 
 <header>
@@ -16,6 +16,7 @@
 				<a href="/about">About</a>
 			</li>
 		</ul>
+		<ThemeSwitcher />
 	</nav>
 </header>
 
@@ -42,7 +43,15 @@
 	}
 	nav {
 		display: flex;
-		justify-content: center;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.5rem 3rem;
+	}
+	@media screen and (max-width: 768px) {
+		nav {
+			flex-direction: column;
+		}
 	}
 	nav ul {
 		display: flex;

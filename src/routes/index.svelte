@@ -2,12 +2,6 @@
 	// Landpage
 </script>
 
-<svelte:head>
-	<link
-		rel="preconnect"
-		href="fonts.googleapis.com/css?family=Ewert&family=Ewert|Monoton&family=Vibur&family=Nixie+One&family=Lato:100&effect=neon&display=swap"
-	/>
-</svelte:head>
 <div />
 <h1 class="wrapper"><span class="char-animation">Coming soon</span></h1>
 <div />
