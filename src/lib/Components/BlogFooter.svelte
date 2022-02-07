@@ -8,9 +8,8 @@
 
 <style lang="scss">
 	footer {
-		bottom: 0;
 		width: 100%;
-		padding: 10px;
+		padding: 1rem;
 		text-align: center;
 		font-size: 12px;
 	}
