@@ -12,7 +12,7 @@
 		const post = await res.json();
 
 		return {
-			status: 200,
+			status: res.status,
 			props: {
 				post
 			}
@@ -24,6 +24,12 @@
 	import type { Post } from '$lib/types/post';
 
 	export let post: Post;
+	console.log(post);
 </script>
 
-<pre>{JSON.stringify(post)}</pre>
+<svelte:head>
+	<title>{post.title}</title>
+</svelte:head>
+<article>
+	{@html post.body}
+</article>

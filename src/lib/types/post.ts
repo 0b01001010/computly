@@ -1,6 +1,7 @@
 export declare type Post = {
 	title: string;
-	contents: string;
-	slug: string;
-	updatedAt: Date;
+	date: string;
+	description: string;
+	excerpt: string;
+	body: string;
 };
