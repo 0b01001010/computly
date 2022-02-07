@@ -147,6 +147,7 @@
 				.star-1 {
 					width: 2px;
 					height: 2px;
+					animation: blink 3s infinite;
 				}
 
 				.star-2 {
@@ -159,6 +160,7 @@
 					width: 2px;
 					height: 2px;
 					transform: translate3d(-7px, 0, 0);
+					animation: blink 2s infinite;
 				}
 
 				.star-4,
@@ -173,12 +175,24 @@
 				.star-5 {
 					transform: translate3d(0, 0, 0);
 					transition: all 250ms 350ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+					animation: blink 5s infinite;
 				}
 				.star-6 {
 					transform: translate3d(0.7rem, 0, 0);
 					transition: all 250ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 				}
 			}
+		}
+	}
+	@keyframes blink {
+		49% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.7;
+		}
+		51% {
+			opacity: 1;
 		}
 	}
 </style>
