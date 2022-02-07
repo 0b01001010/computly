@@ -14,7 +14,7 @@
 			y2="100%"
 			gradientTransform="rotate(335,665,325)"
 		>
-			<stop offset="0" stop-color="#{darkMode ? '236DB5' : 'FFFFFF'}" />
+			<stop offset="0" stop-color="#{darkMode ? '151B54' : 'F4F9FF'}" />
 			<stop offset="1" stop-color="#{darkMode ? '000000' : '81C1FF'}" />
 		</linearGradient>
 		<pattern

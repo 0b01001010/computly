@@ -17,7 +17,7 @@
 		? '#ffe5b5'
 		: '#FFD700'}; --switch-secondary-color: {darkMode
 		? '#0a0d12'
-		: '#e7e8eb'}; --switch-tertiary-color: white;"
+		: '#c4eeff'}; --switch-tertiary-color: white;"
 >
 	<div class="theme-switch-wrapper">
 		<label for="theme-btn">
