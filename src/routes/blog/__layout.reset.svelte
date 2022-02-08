@@ -2,6 +2,8 @@
 	import 'papercss/dist/paper.min.css';
 	import '$lib/styles/index.scss';
 	import { browser } from '$app/env';
+	import lazyload from 'vanilla-lazyload';
+
 	import { theme as themeStore } from '$lib/stores/theme';
 	import BlogFooter from '$lib/Components/Blog/Footer/Footer.svelte';
 	import BlogHeader from '$lib/Components/Blog/Header/Header.svelte';
@@ -13,6 +15,9 @@
 			$themeStore = browserDarkMode ? 'dark' : 'light';
 		}
 		$themeStore === 'dark' && document.documentElement.classList.toggle('dark');
+		if (!window.lazyloadInstance) {
+			window.lazyloadInstance = new lazyload();
+		}
 	}
 </script>
 

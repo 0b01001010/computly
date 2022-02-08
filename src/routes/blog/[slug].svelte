@@ -9,13 +9,12 @@
 				slug
 			})
 		});
-		const imageData = await import(`../../lib/generated/posts/${slug}.js`);
-
+		const imageData = await import(`../../lib/generated/posts/${slug}.json`);
 		return {
 			status: res.status,
 			props: {
 				post: await res.json(),
-				imageData: { ...imageData.default },
+				imageData: imageData.default,
 				page: (await import(`../../lib/posts/${slug}/index.md`)).default
 			}
 		};
@@ -42,8 +41,8 @@
 	<title>{post.title}</title>
 </svelte:head>
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
+	<Image {alt} {width} {height} {sources} {placeholder} {sizes} loading="lazy" />
 	<h1>{post.title}</h1>
-	<Image {alt} {width} loading="eager" {height} {src} {sources} {placeholder} {sizes} />
 	<svelte:component this={page} />
 </article>
 

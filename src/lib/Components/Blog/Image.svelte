@@ -1,7 +1,7 @@
 <script lang="ts">
-	export let src: string;
 	export let alt: string;
 	export let sources: { srcset: string; type: string }[];
+	let src = sources[sources.length - 1].srcset;
 	export let placeholder: string;
 	export let width: number; // needed to reduce CLS
 	export let height: number; // needed to reduce CLS
@@ -30,9 +30,12 @@
 <style>
 	picture {
 		width: 100%;
+		display: flex;
+		justify-content: center;
 	}
 	img {
 		height: auto;
+		width: clamp(80vmin, 70%, 1200px);
 	}
 
 	img:not([src]):not([srcset]) {
