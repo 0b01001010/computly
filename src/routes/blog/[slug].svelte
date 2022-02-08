@@ -26,14 +26,16 @@
 
 	import { theme as themeStore } from '$lib/stores/theme';
 	import Image from '$lib/Components/Blog/Image.svelte';
+	import type { ImageProps } from '$lib/types/imageProps';
 
 	export let page;
-	export let imageData;
+
+	export let imageData: ImageProps;
 	export let post: Post;
 
 	$: darkMode = $themeStore === 'dark';
 
-	const { alt, width, height, src, sources, placeholder } = imageData;
+	const { alt, width, height, sources, placeholder } = imageData;
 	const sizes = '(max-width: 672px) calc(100vw - 32px), 672px';
 </script>
 
@@ -50,7 +52,7 @@
 	article {
 		padding: 1em;
 		margin: 3rem 1rem 5rem;
-		h1:first-child {
+		h1:first-of-type {
 			text-align: center;
 		}
 	}
