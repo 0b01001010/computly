@@ -1,6 +1,6 @@
 {
 	"name": "a3k.tech",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "node ./generate-responsive-image-data.js && svelte-kit build",

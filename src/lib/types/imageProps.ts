@@ -4,7 +4,7 @@ declare type ImageSource = {
 };
 
 export declare type ImageProps = {
-	sources: ImageSource;
+	sources: ImageSource[];
 	alt: string;
 	width: number;
 	height: number;

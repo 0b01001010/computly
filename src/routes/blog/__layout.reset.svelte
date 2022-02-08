@@ -15,7 +15,9 @@
 			$themeStore = browserDarkMode ? 'dark' : 'light';
 		}
 		$themeStore === 'dark' && document.documentElement.classList.toggle('dark');
+		// @ts-ignore
 		if (!window.lazyloadInstance) {
+			// @ts-ignore
 			window.lazyloadInstance = new lazyload();
 		}
 	}
