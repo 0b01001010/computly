@@ -4,9 +4,9 @@
 	import '$lib/styles/index.scss';
 	import { browser } from '$app/env';
 	import { theme as themeStore } from '$lib/stores/theme';
-	import BlogFooter from '$lib/Components/BlogFooter.svelte';
-	import BlogHeader from '$lib/Components/Header/BlogHeader.svelte';
-	import SvGbackground from '$lib/Components/SVGbackground.svelte';
+	import BlogFooter from '$lib/Components/Blog/Footer/Footer.svelte';
+	import BlogHeader from '$lib/Components/Blog/Header/Header.svelte';
+	import SvGbackground from '$lib/Components/Blog/SVGbackground.svelte';
 	if (browser) {
 		if ($themeStore === 'null') {
 			let browserDarkMode: boolean =

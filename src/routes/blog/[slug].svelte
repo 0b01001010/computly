@@ -9,26 +9,41 @@
 				slug
 			})
 		});
-		const imageData = await import(`$lib/generated/posts/${slug}.js`);
-		console.log(imageData);
+		const imageData = await import(`../../lib/generated/posts/${slug}.js`);
 
 		return {
 			status: res.status,
 			props: {
 				post: await res.json(),
-				page: (await import(`$lib/posts/${slug}/index.md`)).default
+				imageData: { ...imageData.default },
+				page: (await import(`../../lib/posts/${slug}/index.md`)).default
 			}
 		};
 	};
 </script>
 
 <script lang="ts">
-	import { theme as themeStore } from '$lib/stores/theme';
 	import type { Post } from '$lib/types/post';
-	export let page;
+	import { onMount } from 'svelte';
+	import { browser } from '$app/env';
 
+	import { theme as themeStore } from '$lib/stores/theme';
+	import Image from '$lib/Components/Blog/Image.svelte';
+
+	export let page;
+	export let imageData;
 	export let post: Post;
+
 	$: darkMode = $themeStore === 'dark';
+
+	const { alt, width, height, src, sources, placeholder } = imageData;
+	const sizes = '(max-width: 672px) calc(100vw - 32px), 672px';
+
+	onMount(() => {
+		if (browser) {
+			document.lazyloadInstance.update();
+		}
+	});
 </script>
 
 <svelte:head>
@@ -36,7 +51,17 @@
 </svelte:head>
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
 	<h1>{post.title}</h1>
-	<!-- {@html post.body} -->
+	<Image
+		{alt}
+		{width}
+		loading="eager"
+		{height}
+		{src}
+		{sources}
+		{placeholder}
+		{sizes}
+		style={'border-radius:12px;margin-bottom:48px'}
+	/>
 	<svelte:component this={page} />
 </article>
 
