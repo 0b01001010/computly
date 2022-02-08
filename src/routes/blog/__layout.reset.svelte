@@ -1,5 +1,4 @@
 <script lang="ts">
-	import lazyload from 'vanilla-lazyload';
 	import 'papercss/dist/paper.min.css';
 	import '$lib/styles/index.scss';
 	import { browser } from '$app/env';

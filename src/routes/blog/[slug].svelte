@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = async ({ params, fetch, url }) => {
+	export const load: Load = async ({ params, fetch }) => {
 		const { slug } = params;
 		const res: Response = await fetch('/api/blog/posts.json', {
 			method: 'POST',

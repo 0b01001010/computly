@@ -27,10 +27,11 @@
 - [object-hash](https://github.com/puleos/object-hash)
   > Generate hashes from javascript objects in node and the browser.
 - [vanilla-lazyload](https://github.com/verlok/vanilla-lazyload)
-  > Lightweight, flexible script that speeds up websites by deferring the loading of below-the-fold images, backgrounds, videos, iframes and scripts to when they will enter the viewport. 
+  > Lightweight, flexible script that speeds up websites by deferring the loading of below-the-fold images, backgrounds, videos, iframes and scripts to when they will enter the viewport.
   > Written in plain JavaScript, it leverages IntersectionObserver, supports responsive images and enables native lazy loading
 
 # Credits
+
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
   > This is the backbone of my blog.
   > I changed styling and added other features.

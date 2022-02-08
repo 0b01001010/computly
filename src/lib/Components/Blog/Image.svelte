@@ -5,8 +5,8 @@
 	export let placeholder: string;
 	export let width: number; // needed to reduce CLS
 	export let height: number; // needed to reduce CLS
-	export let maxWidth: string = '1280px';
-	export let sizes: string = `(max-width: ${maxWidth}) 100vw, ${maxWidth}}`;
+	export let maxWidth = '1280px';
+	export let sizes = `(max-width: ${maxWidth}) 100vw, ${maxWidth}}`;
 	export let loading: 'lazy' | 'eager' = 'lazy';
 </script>
 
