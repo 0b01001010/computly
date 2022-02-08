@@ -30,6 +30,17 @@
   > Lightweight, flexible script that speeds up websites by deferring the loading of below-the-fold images, backgrounds, videos, iframes and scripts to when they will enter the viewport.
   > Written in plain JavaScript, it leverages IntersectionObserver, supports responsive images and enables native lazy loading
 
+# Main features
+
+## Images
+
+- Generating images at build time instead of runtime.
+- Using `sharp` to create different image sizes & formats.
+
+### other images
+- Each post should have all files in one directory
+- The `generate-responsive-images` task will then generate all those images to `/static/blog/posts/{slug}`
+
 # Credits
 
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
