@@ -20,23 +20,23 @@
 	switch (status) {
 		case 400:
 			errorTitle = 'Bad request';
-			errorMessage = 'The request was invalid or cannot be otherwise served.';
+			errorMessage = 'The request was invalid or cannot be otherwise served';
 			break;
 		case 401:
 			errorTitle = 'Unauthorized';
-			errorMessage = 'Authentication is required and has failed or has not yet been provided.';
+			errorMessage = 'Authentication is required and has failed or has not yet been provided';
 			break;
 		case 403:
 			errorTitle = 'Forbidden';
-			errorMessage = 'You are not authorized to access this resource.';
+			errorMessage = 'You are not authorized to access this resource';
 			break;
 		case 404:
 			errorTitle = 'Not found';
-			errorMessage = 'The requested resource could not be found.';
+			errorMessage = 'The requested resource could not be found';
 			break;
 		case 500:
 			errorTitle = 'Internal server error';
-			errorMessage = 'The server encountered an unexpected error.';
+			errorMessage = 'The server encountered an unexpected error';
 			break;
 		default:
 			errorTitle = 'Something went wrong';
@@ -50,7 +50,12 @@
 	<title>{errorTitle}</title>
 </svelte:head>
 
-<div class="error-page" style="--error-main-color: {darkMode ? '#C0C2A9' : '#3f3d56'}">
+<div
+	class="error-page"
+	style="--err-clr-1: {darkMode ? '#C0C2A9' : '#3f3d56'};--err-clr-2:{darkMode
+		? '#63644a'
+		: '#2f2e41'};--err-bg-clr:{darkMode ? 'hsl(0deg 0% 0% / 70%)' : 'hsl(0deg 0% 100% / 70%)'};"
+>
 	{#if status === 400}
 		<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 598.4 519.4"
 			><path
@@ -92,31 +97,31 @@
 				class="fill-main-color"
 				d="M277.9 362.5h45.4a18 18 0 0 0 18-18V325a17.9 17.9 0 0 0-1.3-6.3 17.9 17.9 0 0 1 7.2 14.3v19.6a18 18 0 0 1-18 18h-45.4a18 18 0 0 1-16.7-11.7 17.8 17.8 0 0 0 10.8 3.7Z"
 			/><path fill="#a0616a" d="M416.9 506.5h-11.1l-5.4-43h16.5v43z" /><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="M417.3 518.2H383v-.5a13.4 13.4 0 0 1 13.4-13.3l6.2-4.8 11.7 4.8h3Z"
 			/><path fill="#a0616a" d="M495.8 506.5H507l5.3-43h-16.5v43z" /><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="M495.4 518.2h34.3v-.5a13.4 13.4 0 0 0-13.3-13.3l-6.3-4.8-11.7 4.8h-3ZM400 431.9c.1-2.5 1.4-16 1.4-16l3.2-28.8 5.5-76.4.4-5 29-5.5 19.7-9.5 23.6 7.5 18.3 6.9.2 6.5a44 44 0 0 0 1.3 11.8c1.3 2.6 1 16.7 1 16.7s1.2 28.6 2.9 31.8 2 9.6 1.5 11 1.6 35.6 1.6 35.6 5.5 60.8 2 70-16.4 3.2-16.4 3.2.6-2.5-3.1-3.7-15.3-87.3-15.3-87.3-2-17.7-4-22.8-3.8-19.3-3.8-19.3-12.1-23.5-12.3-28.8c0 0-1.6-4.9-3 .5s-6 18.3-6 18.3l-4.3 16-5 23.6-3.3 20s-5 26.5-5.7 27.6 0 25.4 0 25.4-3.8 20.6-9.2 24.2-19.6 0-19.6 0-.8-51-.6-53.5Z"
 			/><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="m412.3 236.1 6.5 19.4-8 9.5 3.5 3.6-2.6 5.1L405 327l36.9 14 12.4-15.6 9.8 15.6 42.7-10.4-10.9-68v-4.5l-3.1-8.6v-18.2l8.2-54.1-24.3-8.5-11.5-9.1-3.8 12.9-16-2.9-.4-9.7-12.2 11.6-10.3 2.9-12.3 2.8-1.6 3.9 3.2-.7-.5 51 1 4.7z"
 			/><path
 				fill="#a0616a"
 				d="m401.3 307.1 6.2-60 1.6-24.7-17.3-3.1s.7 17.7-1.6 27.6c-2.3 9.8-.3 58.9-.2 60.2a8.4 8.4 0 1 0 11.3 0Z"
 			/><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="m384.4 259.6 4.8 1 16.5 3.4 1 .2 2-7.8 2.2-2.4 4.3-22.6.2-1.2 6.5-14 4.5-41.8-16.7 3-.3.3c-2.4 2.7-4 6.5-6.9 10.3-9.1 12.5-16.1 42.7-15.9 59.2 0 .3-.2.6-.6.9a9.2 9.2 0 0 0-1.6 11.5Z"
 			/><path
 				fill="#a0616a"
 				d="m509.1 307.1-6.2-60-1.6-24.7 17.3-3.1s-.7 17.7 1.6 27.6c2.2 9.8.3 58.9.2 60.2a8.4 8.4 0 1 1-11.3 0Z"
 			/><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="m526 259.6-4.8 1-16.5 3.4-1 .2-2-7.8-2.2-2.4-4.3-22.6-.2-1.2-6.5-14 1.4-41.8 10.8 3 .3.3c2.4 2.7 4 6.5 6.9 10.3 9.1 12.5 16.1 42.7 15.9 59.2 0 .3.2.6.6.9a9.2 9.2 0 0 1 1.6 11.5Z"
 			/><path
 				fill="#b85252"
 				d="m437.1 180.6 8-20.7 20-.3 6.7 21 24 134.1s-73.5 20.5-72.8-4.1a998 998 0 0 1 4.4-60.3Z"
 			/><circle cx="454.6" cy="130.4" r="23.7" fill="#a0616a" /><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="M429.5 113.2c3.9-4.2 8.7-11.9 23.3-15 18.1-4 26.7 12.2 22 12.5 13.4 4 4.9 31.6 1 29.3a18.8 18.8 0 0 1-7.6-12.9l-.7-6.5c0 5.3-5.5 6-11 4a7 7 0 0 1 4.9-4.8 23.8 23.8 0 0 1-14 6.1 9.5 9.5 0 0 1 4.6-6.4l-.2-.2a22.8 22.8 0 0 1-7.3 4.2c-3 .9-6.8.4-8.8-2a6.5 6.5 0 0 1-1.3-2.3c.5 4.2-2.4 9-4.6 8.2-1.8-.3-2.8-11.4-.3-14.2Z"
 			/><path
 				fill="#ccc"
@@ -146,13 +151,13 @@
 				fill="#b85252"
 				d="M300.6 305.5a7 7 0 0 1-2.9.7l-91.6 2.5a14.4 14.4 0 0 1-.6-28.7l91.6-2.6a7 7 0 0 1 7.2 6.9l.3 14.7a7 7 0 0 1-4 6.5ZM183 498.6h-14.7a7 7 0 0 1-7-7v-123a7 7 0 0 1 7-7h14.8a7 7 0 0 1 7 7v123a7 7 0 0 1-7 7Zm39.3 0h-14.8a7 7 0 0 1-7-7v-123a7 7 0 0 1 7-7h14.8a7 7 0 0 1 7 7v123a7 7 0 0 1-7 7Z"
 			/><circle cx="196.7" cy="182.7" r="51" fill="#b85252" /><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="M214 405.2h-36.7a43.3 43.3 0 0 1-37.5-65l51.3-89a6.5 6.5 0 0 1 11.2 0l50.3 87.2a44.6 44.6 0 0 1-38.6 66.8Zm-5.2-201.1c3.3 0 7.4-.2 10.5-2.5a8.1 8.1 0 0 0 3.2-6 5.5 5.5 0 0 0-1.8-4.6c-1.7-1.4-4-1.7-6.7-1l2.7-19.7-2-.2-3.2 23.1 1.7-.7c2-.9 4.6-1.3 6.2 0a3.5 3.5 0 0 1 1.1 3 6.1 6.1 0 0 1-2.3 4.5c-2.5 1.8-5.8 2-9.5 2.1Zm17.7-32.1h10.8v2h-10.8zm-34 0h10.8v2h-10.8z"
 			/><path
 				fill="#b85252"
 				d="M184.7 393.8a7 7 0 0 1-.7-2.9l-2.5-91.6a14.4 14.4 0 0 1 28.8-.6l2.5 91.6a7 7 0 0 1-6.8 7.2l-14.8.3a7 7 0 0 1-6.5-4Z"
 			/><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="M192 145c6.2 8.1 16 13.5 26.4 12.2a23 23 0 0 0 20.1-18 29.7 29.7 0 0 0-7.8-26.1 45 45 0 0 0-27-12.7 67.1 67.1 0 0 0-52.3 16.4 64.1 64.1 0 0 0-16.7 22.3 62.7 62.7 0 0 0-5.1 27.1 68.4 68.4 0 0 0 22.5 49 63.4 63.4 0 0 0 5.4 4.2c1.5 1 3-1.5 1.5-2.6a64.3 64.3 0 0 1-25.8-43.3 60 60 0 0 1 14-48.3 65.8 65.8 0 0 1 45.8-22.4c17.6-.7 39.5 7.1 42.8 26.7 1.4 8.7-1.8 18-9.9 22.3a24 24 0 0 1-26.5-3.3 30.4 30.4 0 0 1-4.8-5c-1.2-1.5-3.8 0-2.6 1.5Z"
 			/><path
 				fill="#f1f1f1"
@@ -239,26 +244,26 @@
 			/><path
 				fill="#ffb7b7"
 				d="M576.5 446a9.1 9.1 0 0 1 9.9-9.9l9.6-18.4 12.6 3-14 26a9.1 9.1 0 0 1-18-.7Zm57.4 179.5h-10.7l-5.1-41.1h15.8v41.1z"
-			/><path fill="#2f2e41" d="M636.6 635.9h-34.4v-.5a13.4 13.4 0 0 1 13.4-13.4h21Z" /><path
-				fill="#ffb7b7"
-				d="m719.5 617.6-10.2 2.8-15.7-38.3 15.1-4.2 10.8 39.7z"
 			/><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
+				d="M636.6 635.9h-34.4v-.5a13.4 13.4 0 0 1 13.4-13.4h21Z"
+			/><path fill="#ffb7b7" d="m719.5 617.6-10.2 2.8-15.7-38.3 15.1-4.2 10.8 39.7z" /><path
+				style="fill:var(--err-clr-2)"
 				d="m724.9 626.8-33.2 9v-.4A13.4 13.4 0 0 1 701 619l20.3-5.5ZM614.4 448l-5.3 80.7 11.4 90.6 18.7-5.7.8-80.9 15-46.7 44.3 124.6 20.2-7.5-16.7-80.9-9.5-75.9-78.9 1.7z"
 			/><path
 				fill="#cbcbcb"
 				d="m666 306.3-31.4 4.7-11.3 11.2-3.6 40.3 2.2 35.7-9.1 63s23-12.8 40.7 3.2 42.6 2.8 43.2-7.8Z"
 			/><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="m650.1 356.9 15.6-51h.2c1.2-.1 27.4-1.7 33.2 11.3l-1.7 53 2.4 83-48.5 10.5h-.3Zm-17.3-3.5 2.8-43.3c-20.4 1.3-20 15.8-20 16.4l-.3 64.7-4 69.1 14.8-1Z"
-			/><path fill="#2f2e41" d="m586.7 432 18.2-42 12.6-23.3 6.6 42-23 34.3Z" /><path
+			/><path style="fill:var(--err-clr-2)" d="m586.7 432 18.2-42 12.6-23.3 6.6 42-23 34.3Z" /><path
 				fill="#ffb7b7"
 				d="M661.6 416.5A9.1 9.1 0 0 1 674 410l14.7-14.8 11.1 6.7-21 20.6a9.1 9.1 0 0 1-17-6Z"
 			/><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="m674 404.6 29.7-32.7-19.7-28.1 2-13.8 11.6-14.4.3.3c1.2 1.6 30.3 39.5 31.2 53.8.8 14.4-41 50.7-42.8 52.3l-.3.2Z"
 			/><circle cx="647.9" cy="281.6" r="21.2" fill="#ffb7b7" /><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="m667.8 264.7 1-2-5.1-2.7s-5.7-9.2-16-6.6-15 4.1-15 4.1l-5.1 2.6 2.6 2.6-4.7 1.6 3.1 1.5-3.6 2 2 10.7s3.2-8 9.4-5 17.5-1.6 17.5-1.6l9.9 19.1s2-6.7 5.6-4.9c0 0 9.3-14.7-1.6-21.4Z"
 			/><path fill="#fff" d="M428.2 384.6 106 473.4 0 88.8 322.1 0Z" /><path
 				fill="#f1f1f1"
@@ -369,13 +374,10 @@
 		>
 	{:else if status >= 500}
 		<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1119.6 699"
-			><circle cx="292.6" cy="213" r="213" fill="#f2f2f2" /><path
-				fill="#2f2e41"
-				d="M0 51.1c0 77.5 48.6 140.3 108.7 140.3"
-			/><path
+			><path style="fill:var(--err-clr-2)" d="M0 51.1c0 77.5 48.6 140.3 108.7 140.3" /><path
 				fill="#b85252"
 				d="M108.7 191.4C108.7 113 163 49.6 230 49.6M39.4 58.2c0 73.6 31 133.2 69.3 133.2"
-			/><path fill="#2f2e41" d="M108.7 191.4c0-100.2 62.7-181.2 140.2-181.2" /><path
+			/><path style="fill:var(--err-clr-2)" d="M108.7 191.4c0-100.2 62.7-181.2 140.2-181.2" /><path
 				fill="#a8a8a8"
 				d="M85.8 192.3s15.4-.4 20-3.7 23.8-7.3 25-2 23.1 26.4 5.7 26.5-40.4-2.7-45-5.5-5.7-15.3-5.7-15.3Z"
 			/><path
@@ -400,16 +402,25 @@
 				stroke-width="2"
 				d="M462.6 626c90 23 263-30 282-90m-435-277s130-36 138 80-107 149-17 172M184 537.3s39-10.8 41.5 24-32.2 44.8-5.1 51.7"
 			/><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="m778.7 563.2-7.9 50.3s-38.8 20.6-11.5 21.2 155.7 0 155.7 0 24.9 0-14.5-21.8l-7.9-52.7Z"
 			/><path
 				d="M753.8 634.2c6.2-5.5 17-11.3 17-11.3l7.9-50.2h114l7.8 49.6c9.2 5.1 14.9 9 18.2 12 5-1.1 10.6-5.4-18.2-21.4l-7.9-52.7-113.9 3-7.9 50.3s-32.6 17.3-17 20.7Z"
 				opacity=".1"
-			/><rect width="513.3" height="357.5" x="578.4" y="212.7" fill="#2f2e41" rx="18" /><path
-				class="fill-main-color"
-				d="M595.7 231.8h478.7v267.8H595.7z"
-			/><circle cx="835.1" cy="223.3" r="3" fill="#f2f2f2" /><path
-				fill="#2f2e41"
+			/><rect
+				width="513.3"
+				height="357.5"
+				x="578.4"
+				y="212.7"
+				style="fill:var(--err-clr-2)"
+				rx="18"
+			/><path class="fill-main-color" d="M595.7 231.8h478.7v267.8H595.7z" /><circle
+				cx="835.1"
+				cy="223.3"
+				r="3"
+				fill="#f2f2f2"
+			/><path
+				style="fill:var(--err-clr-2)"
 				d="M1091.7 520.8v31.4a18 18 0 0 1-18 18H596.4a18 18 0 0 1-18-18v-31.4ZM969 667.5v6H643v-4.8l.4-1.2 8.1-21.8h310.8l6.7 21.8zm125.4-6c-.6 2.6-2.8 5.3-7.9 7.8-18.1 9-55.1-2.4-55.1-2.4s-28.5-4.9-28.5-17.6a22.7 22.7 0 0 1 2.5-1.5c7.7-4 33-14 78 .4a18.7 18.7 0 0 1 8.5 5.6c1.8 2.2 3.2 4.9 2.5 7.7Z"
 			/><path
 				d="M1094.4 661.5c-22.2 8.6-42 9.2-62.4-5a44.7 44.7 0 0 0-26.6-8.7c7.7-4 33-14 78 .4a18.7 18.7 0 0 1 8.5 5.6c1.8 2.2 3.2 4.9 2.5 7.7Z"
@@ -420,7 +431,7 @@
 				r="11.5"
 				fill="#f2f2f2"
 			/><path d="M969 667.5v6H643v-4.8l.4-1.2H969z" opacity=".1" /><path
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				d="M108.6 159h208v242h-208z"
 			/><path
 				class="fill-main-color"
@@ -444,14 +455,14 @@
 				cx="316.6"
 				cy="538"
 				r="79"
-				fill="#2f2e41"
-			/><path fill="#2f2e41" d="M280.6 600h24v43h-24zm48 0h24v43h-24z" /><ellipse
+				style="fill:var(--err-clr-2)"
+			/><path style="fill:var(--err-clr-2)" d="M280.6 600h24v43h-24zm48 0h24v43h-24z" /><ellipse
 				cx="300.6"
 				cy="643.5"
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				rx="20"
 				ry="7.5"
-			/><ellipse cx="348.6" cy="642.5" fill="#2f2e41" rx="20" ry="7.5" /><circle
+			/><ellipse cx="348.6" cy="642.5" style="fill:var(--err-clr-2)" rx="20" ry="7.5" /><circle
 				cx="318.6"
 				cy="518"
 				r="27"
@@ -462,14 +473,14 @@
 			/><ellipse
 				cx="417.2"
 				cy="611.3"
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				rx="39.5"
 				ry="12.4"
 				transform="rotate(-23.2 156.4 637.7)"
 			/><ellipse
 				cx="269.2"
 				cy="664.3"
-				fill="#2f2e41"
+				style="fill:var(--err-clr-2)"
 				rx="39.5"
 				ry="12.4"
 				transform="rotate(-23.2 8.4 690.7)"
@@ -479,10 +490,11 @@
 			/></svg
 		>
 	{/if}
-	<h1>{errorMessage}</h1>
+	<div class="msg-wrpr border"><h1>{errorMessage}</h1></div>
 </div>
 
 <style lang="scss">
+	@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 	.error-page {
 		display: flex;
 		flex-direction: column;
@@ -496,14 +508,21 @@
 		filter: drop-shadow(4px 10px 20px rgba(0, 0, 0, 0.3));
 	}
 	.fill-main-color {
-		fill: var(--error-main-color);
+		fill: var(--err-clr-1);
 	}
-	.error-page > h1 {
+	.msg-wrpr {
+		background-color: var(--err-bg-clr);
+		box-shadow: inset 0px 0px 10px hsla(0, 0%, 0%, 50%);
+	}
+	h1 {
+		font-family: 'Ubuntu';
 		text-align: center;
 		font-size: 6vmin;
 		color: transparent;
-		background: linear-gradient(to right, #ee4c4c, rgb(212, 0, 0));
+		background: linear-gradient(to right, #0fe669, rgb(228, 9, 9));
 		-webkit-background-clip: text;
-		text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.116);
+		text-shadow: 0px 10px 20px white;
+		-webkit-text-stroke-width: 1px;
+		-webkit-text-stroke-color: rgba(0, 0, 255, 0.329);
 	}
 </style>

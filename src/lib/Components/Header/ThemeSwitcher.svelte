@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class="main-wrapper border"
+	class="main-wrapper"
 	style="--switch-primary-color: {darkMode
 		? '#ffe5b5'
 		: '#FFD700'}; --switch-secondary-color: {darkMode
@@ -51,8 +51,8 @@
 			width: 4rem;
 			height: 2rem;
 			background: var(--switch-secondary-color);
-			// border-radius: 10% 13% 23% 24% / 40% 10% 31% 17%;
-			// box-shadow: inset 1px 1px 5px hsla(0, 0%, 0%, 0.5);
+			border-radius: 49% 25% 60% 22%/40% 84% 64% 86%;
+			box-shadow: inset 1px 1px 5px hsla(0, 0%, 0%, 0.5);
 			input {
 				display: none;
 			}
@@ -135,6 +135,7 @@
 				aspect-ratio: 1;
 				border-radius: 100vw;
 				background: var(--switch-primary-color);
+
 				transform: translateX(0px);
 				transition: transform 250ms;
 			}
