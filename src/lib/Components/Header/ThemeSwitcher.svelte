@@ -12,7 +12,7 @@
 </script>
 
 <div
-	class="main-wrapper"
+	class="main-wrapper border"
 	style="--switch-primary-color: {darkMode
 		? '#ffe5b5'
 		: '#FFD700'}; --switch-secondary-color: {darkMode
@@ -51,8 +51,8 @@
 			width: 4rem;
 			height: 2rem;
 			background: var(--switch-secondary-color);
-			border-radius: 100vw;
-			box-shadow: inset 1px 1px 5px hsla(0, 0%, 0%, 0.5);
+			// border-radius: 10% 13% 23% 24% / 40% 10% 31% 17%;
+			// box-shadow: inset 1px 1px 5px hsla(0, 0%, 0%, 0.5);
 			input {
 				display: none;
 			}

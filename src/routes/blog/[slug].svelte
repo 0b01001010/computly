@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = async ({ params, fetch }) => {
+	export const load: Load = async ({ params, fetch, url }) => {
 		const { slug } = params;
 		const res: Response = await fetch('/api/blog/posts.json', {
 			method: 'POST',
@@ -9,11 +9,14 @@
 				slug
 			})
 		});
+		const imageData = await import(`$lib/generated/posts/${slug}.js`);
+		console.log(imageData);
+
 		return {
 			status: res.status,
 			props: {
 				post: await res.json(),
-				page: (await import('../../posts/test.md')).default
+				page: (await import(`$lib/posts/${slug}/index.md`)).default
 			}
 		};
 	};
