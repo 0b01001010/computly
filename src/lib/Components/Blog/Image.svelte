@@ -8,7 +8,6 @@
 	export let maxWidth: string = '1280px';
 	export let sizes: string = `(max-width: ${maxWidth}) 100vw, ${maxWidth}}`;
 	export let loading: 'lazy' | 'eager' = 'lazy';
-	export let style: string = '';
 </script>
 
 <picture>
@@ -24,11 +23,14 @@
 		{height}
 		data-src={src}
 		src={placeholder}
-		style={`max-width:${maxWidth};${style}`}
+		style={`max-width:${maxWidth};`}
 	/>
 </picture>
 
 <style>
+	picture {
+		width: 100%;
+	}
 	img {
 		height: auto;
 	}

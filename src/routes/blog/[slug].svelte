@@ -24,8 +24,6 @@
 
 <script lang="ts">
 	import type { Post } from '$lib/types/post';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/env';
 
 	import { theme as themeStore } from '$lib/stores/theme';
 	import Image from '$lib/Components/Blog/Image.svelte';
@@ -38,12 +36,6 @@
 
 	const { alt, width, height, src, sources, placeholder } = imageData;
 	const sizes = '(max-width: 672px) calc(100vw - 32px), 672px';
-
-	onMount(() => {
-		if (browser) {
-			document.lazyloadInstance.update();
-		}
-	});
 </script>
 
 <svelte:head>
@@ -51,17 +43,7 @@
 </svelte:head>
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
 	<h1>{post.title}</h1>
-	<Image
-		{alt}
-		{width}
-		loading="eager"
-		{height}
-		{src}
-		{sources}
-		{placeholder}
-		{sizes}
-		style={'border-radius:12px;margin-bottom:48px'}
-	/>
+	<Image {alt} {width} loading="eager" {height} {src} {sources} {placeholder} {sizes} />
 	<svelte:component this={page} />
 </article>
 
