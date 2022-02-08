@@ -34,12 +34,13 @@
 
 ## Images
 
-- Generating images at build time instead of runtime.
-- Using `sharp` to create different image sizes & formats.
+- ✅ Generating images at build time instead of runtime.
+- ✅ Using `sharp` to create different image sizes & formats.
 
 ### other images
-- Each post should have all files in one directory
-- The `generate-responsive-images` task will then generate all those images to `/static/blog/posts/{slug}`
+
+- ✅ Each post should have all files in one directory
+- ✅ The `generate-responsive-images` task will then generate all those images to `/static/blog/posts/{slug}`
 
 # Credits
 
