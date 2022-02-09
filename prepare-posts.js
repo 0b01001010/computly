@@ -2,10 +2,7 @@ import fs from 'fs';
 import sharp from 'sharp';
 import path from 'path';
 import { BLOG_PATH, getAllPosts } from './src/lib/utilities/blog.js';
-import { makeDirectory } from './src/lib/utilities/file.js';
 import { generateFormats, getPlaceholder, getMetadata } from './src/lib/utilities/image.js';
-
-const rootDir = path.resolve();
 
 const maxWidth = 1920;
 
@@ -63,7 +60,6 @@ const main = async () => {
 	const ogImgFiles = await Promise.all(ogImgFilesPromises);
 	posts.forEach((element, index) => {
 		const { slug, mainImage, mainImageAlt } = element;
-		const src = path.join(BLOG_PATH, slug, mainImage);
 
 		const { format: imgFormat, width, height, placeholder } = imgMetadata[index];
 
@@ -82,6 +78,7 @@ const main = async () => {
 			}
 		});
 
+		const src = path.join('static/blog/posts', slug, mainImage);
 		// Create json object of all the images
 		const outputData = {
 			alt: mainImageAlt,
