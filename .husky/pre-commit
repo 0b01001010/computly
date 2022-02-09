@@ -3,7 +3,7 @@
 
 # FILES="$(git status --short | grep '^[MARC]')" # List staged files without Deleted ones (D)
 
-pnpm run format && pnpm run lint
+pnpm run lint
 
 # for file in $FILES; do
 #   git add "$file" 2&> /dev/null
