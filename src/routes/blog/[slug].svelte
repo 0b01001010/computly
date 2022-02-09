@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
-
 	export const load: Load = async ({ params, fetch }) => {
 		const { slug } = params;
 		const res: Response = await fetch('/api/blog/posts.json', {
@@ -10,13 +9,14 @@
 			})
 		});
 		try {
-			const imageData = await import(`../../lib/generated/posts/${slug}.json`);
+			const postPath = `../../../static/blog/posts/${slug}`;
+			const imageData = await import(`${postPath}/info.json`);
 			return {
 				status: res.status,
 				props: {
 					post: await res.json(),
-					imageData: imageData.default,
-					page: (await import(`../../lib/posts/${slug}/index.md`)).default
+					imageData: { ...imageData.default },
+					page: (await import(`${postPath}/post.md`)).default
 				}
 			};
 		} catch (error) {
@@ -27,14 +27,15 @@
 
 <script lang="ts">
 	import type { Post } from '$lib/types/post';
+	import type { ImageProps } from '$lib/types/imageProps';
 
 	import { theme as themeStore } from '$lib/stores/theme';
 	import Image from '$lib/Components/Blog/Image.svelte';
-	import type { ImageProps } from '$lib/types/imageProps';
 
 	export let page;
 
 	export let imageData: ImageProps;
+
 	export let post: Post;
 
 	$: darkMode = $themeStore === 'dark';
