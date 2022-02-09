@@ -36,7 +36,7 @@ export const getPosts = (location) => {
 	const articles = [];
 
 	directories.forEach((element) => {
-		const contentPath = `${location}/${element}/index.md`;
+		const contentPath = `${location}/${element}/post.md`;
 		if (fs.existsSync(contentPath)) {
 			const content = fs.readFileSync(contentPath, { encoding: 'utf-8' });
 			const frontmatter = fm(content);

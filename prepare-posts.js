@@ -1,11 +1,12 @@
 import fs from 'fs';
 import sharp from 'sharp';
 import path from 'path';
-import { BLOG_PATH, IMG_PATH, getAllPosts } from './src/lib/utilities/blog.js';
+import { BLOG_PATH, getAllPosts } from './src/lib/utilities/blog.js';
 import { makeDirectory } from './src/lib/utilities/file.js';
 import { generateFormats, getPlaceholder, getMetadata } from './src/lib/utilities/image.js';
 
 const rootDir = path.resolve();
+
 const maxWidth = 1920;
 
 const extractImageMeta = async (source) => {
@@ -20,8 +21,12 @@ const extractImageMeta = async (source) => {
 };
 
 const moveAllImagesToStatic = async (post) => {
+	// Posts are now in /static/blog/posts/
+	// So this function will do different job
+	// Which is to return a list of all images in post's directory
+	// So they can be converted later
 	const { slug } = post;
-	const dstDir = path.join('static', IMG_PATH, slug);
+	const dstDir = path.join(BLOG_PATH, slug);
 
 	// Check if directory
 	if (!fs.existsSync(dstDir)) {
@@ -33,7 +38,6 @@ const moveAllImagesToStatic = async (post) => {
 	const _postFiles = fs.readdirSync(path.join(BLOG_PATH, slug));
 	const _ogImages = _postFiles.filter((_file) => !_file.endsWith('md'));
 
-	// Move all images to IMG_PATH
 	_ogImages.forEach((_img) => {
 		const _imgPath = path.join(BLOG_PATH, slug, _img);
 		const _imgDst = path.join(dstDir, _img);
@@ -49,16 +53,14 @@ const moveAllImagesToStatic = async (post) => {
 };
 
 const main = async () => {
-	const location = path.join(rootDir, BLOG_PATH);
-
 	// Get all posts
-	const posts = getAllPosts(location);
+	const posts = getAllPosts(BLOG_PATH);
 
 	// Extract main image path from each post to generate meta data
 	const imgMetaPromises = posts.map(async (_Post) => {
 		try {
 			const { mainImage, slug } = _Post;
-			const source = path.join(rootDir, BLOG_PATH, slug, mainImage);
+			const source = path.join(BLOG_PATH, slug, mainImage);
 			return extractImageMeta(source);
 		} catch (err) {
 			console.error('Error while preparing image path: ', err);
@@ -75,13 +77,9 @@ const main = async () => {
 	});
 	const ogImgFiles = await Promise.all(ogImgFilesPromises);
 
-	// Create a directory for each post to store the generated images data in a js file
-	const generatedDataDir = path.join(rootDir, 'src/lib/generated/posts');
-	await makeDirectory(generatedDataDir);
-
 	posts.forEach((element, index) => {
 		const { slug, mainImage, mainImageAlt } = element;
-		const src = path.join(IMG_PATH, slug, mainImage);
+		const src = path.join(BLOG_PATH, slug, mainImage);
 
 		const { format: imgFormat, width, height, placeholder } = imgMetadata[index];
 
@@ -113,7 +111,7 @@ const main = async () => {
 			height,
 			placeholder
 		};
-		const outputPath = path.join(generatedDataDir, `${slug}.json`);
+		const outputPath = path.join(BLOG_PATH, slug, 'info.json');
 		fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2), 'utf-8');
 	});
 };
