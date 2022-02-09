@@ -14,12 +14,8 @@
 
 ### Interesting dependencies
 
-- [vite-imagetools](https://github.com/JonasKruckenberg/imagetools)
-  > Load and transform images using a toolbox of custom import directives
 - [sharp](https://github.com/lovell/sharp)
   > High performance image processing, resize JPEG, PNG, WebP, AVIF and TIFF images.
-- [dayjs](https://github.com/iamkun/dayjs)
-  > Day.js is a minimalist JavaScript library that parses, validates, manipulates, and displays dates and times for modern browsers with a largely Moment.js-compatible API. If you use Moment.js, you already know how to use Day.js.
 - [front-matter](https://github.com/jxson/front-matter)
   > Extracts YAML front matter from markdown files.
 - [mdsvex](https://github.com/pngwn/MDsveX)
@@ -29,6 +25,8 @@
 - [vanilla-lazyload](https://github.com/verlok/vanilla-lazyload)
   > Lightweight, flexible script that speeds up websites by deferring the loading of below-the-fold images, backgrounds, videos, iframes and scripts to when they will enter the viewport.
   > Written in plain JavaScript, it leverages IntersectionObserver, supports responsive images and enables native lazy loading
+- [dayjs](https://github.com/iamkun/dayjs)
+  > Day.js is a minimalist JavaScript library that parses, validates, manipulates, and displays dates and times for modern browsers with a largely Moment.js-compatible API. If you use Moment.js, you already know how to use Day.js.
 
 # Main features
 

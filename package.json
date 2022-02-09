@@ -1,6 +1,7 @@
 {
 	"name": "a3k.tech",
 	"version": "0.1.0",
+	"license": "MIT",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "node ./generate-responsive-image-data.js && svelte-kit build",
@@ -25,6 +26,7 @@
 		"eslint-plugin-svelte3": "^3.2.1",
 		"front-matter": "^4.0.2",
 		"husky": "^7.0.4",
+		"mdsvex": "^0.10.5",
 		"prettier": "^2.4.1",
 		"prettier-plugin-svelte": "^2.4.0",
 		"sass": "^1.49.7",
@@ -33,9 +35,7 @@
 		"svelte-preprocess": "^4.9.4",
 		"tslib": "^2.3.1",
 		"typescript": "^4.4.3",
-		"vanilla-lazyload": "^17.5.0",
-		"vite-imagetools": "^4.0.3",
-		"mdsvex": "^0.10.5"
+		"vanilla-lazyload": "^17.5.0"
 	},
 	"optionalDependencies": {
 		"sharp": "^0.30.0"
