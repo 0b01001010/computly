@@ -20,7 +20,7 @@
 				}
 			};
 		} catch (error) {
-			console.error('Error loading post', error);
+			console.error('Error loading post from [slug].svelte', error);
 		}
 	};
 </script>
