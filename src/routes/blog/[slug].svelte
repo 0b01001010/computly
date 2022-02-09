@@ -9,15 +9,19 @@
 				slug
 			})
 		});
-		const imageData = await import(`../../lib/generated/posts/${slug}.json`);
-		return {
-			status: res.status,
-			props: {
-				post: await res.json(),
-				imageData: imageData.default,
-				page: (await import(`../../lib/posts/${slug}/index.md`)).default
-			}
-		};
+		try {
+			const imageData = await import(`../../lib/generated/posts/${slug}.json`);
+			return {
+				status: res.status,
+				props: {
+					post: await res.json(),
+					imageData: imageData.default,
+					page: (await import(`../../lib/posts/${slug}/index.md`)).default
+				}
+			};
+		} catch (error) {
+			console.error('Error loading post', error);
+		}
 	};
 </script>
 
