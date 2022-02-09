@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "node ./generate-responsive-image-data.js && svelte-kit build",
+		"build": "node ./prepare-posts.js && svelte-kit build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
