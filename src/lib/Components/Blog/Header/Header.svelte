@@ -13,7 +13,7 @@
 				<a sveltekit:prefetch href="/blog/">Blog</a>
 			</li>
 			<li>
-				<a href="/about">About</a>
+				<a href="/blog/about">About</a>
 			</li>
 		</ul>
 		<ThemeSwitcher />

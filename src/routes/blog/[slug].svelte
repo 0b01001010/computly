@@ -11,16 +11,20 @@
 		try {
 			const postPath = `../../../static/blog/posts/${slug}`;
 			const imageData = await import(`${postPath}/info.json`);
+			const postData = await import(`${postPath}/post.md`);
 			return {
 				status: res.status,
 				props: {
 					post: await res.json(),
 					imageData: { ...imageData.default },
-					page: (await import(`${postPath}/post.md`)).default
+					page: { ...postData.default }
 				}
 			};
 		} catch (error) {
 			console.error('Error loading post from [slug].svelte', error);
+			return {
+				status: 404
+			};
 		}
 	};
 </script>

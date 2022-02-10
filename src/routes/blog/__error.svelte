@@ -515,6 +515,7 @@
 		box-shadow: inset 0px 0px 10px hsla(0, 0%, 0%, 50%);
 	}
 	h1 {
+		padding: 0 1rem;
 		font-family: 'Ubuntu';
 		text-align: center;
 		font-size: 6vmin;

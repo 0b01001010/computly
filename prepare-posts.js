@@ -78,7 +78,7 @@ const main = async () => {
 			}
 		});
 
-		const src = path.join('static/blog/posts', slug, mainImage);
+		const src = path.join('blog/posts', slug, mainImage);
 		// Create json object of all the images
 		const outputData = {
 			alt: mainImageAlt,

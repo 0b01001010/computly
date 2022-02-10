@@ -1,11 +1,8 @@
 <script lang="ts">
 	import { theme as themeStore } from '$lib/stores/theme';
-
-	$: darkMode = $themeStore === 'dark';
-	// Load all posts
 </script>
 
-<div class="main-content border border-primary {darkMode ? 'bg-dark' : 'bg-light'}">
+<div class="main-content border border-primary {$themeStore === 'dark' ? 'bg-dark' : 'bg-light'}">
 	<h1>Blog posts</h1>
 </div>
 
