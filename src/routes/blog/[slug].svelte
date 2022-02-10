@@ -9,9 +9,8 @@
 			})
 		});
 		try {
-			const postPath = `../../../static/assets/posts/${slug}`;
-			const imageData = await import(`${postPath}/info.json`);
-			const postData = await import(`${postPath}/post.md`);
+			const imageData = await import(`../../lib/posts/${slug}/info.json`);
+			const postData = await import(`../../lib/posts/${slug}/post.md`);
 			return {
 				status: res.status,
 				props: {

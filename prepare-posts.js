@@ -1,7 +1,7 @@
 import fs from 'fs';
 import sharp from 'sharp';
 import path from 'path';
-import { BLOG_PATH, getAllPosts } from './src/lib/utilities/blog.js';
+import { BLOG_PATH, getAllPosts, IMG_PATH } from './src/lib/utilities/blog.js';
 import { generateFormats, getPlaceholder, getMetadata } from './src/lib/utilities/image.js';
 
 const maxWidth = 1920;
@@ -24,6 +24,10 @@ const getPostImages = async (post) => {
 	 */
 	const { slug } = post;
 	const postDir = path.join(BLOG_PATH, slug);
+	const dstDir = path.join(IMG_PATH, slug);
+	if (!fs.existsSync(dstDir)) {
+		fs.mkdirSync(dstDir);
+	}
 
 	const _postFiles = fs.readdirSync(postDir);
 
@@ -31,6 +35,11 @@ const getPostImages = async (post) => {
 	const postImages = _postFiles.filter((_file) => {
 		const fileExtension = path.extname(_file);
 		return !excludedExtensions.includes(fileExtension);
+	});
+	postImages.forEach((_imgSrc) => {
+		const src = path.join(postDir, _imgSrc);
+		const dst = path.join(dstDir, _imgSrc);
+		fs.copyFileSync(src, dst);
 	});
 	return postImages;
 };
@@ -67,7 +76,7 @@ const main = async () => {
 		_postImages.forEach(async (_imgSrc) => {
 			try {
 				await generateFormats({
-					imgSrc: path.join(BLOG_PATH, slug, _imgSrc),
+					imgSrc: path.join(IMG_PATH, slug, _imgSrc),
 					size: Math.min(width, maxWidth)
 				});
 			} catch (error) {
