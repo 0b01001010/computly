@@ -101,7 +101,7 @@ const main = async () => {
 			placeholder
 		};
 		const outputPath = path.join(BLOG_PATH, slug, 'info.json');
-		fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2), 'utf-8');
+		fs.writeFileSync(outputPath, JSON.stringify(outputData, null), 'utf-8');
 	});
 };
 

@@ -11,12 +11,13 @@
 		try {
 			const imageData = await import(`../../lib/posts/${slug}/info.json`);
 			const postData = await import(`../../lib/posts/${slug}/post.md`);
+
 			return {
 				status: res.status,
 				props: {
 					post: await res.json(),
 					imageData: { ...imageData.default },
-					page: { ...postData.default }
+					page: postData.default
 				}
 			};
 		} catch (error) {
