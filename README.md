@@ -6,7 +6,7 @@
 
 ## Blog
 
-> This is my implementation of [Sveltekit-blog-mdx starter project](https://github.com/rodneylab/sveltekit-blog-mdx)
+> This is my clone of [Sveltekit-blog-mdx starter project](https://github.com/rodneylab/sveltekit-blog-mdx)
 
 ### PaperCSS
 

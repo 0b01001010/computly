@@ -4,6 +4,11 @@ import path from 'path';
 import { BLOG_PATH, getAllPosts, IMG_PATH } from './src/lib/utilities/blog.js';
 import { generateFormats, getPlaceholder, getMetadata } from './src/lib/utilities/image.js';
 
+/**
+ * Original script was written by @rodneylab
+ * https://github.com/rodneylab/sveltekit-blog-mdx/blob/main/generate-responsive-image-data.js
+ */
+
 const maxWidth = 1920;
 
 const extractImageMeta = async (source) => {
