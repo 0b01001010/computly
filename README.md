@@ -38,7 +38,7 @@
 ### other images
 
 - ✅ Each post should have all files (including images) in one directory
-- ✅ The `generate-responsive-images` task will then generate all those images to `/static/blog/posts/{slug}`
+- ✅ The `generate-responsive-images` task will then generate all those images to `/static/assets/posts/{slug}`
 
 # Credits
 

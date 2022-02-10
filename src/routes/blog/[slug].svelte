@@ -9,7 +9,7 @@
 			})
 		});
 		try {
-			const postPath = `../../../static/blog/posts/${slug}`;
+			const postPath = `../../../static/assets/posts/${slug}`;
 			const imageData = await import(`${postPath}/info.json`);
 			const postData = await import(`${postPath}/post.md`);
 			return {
