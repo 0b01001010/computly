@@ -9,8 +9,8 @@
 			})
 		});
 		try {
-			const imageData = await import(`../../lib/posts/${slug}/info.json`);
-			const postData = await import(`../../lib/posts/${slug}/post.md`);
+			const imageData = await import(`../../posts/${slug}/info.json`);
+			const postData = await import(`../../posts/${slug}/post.md`);
 
 			return {
 				status: res.status,
