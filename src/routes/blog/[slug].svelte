@@ -10,14 +10,14 @@
 		});
 		try {
 			const imageData = await import(`../../posts/${slug}/info.json`);
-			console.log(imageData);
+			const page = await import(`../../posts/${slug}/post.md`);
 
 			return {
 				status: res.status,
 				props: {
 					post: await res.json(),
 					imageData: { ...imageData.default },
-					page: (await import(`../../posts/${slug}/post.md`)).default
+					page: page.default
 				}
 			};
 		} catch (error) {
