@@ -10,14 +10,14 @@
 		});
 		try {
 			const imageData = await import(`../../posts/${slug}/info.json`);
-			const postData = await import(`../../posts/${slug}/post.md`);
+			console.log(imageData);
 
 			return {
 				status: res.status,
 				props: {
 					post: await res.json(),
 					imageData: { ...imageData.default },
-					page: postData.default
+					page: (await import(`../../posts/${slug}/post.md`)).default
 				}
 			};
 		} catch (error) {
@@ -36,11 +36,7 @@
 	import { theme as themeStore } from '$lib/stores/theme';
 	import Image from '$lib/Components/Blog/Image.svelte';
 
-	export let page;
-
-	export let imageData: ImageProps;
-
-	export let post: Post;
+	export let post: Post, imageData: ImageProps, page;
 
 	$: darkMode = $themeStore === 'dark';
 
