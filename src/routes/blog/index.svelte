@@ -2,6 +2,10 @@
 	import { theme as themeStore } from '$lib/stores/theme';
 </script>
 
+<svelte:head>
+	<title>Blog posts</title>
+</svelte:head>
+
 <div class="main-content border border-primary {$themeStore === 'dark' ? 'bg-dark' : 'bg-light'}">
 	<h1>Blog posts</h1>
 </div>

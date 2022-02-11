@@ -2,6 +2,9 @@
 	// Landpage
 </script>
 
+<svelte:head>
+	<title>a3k</title>
+</svelte:head>
 <div />
 <h1 class="wrapper"><span class="char-animation">Coming soon</span></h1>
 <div />
