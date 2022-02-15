@@ -17,7 +17,7 @@
 		? '#ffe5b5'
 		: '#FFD700'}; --switch-secondary-color: {darkMode
 		? '#0a0d12'
-		: '#c4eeff'}; --switch-tertiary-color: white;"
+		: '#c4eeff'}; --switch-tertiary-color: #ffffff;"
 >
 	<div class="theme-switch-wrapper">
 		<label for="theme-btn">
@@ -51,7 +51,7 @@
 			width: 4rem;
 			height: 2rem;
 			background: var(--switch-secondary-color);
-			border-radius: 49% 25% 60% 22%/40% 84% 64% 86%;
+			border-radius: 49% 25% 60% 22% / 40% 84% 64% 86%;
 			box-shadow: inset 1px 1px 5px hsla(0, 0%, 0%, 0.5);
 			input {
 				display: none;

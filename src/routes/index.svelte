@@ -5,27 +5,26 @@
 <svelte:head>
 	<title>a3k</title>
 </svelte:head>
-<div />
-<h1 class="wrapper"><span class="char-animation">Coming soon</span></h1>
-<div />
+<main>
+	<header><span>Coming soon</span></header>
+</main>
 
 <style lang="scss">
 	:root {
 		--text-color: #fc1f2c;
 		--border-color: #03edf9;
 	}
-	:global(body) {
+	main {
 		user-select: none;
 		background: #000;
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 90vh;
+		height: 100vh;
 	}
-	.wrapper {
+	header {
 		font-family: Lato;
-		font-weight: 700;
+		font-weight: bold;
 		font-size: 80px;
 		color: #fff;
 		padding: 40px;
@@ -36,7 +35,7 @@
 			0 0 25px var(--text-color);
 		animation: border-blink 5.5s infinite alternate;
 	}
-	.char-animation {
+	span {
 		animation: 1s text-blink 5.5s infinite alternate;
 	}
 	@keyframes text-blink {

@@ -22,7 +22,7 @@
 
 <style lang="scss">
 	@font-face {
-		font-family: 'Paskowy';
+		font-family: Paskowy;
 		src: url('/fonts/Paskowy.ttf');
 	}
 	header {
@@ -36,7 +36,7 @@
 		justify-content: center;
 		align-items: center;
 		background: none;
-		font-family: 'Paskowy';
+		font-family: Paskowy;
 		user-select: none;
 		font-size: 20vmin;
 		text-transform: uppercase;

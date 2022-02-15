@@ -16,7 +16,7 @@
 	import { theme as themeStore } from '$lib/stores/theme';
 	let errorTitle: string;
 	let errorMessage: string;
-	$: darkMode = $themeStore === 'dark';
+	$: darkmode = $themeStore === 'dark';
 	switch (status) {
 		case 400:
 			errorTitle = 'Bad request';
@@ -52,9 +52,9 @@
 
 <div
 	class="error-page"
-	style="--err-clr-1: {darkMode ? '#C0C2A9' : '#3f3d56'};--err-clr-2:{darkMode
+	style="--err-clr-1: {darkmode ? '#C0C2A9' : '#3f3d56'};--err-clr-2:{darkmode
 		? '#63644a'
-		: '#2f2e41'};--err-bg-clr:{darkMode ? 'hsl(0deg 0% 0% / 70%)' : 'hsl(0deg 0% 100% / 70%)'};"
+		: '#2f2e41'};--err-bg-clr:{darkmode ? 'hsl(0deg 0% 0% / 70%)' : 'hsl(0deg 0% 100% / 70%)'};"
 >
 	{#if status === 400}
 		<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 598.4 519.4"
@@ -516,13 +516,13 @@
 	}
 	h1 {
 		padding: 0 1rem;
-		font-family: 'Ubuntu';
+		font-family: Ubuntu;
 		text-align: center;
 		font-size: 6vmin;
 		color: transparent;
 		background: linear-gradient(to right, #0fe669, rgb(228, 9, 9));
 		-webkit-background-clip: text;
-		text-shadow: 0px 10px 20px white;
+		text-shadow: 0px 10px 20px #fff;
 		-webkit-text-stroke-width: 1px;
 		-webkit-text-stroke-color: rgba(0, 0, 255, 0.329);
 	}
