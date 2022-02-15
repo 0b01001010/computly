@@ -9,12 +9,13 @@
 > I want it to be on fire, so I'm using three.js!
 
 ### Three.js ideas
+
 - [Gallery](https://lx2h8.csb.app): Could be used to showcase my past projects.
 - [Simple sky](https://github.com/LashaJini/portfolio-3d.git): A stupid simple dark sky that has only zoom effect!
 - **Horizontal scroll envionment:**
   - [Sandrina](https://www.sandrina-p.net) ([source](https://github.com/sandrina-p/portfolio_v3)): A great svelte (non-3D) website.
   - https://www.valkendorff.com Similar idea built with three.js
-  - 
+  -
 
 ## Blog
 
