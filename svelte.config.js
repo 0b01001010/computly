@@ -19,6 +19,14 @@ const config = {
 		adapter: adapter({ precompress: true }),
 		files: {
 			hooks: 'src/hooks'
+		},
+		vite: {
+			optimizeDeps: {
+				exclude: ['three']
+			},
+			ssr: {
+				noExternal: ['three']
+			}
 		}
 	},
 	onwarn: (warning, handler) => {

@@ -1,84 +1,55 @@
 <script lang="ts">
-	// Landpage
+	import { onMount } from 'svelte';
+
+	import * as THREE from 'three';
+	import * as TH from 'threlte';
+
+	let background;
+	// let scene = new THREE.Scene();
+	onMount(() => {
+		new THREE.TextureLoader().load('/textures/360-bridge.jpg', (loaded) => {
+			background = loaded;
+			background.mapping = THREE.EquirectangularReflectionMapping;
+			background.encoding = THREE.sRGBEncoding;
+		});
+		// scene.background = new THREE.TextureLoader().load('./textures/360-bridge.jpg');
+	});
 </script>
 
 <svelte:head>
-	<title>a3k</title>
+	<title>Home</title>
 </svelte:head>
-<main>
-	<header><span>Coming soon</span></header>
-</main>
+<div>
+	<TH.Canvas>
+		<TH.PerspectiveCamera position={{ x: 19, y: 8, z: 10 }} fov={60}>
+			<TH.OrbitControls autoRotate enableZoom={false} maxPolarAngle={1.7} />
+		</TH.PerspectiveCamera>
+		<TH.DirectionalLight shadow color={'white'} position={{ x: -15, y: 45, z: 20 }} />
+		<TH.HemisphereLight skyColor={'white'} groundColor={'#ac844c'} intensity={0.4} />
 
-<style lang="scss">
-	:root {
-		--text-color: #fc1f2c;
-		--border-color: #03edf9;
-	}
-	main {
-		user-select: none;
-		background: #000;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
-	}
-	header {
-		font-family: Lato;
-		font-weight: bold;
-		font-size: 80px;
-		color: #fff;
-		padding: 40px;
-		border: 4px solid;
-		border-radius: 20px;
-		text-transform: uppercase;
-		text-shadow: 0 0 2px #000, 0 0 10px var(--text-color), 0 0 5px var(--text-color),
-			0 0 25px var(--text-color);
-		animation: border-blink 5.5s infinite alternate;
-	}
-	span {
-		animation: 1s text-blink 5.5s infinite alternate;
-	}
-	@keyframes text-blink {
-		0%,
-		100%,
-		20%,
-		22%,
-		25%,
-		28%,
-		55%,
-		80% {
-			text-shadow: 0 0 2px #000, 0 0 10px var(--text-color), 0 0 5px var(--text-color),
-				0 0 25px var(--text-color);
-			opacity: 1;
-			color: var(--text-color);
-		}
-		21%,
-		24%,
-		56% {
-			opacity: 0.2;
-			text-shadow: none;
-		}
-	}
-	@keyframes border-blink {
-		0%,
-		100%,
-		20%,
-		22%,
-		25%,
-		28%,
-		55%,
-		57%,
-		63% {
-			color: var(--text-color);
-			box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 2rem var(--border-color),
-				inset 0 0 2rem var(--border-color), 0 0 4rem var(--border-color),
-				inset 0 0 4rem var(--border-color);
-			border-color: var(--border-color);
-		}
-		21%,
-		24%,
-		56% {
-			box-shadow: none;
-		}
+		<TH.Mesh
+			castShadow
+			geometry={new THREE.BoxBufferGeometry(1, 1, 1)}
+			material={new THREE.MeshStandardMaterial({ color: '#ff3e00' })}
+		/>
+
+		<TH.Mesh
+			receiveShadow
+			position={{ y: -0.5 }}
+			rotation={{ x: -90 * (Math.PI / 180) }}
+			geometry={new THREE.CircleBufferGeometry(3, 72)}
+			material={new THREE.MeshStandardMaterial({ color: 'white' })}
+		/>
+		<TH.Text text="Hi there" />
+	</TH.Canvas>
+</div>
+
+<style>
+	div {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 </style>

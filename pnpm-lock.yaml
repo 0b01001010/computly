@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@sveltejs/adapter-auto': next
   '@sveltejs/kit': next
+  '@types/three': ^0.137.0
   '@typescript-eslint/eslint-plugin': ^5.10.1
   '@typescript-eslint/parser': ^5.10.1
   dayjs: ^1.10.7
@@ -28,6 +29,8 @@ specifiers:
   svelte: ^3.44.0
   svelte-check: ^2.2.6
   svelte-preprocess: ^4.9.4
+  three: 0.137.5
+  threlte: 2.2.1
   tslib: ^2.3.1
   typescript: ^4.4.3
   vanilla-lazyload: ^17.5.0
@@ -41,13 +44,16 @@ dependencies:
   stylelint-config-recommended-scss: 5.0.2_postcss@8.4.6+stylelint@14.5.0
   stylelint-config-standard: 25.0.0_stylelint@14.5.0
   stylelint-scss: 4.1.0_stylelint@14.5.0
+  three: 0.137.5
+  threlte: 2.2.1_three@0.137.5
 
 optionalDependencies:
   sharp: 0.30.0
 
 devDependencies:
   '@sveltejs/adapter-auto': 1.0.0-next.17
-  '@sveltejs/kit': 1.0.0-next.266_sass@1.49.7+svelte@3.46.4
+  '@sveltejs/kit': 1.0.0-next.272_sass@1.49.7+svelte@3.46.4
+  '@types/three': 0.137.0
   '@typescript-eslint/eslint-plugin': 5.10.2_3e19df30e549eb9672c3b79dc40c1d5f
   '@typescript-eslint/parser': 5.10.2_eslint@7.32.0+typescript@4.5.5
   dayjs: 1.10.7
@@ -221,10 +227,10 @@ packages:
       esbuild: 0.13.15
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.266_sass@1.49.7+svelte@3.46.4:
+  /@sveltejs/kit/1.0.0-next.272_sass@1.49.7+svelte@3.46.4:
     resolution:
       {
-        integrity: sha512-nlc+ECltLIadY12K+DerDLtgKRBe/ri+R5e2iWFIovetk31heU92nd1k24DL+FMcNo7B0Ik4XxurHCV2eoft3g==
+        integrity: sha512-QKbUxInDup2x8/0S8noOzDfUypYnOl2G9BfSl6QOHdCMa9LoAu3tHW8PvkdjQxzz075rhZJvHDf2lcXENeO6Sg==
       }
     engines: { node: '>=14.13' }
     hasBin: true
@@ -317,6 +323,13 @@ packages:
       }
     dependencies:
       '@types/node': 17.0.15
+    dev: true
+
+  /@types/three/0.137.0:
+    resolution:
+      {
+        integrity: sha512-Xc5EAlfYmgrCLI/VlSVqiRJAtzhWF0Rw2jSq48nqJy+Hcb5sfDOXyfZn1+RNcHyi9l8CeCAXCZygO8IyeOJVEA==
+      }
     dev: true
 
   /@types/unist/2.0.6:
@@ -636,6 +649,15 @@ packages:
       }
     dev: false
     optional: true
+
+  /bidi-js/1.0.2:
+    resolution:
+      {
+        integrity: sha512-rzSy/k7WdX5zOyeHHCOixGXbCHkyogkxPKL2r8QtzHmVQDiWCXUWa18bLdMWT9CYMLOYTjWpTHawuev2ouYJVw==
+      }
+    dependencies:
+      require-from-string: 2.0.2
+    dev: false
 
   /binary-extensions/2.2.0:
     resolution:
@@ -3819,6 +3841,24 @@ packages:
     resolution: { integrity: sha1-f17oI66AUgfACvLfSoTsP8+lcLQ= }
     dev: true
 
+  /three/0.137.5:
+    resolution:
+      {
+        integrity: sha512-rTyr+HDFxjnN8+N/guZjDgfVxgHptZQpf6xfL/Mo7a5JYIFwK6tAq3bzxYYB4Ae0RosDZlDuP+X5aXDXz+XnHQ==
+      }
+    dev: false
+
+  /threlte/2.2.1_three@0.137.5:
+    resolution:
+      {
+        integrity: sha512-w6X4TqNoX5oX8217BVG0ghDuJvavffvJuvCojc+7EHCMw02PvkZ7XyQxzj7a6Wcfn33Dsns336RfISK6OtDd4Q==
+      }
+    dependencies:
+      troika-three-text: 0.45.0_three@0.137.5
+    transitivePeerDependencies:
+      - three
+    dev: false
+
   /tiny-glob/0.2.9:
     resolution:
       {
@@ -3844,6 +3884,38 @@ packages:
         integrity: sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==
       }
     engines: { node: '>=8' }
+    dev: false
+
+  /troika-three-text/0.45.0_three@0.137.5:
+    resolution:
+      {
+        integrity: sha512-s/MhDYJm0+aiQU8fjO1TXl1UZESY52GMJgzyMB0HHnh2iADy+WY00oVgNsW6lU7XmC2g8MU81nV5egCDAS4/Pg==
+      }
+    peerDependencies:
+      three: '>=0.103.0'
+    dependencies:
+      bidi-js: 1.0.2
+      three: 0.137.5
+      troika-three-utils: 0.45.0_three@0.137.5
+      troika-worker-utils: 0.45.0
+    dev: false
+
+  /troika-three-utils/0.45.0_three@0.137.5:
+    resolution:
+      {
+        integrity: sha512-VJqEx8aww2El/zSbbnmjdhaAOQ4LM0CVJmKh385Vi/CzruhMmWEaunMRI/J1vh4MbbGo+dREu73FkMkr/PXypA==
+      }
+    peerDependencies:
+      three: '>=0.103.0'
+    dependencies:
+      three: 0.137.5
+    dev: false
+
+  /troika-worker-utils/0.45.0:
+    resolution:
+      {
+        integrity: sha512-pEO8u7+29dG5SbmGUg0wqXPEe+r+Hd0ibKf75tjH2aoR7ZPlRwUzRTvPURDlDNFF4KysDLvMCdHnyslG9IG5Hw==
+      }
     dev: false
 
   /tslib/1.14.1:
