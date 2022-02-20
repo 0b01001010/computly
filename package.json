@@ -8,8 +8,7 @@
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --ignore-path .gitignore --ignore-path .prettierignore --write --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-		"lint:scss": "stylelint \"src/**/*.{css,scss,svelte}\" --config .stylelintrc.json",
+		"lint": "prettier --ignore-path .gitignore --ignore-path .prettierignore --write --plugin-search-dir=. . && stylelint \"src/**/*.{css,scss,svelte}\" --config .stylelintrc.json && eslint --ignore-path .gitignore .",
 		"generate:images": "node ./prepare-posts.js",
 		"generate:sitemap": "node ./generate-sitemap.js",
 		"prepare": "husky install"

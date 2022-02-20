@@ -1,93 +1,116 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import Background from '$lib/Components/Landpage/Background.svelte';
 	import * as THREE from 'three';
 	import * as TH from 'threlte';
-	let cameraX = 0;
-	let cameraY = 0;
-	let cameraZ = 0;
+	import { onMount } from 'svelte';
+
+	import Background from '$lib/Components/Landpage/Background.svelte';
+	import Office from '$lib/Components/Landpage/Office.svelte';
+	import { browser } from '$app/env';
+	import { cameraPosition, controlsPosition } from '$lib/stores/tweened';
+	import Contents from '$lib/Components/Landpage/Contents.svelte';
+	// TODO loading manager
+
+	let textPosition = new THREE.Vector3(0, 0, 0);
+
+	onMount(async () => {
+		setTimeout(async () => {
+			await Promise.all([
+				// controlsPosition.set({ x: -1, y: 1.2, z: 0.6 }),
+				// cameraPosition.set({ x: -2, y: 1.5, z: 1 })
+			]);
+		}, 3500);
+
+		const mainElm = document.querySelector('#homepage-1');
+		mainElm.addEventListener('touchstart', touchEvent, false);
+	});
+
+	const windowSize = browser && {
+		width: window.innerWidth,
+		height: window.innerHeight
+	};
+	const mouse = new THREE.Vector2();
+
+	const moveMouse = (pointX: number, pointY: number) => {
+		mouse.x = (pointX / windowSize.width) * 2 - 1;
+		mouse.y = -(pointY / windowSize.height) * 2 + 1;
+	};
+	const touchEvent = (event: TouchEvent) => {
+		moveMouse(event.touches[0].clientX, event.touches[0].clientY);
+	};
+	const mouseEvent = (event: MouseEvent) => {
+		moveMouse(event.clientX, event.clientY);
+	};
 </script>
 
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
-<div>
+<main id="homepage-1" on:mousemove={mouseEvent}>
 	<TH.Canvas>
-		<TH.PerspectiveCamera position={{ x: 0, y: 0, z: 20 }} fov={60}>
-			<TH.OrbitControls maxPolarAngle={1.5} minPolarAngle={0.9} minAzimuthAngle={1} />
-			<Background />
+		<TH.PerspectiveCamera bind:position={$cameraPosition} fov={60}>
+			<TH.OrbitControls
+				minPolarAngle={0.3}
+				maxPolarAngle={1.5}
+				minAzimuthAngle={1}
+				maxDistance={20.5}
+				minDistance={1}
+				enablePan={false}
+				enableRotate={true}
+				bind:target={$controlsPosition}
+				keys={{ LEFT: 'KeyLeft', UP: 'KeyUp', RIGHT: 'KeyRight', BOTTOM: 'KeyDown' }}
+			/>
 		</TH.PerspectiveCamera>
 		<TH.DirectionalLight shadow color={'white'} position={{ x: -7, y: 18, z: 2 }} />
-		<TH.HemisphereLight skyColor={'white'} groundColor={'#ac844c'} intensity={0.4} />
-
-		<TH.Mesh
-			castShadow
-			geometry={new THREE.BoxBufferGeometry(1, 1, 1)}
-			material={new THREE.MeshStandardMaterial({ color: '#ff3e00' })}
-		/>
-
-		<TH.Mesh
-			receiveShadow
-			position={{ y: -0.5 }}
-			rotation={{ x: -90 * (Math.PI / 180) }}
-			geometry={new THREE.CircleBufferGeometry(5, 360)}
-			material={new THREE.MeshStandardMaterial({ color: 'white', side: THREE.DoubleSide })}
-		/>
-		<TH.Text text="Hi there" color="#ff00000" position={{ x: 15, y: 2, z: 4 }} />
+		<TH.HemisphereLight skyColor={'white'} groundColor={'#ffffff'} intensity={0.4} />
+		<Background />
+		<Office />
+		<Contents {textPosition} />
 	</TH.Canvas>
-</div>
-<div class="controls">
-	<input
-		type="range"
-		name="camX"
-		id="camX"
-		bind:value={cameraX}
-		min="-100"
-		max="100"
-		step="1"
-	/>{cameraX}
-	<input
-		type="range"
-		name="camY"
-		id="camY"
-		bind:value={cameraY}
-		min="-100"
-		max="100"
-		step="1"
-	/>{cameraY}
-	<input
-		type="range"
-		name="camZ"
-		id="camZ"
-		bind:value={cameraZ}
-		min="-100"
-		max="100"
-		step="1"
-	/>{cameraZ}
-</div>
+</main>
+<aside>
+	<h1>Text position</h1>
+	<div>
+		<input type="range" min={-4} max={4} step="0.1" bind:value={textPosition.x} />
+		<span>X: {textPosition.x}</span>
+	</div>
+	<div>
+		<input type="range" min={-4} max={4} step="0.1" bind:value={textPosition.y} />
+		<span>Y: {textPosition.y}</span>
+	</div>
+	<div>
+		<input type="range" min={-4} max={4} step="0.1" bind:value={textPosition.z} />
+		<span>Z: {textPosition.z}</span>
+	</div>
+</aside>
 
-<style>
-	div {
+<style lang="scss">
+	main {
 		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
 	}
-	.controls {
-		position: fixed;
+	aside {
+		position: static;
 		top: 0;
 		left: 0;
-		margin: 1rem;
-		padding: 0.5rem auto;
-		display: none;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
 		width: fit-content;
 		height: fit-content;
-		border-radius: 4px;
-		background: hsla(0, 0%, 100%, 0.5);
-		backdrop-filter: blur(10px);
+		background: hsla(0, 0%, 100%, 0.3);
+		backdrop-filter: blur(2rem);
+		border-radius: 0.5rem;
+		padding: 1rem;
+		margin: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		h1 {
+			font-family: sans-serif;
+		}
+		div {
+			width: 100%;
+		}
 	}
 </style>
