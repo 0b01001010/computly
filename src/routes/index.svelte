@@ -10,7 +10,7 @@
 	import Contents from '$lib/Components/Landpage/Contents.svelte';
 	// TODO loading manager
 
-	let textPosition = new THREE.Vector3(0, 0, 0);
+	let vec1 = new THREE.Vector3(0, 0, 0);
 
 	onMount(async () => {
 		setTimeout(async () => {
@@ -64,22 +64,21 @@
 		<TH.HemisphereLight skyColor={'white'} groundColor={'#ffffff'} intensity={0.4} />
 		<Background />
 		<Office />
-		<Contents {textPosition} />
+		<Contents textPosition={vec1} />
 	</TH.Canvas>
 </main>
 <aside>
-	<h1>Text position</h1>
 	<div>
-		<input type="range" min={-4} max={4} step="0.1" bind:value={textPosition.x} />
-		<span>X: {textPosition.x}</span>
+		<input type="range" min={-4} max={4} step="0.1" bind:value={vec1.x} />
+		<span>X: {vec1.x}</span>
 	</div>
 	<div>
-		<input type="range" min={-4} max={4} step="0.1" bind:value={textPosition.y} />
-		<span>Y: {textPosition.y}</span>
+		<input type="range" min={-4} max={4} step="0.1" bind:value={vec1.y} />
+		<span>Y: {vec1.y}</span>
 	</div>
 	<div>
-		<input type="range" min={-4} max={4} step="0.1" bind:value={textPosition.z} />
-		<span>Z: {textPosition.z}</span>
+		<input type="range" min={-4} max={4} step="0.1" bind:value={vec1.z} />
+		<span>Z: {vec1.z}</span>
 	</div>
 </aside>
 
@@ -102,7 +101,7 @@
 		border-radius: 0.5rem;
 		padding: 1rem;
 		margin: 1rem;
-		display: flex;
+		display: none;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
