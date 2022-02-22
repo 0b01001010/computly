@@ -13,12 +13,12 @@
 	let vec1 = new THREE.Vector3(0, 0, 0);
 
 	onMount(async () => {
-		setTimeout(async () => {
-			await Promise.all([
-				// controlsPosition.set({ x: -1, y: 1.2, z: 0.6 }),
-				// cameraPosition.set({ x: -2, y: 1.5, z: 1 })
-			]);
-		}, 3500);
+		// setTimeout(async () => {
+		// 	await Promise.all([
+		// 		controlsPosition.set({ x: -1, y: 1.2, z: 0.6 }),
+		// 		cameraPosition.set({ x: -2, y: 1.5, z: 1 })
+		// 	]);
+		// }, 3500);
 
 		const mainElm = document.querySelector('#homepage-1');
 		mainElm.addEventListener('touchstart', touchEvent, false);
@@ -64,7 +64,7 @@
 		<TH.HemisphereLight skyColor={'white'} groundColor={'#ffffff'} intensity={0.4} />
 		<Background />
 		<Office />
-		<Contents textPosition={vec1} />
+		<Contents />
 	</TH.Canvas>
 </main>
 <aside>
