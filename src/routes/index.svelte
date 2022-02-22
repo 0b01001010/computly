@@ -60,8 +60,12 @@
 				keys={{ LEFT: 'KeyLeft', UP: 'KeyUp', RIGHT: 'KeyRight', BOTTOM: 'KeyDown' }}
 			/>
 		</TH.PerspectiveCamera>
-		<TH.DirectionalLight shadow color={'white'} position={{ x: -7, y: 18, z: 2 }} />
-		<TH.HemisphereLight skyColor={'white'} groundColor={'#ffffff'} intensity={0.4} />
+		<TH.DirectionalLight
+			shadow
+			color={'white'}
+			position={{ x: -20, y: 4, z: 2.5 }}
+			intensity={0.6}
+		/>
 		<Background />
 		<Office />
 		<Contents />
