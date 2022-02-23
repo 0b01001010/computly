@@ -8,6 +8,7 @@
 	import { browser } from '$app/env';
 	import { cameraPosition, controlsPosition } from '$lib/stores/tweened';
 	import Contents from '$lib/Components/Landpage/Contents.svelte';
+	import Lights from '$lib/Components/Landpage/Lights.svelte';
 	// TODO loading manager
 
 	let vec1 = new THREE.Vector3(0, 0, 0);
@@ -60,15 +61,10 @@
 				keys={{ LEFT: 'KeyLeft', UP: 'KeyUp', RIGHT: 'KeyRight', BOTTOM: 'KeyDown' }}
 			/>
 		</TH.PerspectiveCamera>
-		<TH.DirectionalLight
-			shadow
-			color={'white'}
-			position={{ x: -20, y: 4, z: 2.5 }}
-			intensity={0.6}
-		/>
 		<Background />
 		<Office />
 		<Contents />
+		<Lights />
 	</TH.Canvas>
 </main>
 <aside>
