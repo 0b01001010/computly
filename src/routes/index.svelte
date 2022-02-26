@@ -16,10 +16,10 @@
 	onMount(() => {
 		setTimeout(async () => {
 			await Promise.all([
-				(timeOut = true),
 				controlsPosition.set({ x: -1, y: 1.2, z: 0.6 }),
 				cameraPosition.set({ x: -2, y: 1.5, z: 1 }),
-				detailsWindow.set({ controlsEnabled: true, isOpen: false, title: '' })
+				detailsWindow.set({ controlsEnabled: true, isOpen: false, title: '' }),
+				(timeOut = true)
 			]);
 		}, 4000);
 	});
