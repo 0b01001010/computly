@@ -3,6 +3,7 @@
 	import * as TH from 'threlte';
 	import { onMount } from 'svelte';
 
+	import { fade } from 'svelte/transition';
 	import Background from '$lib/Components/Landpage/Background.svelte';
 	import Office from '$lib/Components/Landpage/Office.svelte';
 	import { cameraPosition, controlsPosition, detailsWindow } from '$lib/stores/landPage';
@@ -35,7 +36,6 @@
 <main style:visibility={timeOut ? 'visible' : 'hidden'}>
 	<TH.Canvas>
 		{#if $detailsWindow.isOpen}
-			<!-- <TH.Fog color={0x000000} near={0} far={2} /> -->
 			<TH.FogExp2 color={0x000000} density={1} />
 		{/if}
 		<TH.PerspectiveCamera bind:position={$cameraPosition} fov={60}>
