@@ -7,7 +7,7 @@
 	import { theme as themeStore } from '$lib/stores/theme';
 	import BlogFooter from '$lib/Components/Blog/Footer/Footer.svelte';
 	import BlogHeader from '$lib/Components/Blog/Header/Header.svelte';
-	import SvGbackground from '$lib/Components/Blog/SVGbackground.svelte';
+	import SVGbackground from '$lib/Components/Blog/SVGbackground.svelte';
 	if (browser) {
 		if ($themeStore === 'null') {
 			let browserDarkMode: boolean =
@@ -24,7 +24,7 @@
 </script>
 
 <BlogHeader />
-<SvGbackground />
+<SVGbackground />
 
 <main>
 	<slot />
