@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { loadingProgress } from '$lib/stores/landPage';
+	import { loadingProgress, fogDensity } from '$lib/stores/landPage';
 	import * as TH from 'threlte';
 	import { onMount } from 'svelte';
 
-	import { fade } from 'svelte/transition';
 	import Background from '$lib/Components/Landpage/Background.svelte';
 	import Office from '$lib/Components/Landpage/Office.svelte';
 	import { cameraPosition, controlsPosition, detailsWindow } from '$lib/stores/landPage';
@@ -19,6 +18,7 @@
 				controlsPosition.set({ x: -1, y: 1.2, z: 0.6 }),
 				cameraPosition.set({ x: -2, y: 1.5, z: 1 }),
 				detailsWindow.set({ controlsEnabled: true, isOpen: false, title: '' }),
+				fogDensity.set(0),
 				(timeOut = true)
 			]);
 		}, 4000);
@@ -35,16 +35,14 @@
 
 <main style:visibility={timeOut ? 'visible' : 'hidden'}>
 	<TH.Canvas>
-		{#if $detailsWindow.isOpen}
-			<TH.FogExp2 color={0x000000} density={1} />
-		{/if}
+		<TH.FogExp2 color={0x000000} density={$fogDensity} />
 		<TH.PerspectiveCamera bind:position={$cameraPosition} fov={60}>
 			<TH.OrbitControls
 				enabled={$detailsWindow.controlsEnabled}
 				minPolarAngle={0.3}
 				maxPolarAngle={1.5}
 				minAzimuthAngle={1}
-				maxDistance={2.5}
+				maxDistance={2.3}
 				minDistance={1}
 				enablePan={false}
 				enableRotate={true}

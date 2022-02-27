@@ -52,13 +52,3 @@
 	<h1>{post.title}</h1>
 	<svelte:component this={page} />
 </article>
-
-<style lang="scss">
-	article {
-		padding: 1em;
-		margin: 3rem 1rem 5rem;
-		h1:first-of-type {
-			text-align: center;
-		}
-	}
-</style>

@@ -25,3 +25,12 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+article {
+	padding: 1em;
+	margin: 3rem 1rem 5rem;
+	width: 90%;
+	h1:first-of-type {
+		text-align: center;
+	}
+}
