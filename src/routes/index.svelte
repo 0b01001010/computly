@@ -1,3 +1,7 @@
+<script context="module">
+	export const router = false;
+</script>
+
 <script lang="ts">
 	import { loadingProgress, fogDensity } from '$lib/stores/landPage';
 	import * as TH from 'threlte';

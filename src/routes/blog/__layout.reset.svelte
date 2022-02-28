@@ -7,6 +7,7 @@
 	import BlogFooter from '$lib/Components/Blog/Footer/Footer.svelte';
 	import BlogHeader from '$lib/Components/Blog/Header/Header.svelte';
 	import SVGbackground from '$lib/Components/Blog/SVGbackground.svelte';
+	let loaded = false;
 	if (browser) {
 		if ($themeStore === 'null') {
 			let browserDarkMode: boolean =
@@ -19,17 +20,18 @@
 			// @ts-ignore
 			window.lazyloadInstance = new lazyload();
 		}
+		loaded = true;
 	}
 </script>
 
-<BlogHeader />
-<SVGbackground />
-
-<main>
-	<slot />
-</main>
-
-<BlogFooter />
+{#if loaded}
+	<BlogHeader />
+	<SVGbackground />
+	<main>
+		<slot />
+	</main>
+	<BlogFooter />
+{/if}
 
 <style lang="scss">
 	main {
