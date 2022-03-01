@@ -2,7 +2,8 @@
 	export let alt: string;
 	export let sources: { srcset: string; type: string }[];
 	let src = sources[sources.length - 1].srcset;
-	export let placeholder: string;
+	export let placeholder =
+		'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII=';
 	export let width: number; // needed to reduce CLS
 	export let height: number; // needed to reduce CLS
 	export let maxWidth = '1280px';
@@ -12,7 +13,7 @@
 
 <picture>
 	{#each sources as source}
-		<source data-sizes={sizes} data-srcset={source.srcset} type={source.type} {width} {height} />
+		<source {sizes} srcset={source.srcset} type={source.type} {width} {height} />
 	{/each}
 	<img
 		class="lazy"
@@ -32,10 +33,6 @@
 		width: 100%;
 		display: flex;
 		justify-content: center;
-	}
-	img {
-		height: auto;
-		width: clamp(80vmin, 70%, 1200px);
 	}
 
 	img:not([src]):not([srcset]) {

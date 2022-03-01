@@ -8,6 +8,8 @@
 	import BlogHeader from '$lib/Components/Blog/Header/Header.svelte';
 	import SVGbackground from '$lib/Components/Blog/SVGbackground.svelte';
 	let loaded = false;
+	// Using this to check theme before rendering the page
+	// So if you have set it to dark mode, you won't see a white theme that changes to dark after the page loads
 	if (browser) {
 		if ($themeStore === 'null') {
 			let browserDarkMode: boolean =
