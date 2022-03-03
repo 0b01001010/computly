@@ -10,6 +10,12 @@
 
 ## Blog
 
+### Topics
+
+- [Naba story](https://github.com/416d72/Naba/wiki)
+- C#
+- Ta3lab
+
 > This is my clone of [Sveltekit-blog-mdx starter project](https://github.com/rodneylab/sveltekit-blog-mdx)
 
 ### Interesting dependencies
@@ -45,3 +51,4 @@
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
   > This is the backbone of my blog.
   > I changed styling and added other features.
+- [@wass08's office model](https://github.com/wass08/portfolio-2021)
