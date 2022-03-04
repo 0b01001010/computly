@@ -30,13 +30,10 @@ const config = {
 		}
 	},
 	onwarn: (warning, handler) => {
-		// const { code, frame } = warning;
 		const { code } = warning;
 
 		if (code === 'anchor-is-valid' || code === 'a11y-autofocus') return;
-		if (code === 'css-unused-selector')
-			// && frame.includes("shape")
-			return;
+		if (code === 'css-unused-selector') return;
 		handler(warning);
 	}
 };
