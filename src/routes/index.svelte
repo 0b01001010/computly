@@ -14,6 +14,8 @@
 	import Lights from '$lib/Components/Landpage/Lights.svelte';
 	import DetailsWindow from '$lib/Components/Landpage/DetailsWindow.svelte';
 	import Overlay from '$lib/Components/Landpage/Overlay.svelte';
+	import '$lib/styles/landpage.scss';
+
 	let timeOut = false;
 
 	onMount(() => {
@@ -27,8 +29,20 @@
 			]);
 		}, 4000);
 	});
+	const onMouseMove = (e: MouseEvent) => {
+		if (timeOut) {
+			const { clientX, clientY } = e;
+			const { innerWidth, innerHeight } = window;
+			const x = (clientX / innerWidth) * 2 - 1;
+			const y = -(clientY / innerHeight) * 2 + 1;
+			// console.log(x, y);
+			// console.log($cameraPosition);
+			// controlsPosition.set({ x, y });
+		}
+	};
 </script>
 
+<!-- <svelte:window on:pointermove={onMouseMove} /> -->
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
@@ -48,9 +62,12 @@
 				minAzimuthAngle={1}
 				maxDistance={2.3}
 				minDistance={1}
-				enablePan={false}
+				enablePan={true}
+				keyPanSpeed={0.1}
 				enableRotate={true}
-				bind:target={$controlsPosition}
+				dampingFactor={0.05}
+				enableDamping={true}
+				target={$controlsPosition}
 				keys={{ LEFT: 'KeyLeft', UP: 'KeyUp', RIGHT: 'KeyRight', BOTTOM: 'KeyDown' }}
 			/>
 		</TH.PerspectiveCamera>
