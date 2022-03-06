@@ -5,16 +5,16 @@ $scrollbar-secondary-color-hover: #b3d7ff;
 $webkit-bg: repeating-linear-gradient(
 	45deg,
 	$scrollbar-primary-color,
-	$scrollbar-primary-color 10px,
-	$scrollbar-secondary-color 10px,
-	$scrollbar-secondary-color 20px
+	$scrollbar-primary-color min(5%, 10px),
+	$scrollbar-secondary-color min(5%, 10px),
+	$scrollbar-secondary-color min(10%, 20px)
 );
 $webkit-bg-hover: repeating-linear-gradient(
 	45deg,
 	$scrollbar-primary-color,
-	$scrollbar-primary-color 10px,
-	$scrollbar-secondary-color-hover 10px,
-	$scrollbar-secondary-color-hover 20px
+	$scrollbar-primary-color min(5%, 10px),
+	$scrollbar-secondary-color-hover min(5%, 10px),
+	$scrollbar-secondary-color-hover min(10%, 20px)
 );
 /* Firefox */
 * {
@@ -26,9 +26,9 @@ $webkit-bg-hover: repeating-linear-gradient(
 *::-webkit-scrollbar {
 	width: 2vmin;
 	height: 2vmin;
-	// border: 2px dotted #000000;
 	border-top: none;
 	border-bottom: none;
+	border-radius: 50vw;
 	background: linear-gradient(
 		to right,
 		hsla(233, 100%, 97%, 0.5),
