@@ -3,7 +3,7 @@
 </script>
 
 <header>
-	<a class="logo" href="/"> Computly </a>
+	<a class="logo" href="/" target="_self" rel="external"> Computly </a>
 	<nav>
 		<ul class="inline">
 			<li>
