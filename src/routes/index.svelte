@@ -1,19 +1,17 @@
-<script context="module">
-	export const router = false;
-</script>
-
 <script lang="ts">
 	import {
+		targetPosition,
+		detailsWindow,
 		fogDensity,
+		cameraPosition,
 		ogCameraPosition,
-		ogControlsPosition,
+		ogTargetPosition,
 		playScene
 	} from '$lib/stores/landPage';
-	import * as TH from 'threlte';
+	import { Canvas, PerspectiveCamera, OrbitControls, FogExp2 } from 'threlte';
 
 	import Background from '$lib/Components/Landpage/Background.svelte';
 	import Office from '$lib/Components/Landpage/Office.svelte';
-	import { cameraPosition, controlsPosition, detailsWindow } from '$lib/stores/landPage';
 	import Contents from '$lib/Components/Landpage/Contents.svelte';
 	import Lights from '$lib/Components/Landpage/Lights.svelte';
 	import DetailsWindow from '$lib/Components/Landpage/DetailsWindow.svelte';
@@ -22,11 +20,19 @@
 
 	let play = false;
 
+	let controls;
+
+	const updateControls = () => {
+		if (!controls) return;
+		// ogTargetPosition.set(controls.position0);
+		// console.dir(controls);
+	};
+
 	const startTheShow = async () => {
 		play = true;
 		playScene.set(true);
 		await Promise.all([
-			controlsPosition.set($ogControlsPosition),
+			targetPosition.set($ogTargetPosition),
 			cameraPosition.set($ogCameraPosition),
 			detailsWindow.set({ controlsEnabled: true, isOpen: false, title: '' }),
 			fogDensity.set(0)
@@ -42,31 +48,33 @@
 	<Overlay on:startTheShow={startTheShow} />
 {/if}
 
+<!-- Camera: lookAt={$targetPosition} -->
+
 <main style:visibility={play ? 'visible' : 'hidden'}>
-	<TH.Canvas>
-		<TH.FogExp2 color={0x000000} density={$fogDensity} />
-		<TH.PerspectiveCamera bind:position={$cameraPosition} fov={60}>
-			<TH.OrbitControls
+	<Canvas>
+		<FogExp2 color={0x000000} density={$fogDensity} />
+		<PerspectiveCamera bind:position={$cameraPosition} fov={60}>
+			<OrbitControls
 				enabled={$detailsWindow.controlsEnabled}
 				minPolarAngle={0.3}
 				maxPolarAngle={1.5}
 				minAzimuthAngle={1}
 				maxDistance={2.3}
 				minDistance={1}
-				enablePan={true}
-				keyPanSpeed={0.1}
 				enableRotate={true}
-				dampingFactor={0.05}
 				enableDamping={true}
-				target={$controlsPosition}
+				dampingFactor={0.05}
+				target={$targetPosition}
+				bind:controls
+				on:start={updateControls}
 				keys={{ LEFT: 'KeyLeft', UP: 'KeyUp', RIGHT: 'KeyRight', BOTTOM: 'KeyDown' }}
 			/>
-		</TH.PerspectiveCamera>
+		</PerspectiveCamera>
 		<Background />
 		<Office />
 		<Contents />
 		<Lights />
-	</TH.Canvas>
+	</Canvas>
 </main>
 
 {#if $detailsWindow.isOpen}
