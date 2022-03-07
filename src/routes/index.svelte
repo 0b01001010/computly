@@ -3,7 +3,12 @@
 </script>
 
 <script lang="ts">
-	import { fogDensity, playScene } from '$lib/stores/landPage';
+	import {
+		fogDensity,
+		ogCameraPosition,
+		ogControlsPosition,
+		playScene
+	} from '$lib/stores/landPage';
 	import * as TH from 'threlte';
 
 	import Background from '$lib/Components/Landpage/Background.svelte';
@@ -21,8 +26,8 @@
 		play = true;
 		playScene.set(true);
 		await Promise.all([
-			controlsPosition.set({ x: -1, y: 1.2, z: 0.6 }),
-			cameraPosition.set({ x: -2, y: 1.5, z: 1 }),
+			controlsPosition.set($ogControlsPosition),
+			cameraPosition.set($ogCameraPosition),
 			detailsWindow.set({ controlsEnabled: true, isOpen: false, title: '' }),
 			fogDensity.set(0)
 		]);
