@@ -3,9 +3,8 @@
 </script>
 
 <script lang="ts">
-	import { loadingProgress, fogDensity } from '$lib/stores/landPage';
+	import { fogDensity, playScene } from '$lib/stores/landPage';
 	import * as TH from 'threlte';
-	import { onMount } from 'svelte';
 
 	import Background from '$lib/Components/Landpage/Background.svelte';
 	import Office from '$lib/Components/Landpage/Office.svelte';
@@ -16,42 +15,29 @@
 	import Overlay from '$lib/Components/Landpage/Overlay.svelte';
 	import '$lib/styles/landpage.scss';
 
-	let timeOut = false;
+	let play = false;
 
-	onMount(() => {
-		setTimeout(async () => {
-			await Promise.all([
-				controlsPosition.set({ x: -1, y: 1.2, z: 0.6 }),
-				cameraPosition.set({ x: -2, y: 1.5, z: 1 }),
-				detailsWindow.set({ controlsEnabled: true, isOpen: false, title: '' }),
-				fogDensity.set(0),
-				(timeOut = true)
-			]);
-		}, 4000);
-	});
-	const onMouseMove = (e: MouseEvent) => {
-		if (timeOut) {
-			const { clientX, clientY } = e;
-			const { innerWidth, innerHeight } = window;
-			const x = (clientX / innerWidth) * 2 - 1;
-			const y = -(clientY / innerHeight) * 2 + 1;
-			// console.log(x, y);
-			// console.log($cameraPosition);
-			// controlsPosition.set({ x, y });
-		}
+	const startTheShow = async () => {
+		play = true;
+		playScene.set(true);
+		await Promise.all([
+			controlsPosition.set({ x: -1, y: 1.2, z: 0.6 }),
+			cameraPosition.set({ x: -2, y: 1.5, z: 1 }),
+			detailsWindow.set({ controlsEnabled: true, isOpen: false, title: '' }),
+			fogDensity.set(0)
+		]);
 	};
 </script>
 
-<!-- <svelte:window on:pointermove={onMouseMove} /> -->
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
-{#if !timeOut && $loadingProgress < 100}
-	<Overlay />
+{#if !play}
+	<Overlay on:startTheShow={startTheShow} />
 {/if}
 
-<main style:visibility={timeOut ? 'visible' : 'hidden'}>
+<main style:visibility={play ? 'visible' : 'hidden'}>
 	<TH.Canvas>
 		<TH.FogExp2 color={0x000000} density={$fogDensity} />
 		<TH.PerspectiveCamera bind:position={$cameraPosition} fov={60}>
