@@ -3,7 +3,6 @@
 </script>
 
 <header>
-	<a class="logo" href="/" target="_self" rel="external"> Computly </a>
 	<nav>
 		<ul class="inline">
 			<li>
@@ -21,41 +20,27 @@
 </header>
 
 <style lang="scss">
-	@font-face {
-		font-family: Paskowy;
-		src: url('/fonts/Paskowy.ttf');
-	}
 	header {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
-	}
-	.logo {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: none;
-		font-family: Paskowy;
-		user-select: none;
-		font-size: 20vmin;
-		text-transform: uppercase;
-	}
-	nav {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		padding: 0.5rem 3rem;
-	}
-	@media screen and (max-width: 768px) {
 		nav {
-			flex-direction: column;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0.5rem 3rem;
+			ul {
+				display: flex;
+				flex-direction: row;
+				gap: 2rem;
+			}
 		}
-	}
-	nav ul {
-		display: flex;
-		flex-direction: row;
-		gap: 2rem;
+		@media screen and (max-width: 768px) {
+			nav {
+				flex-direction: column;
+			}
+		}
 	}
 </style>
