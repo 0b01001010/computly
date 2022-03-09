@@ -32,9 +32,9 @@
 <script lang="ts">
 	import type { Post } from '$lib/types/post';
 	import type { ImageProps } from '$lib/types/imageProps';
+	import { Picture } from 'svelte-lazy-loader';
 
 	import { theme as themeStore } from '$lib/stores/theme';
-	import Image from '$lib/Components/Blog/Image.svelte';
 
 	export let post: Post, imageData: ImageProps, page;
 
@@ -48,7 +48,11 @@
 	<title>{post.title}</title>
 </svelte:head>
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
-	<Image {alt} {width} {height} {sources} {placeholder} {sizes} loading="lazy" />
+	<Picture {alt} src={sources[sources.length - 1].srcset} {placeholder}>
+		{#each sources as { srcset, type }}
+			<source data-srcset={srcset} {type} />
+		{/each}
+	</Picture>
 	<h1>{post.title}</h1>
 	<svelte:component this={page} />
 </article>

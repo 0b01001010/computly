@@ -51,6 +51,7 @@
 		"stylelint-config-recommended-scss": "^5.0.2",
 		"stylelint-config-standard": "^25.0.0",
 		"stylelint-scss": "^4.1.0",
+		"svelte-lazy-loader": "^0.0.12",
 		"three": "0.137.5",
 		"threlte": "2.2.1"
 	}

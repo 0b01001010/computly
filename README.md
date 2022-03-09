@@ -6,8 +6,6 @@
 
 ## Landpage
 
-- The Image component doesn't work in land page despite working in blog!! So I'm going to try [this package](https://svelte-lazy-loader.sawyer.codes)
-
 ## Blog
 
 ### Topics
