@@ -75,7 +75,7 @@ const main = async () => {
 	posts.forEach((element, index) => {
 		const { slug, mainImage, mainImageAlt } = element;
 
-		const { format: imgFormat, width, height, placeholder } = imgMetadata[index];
+		const { format: imgFormat, width, placeholder } = imgMetadata[index];
 
 		const _postImages = ogImgFiles[index];
 		_postImages.forEach(async (_imgSrc) => {
@@ -101,8 +101,6 @@ const main = async () => {
 				{ srcset: '/' + src.replace(/\.[^/.]+$/, '.webp'), type: 'image/webp' },
 				{ srcset: '/' + src, type: `image/${imgFormat}` }
 			],
-			width,
-			height,
 			placeholder
 		};
 		const outputPath = path.join(BLOG_PATH, slug, 'info.json');

@@ -40,8 +40,7 @@
 
 	$: darkMode = $themeStore === 'dark';
 
-	const { alt, width, height, sources, placeholder } = imageData;
-	const sizes = '(max-width: 672px) calc(100vw - 32px), 672px';
+	const { alt, sources, placeholder } = imageData;
 </script>
 
 <svelte:head>

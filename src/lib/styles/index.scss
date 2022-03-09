@@ -30,7 +30,23 @@ article {
 	padding: 1em;
 	margin: 3rem 1rem 5rem;
 	width: 90%;
-	h1:first-of-type {
+	h1,
+	h2,
+	h3 {
 		text-align: center;
+	}
+	h1 {
+		font-size: 10vmin;
+	}
+	h2 {
+		font-size: 7vmin;
+	}
+	h3 {
+		font-size: 5vmin;
+	}
+	li {
+		p {
+			display: inline;
+		}
 	}
 }
