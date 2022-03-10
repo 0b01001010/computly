@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
 	export const load: Load = async ({ fetch }) => {
-		const response = await fetch('/api/blog/posts.json', {
-			method: 'POST'
-		});
+		// const response = await fetch('/api/posts.json', {
+		// 	method: 'POST'
+		// });
 		return {
 			status: 200
 			// props: {

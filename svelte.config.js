@@ -1,5 +1,5 @@
 import { mdsvex } from 'mdsvex';
-import adapter from '@sveltejs/adapter-auto';
+import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -22,7 +22,7 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter({ precompress: true }),
+		adapter: vercel(),
 		files: {
 			hooks: 'src/hooks'
 		},
