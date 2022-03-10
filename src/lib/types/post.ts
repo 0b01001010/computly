@@ -1,7 +1,9 @@
 export declare type Post = {
-	title: string;
-	date: string;
-	description: string;
-	excerpt: string;
-	body: string;
+	slug: string;
+	title?: string;
+	date?: string;
+	description?: string;
+	excerpt?: string;
+	content?: string;
+	code?: string;
 };

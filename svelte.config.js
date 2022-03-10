@@ -1,18 +1,24 @@
 import { mdsvex } from 'mdsvex';
-import mdsvexConfig from './mdsvex.config.js';
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const direName = path.resolve(fileURLToPath(import.meta.url), '../');
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	extensions: ['.svelte', ...mdsvexConfig.extensions],
+	extensions: ['.svelte', '.md', '.svx'],
 	preprocess: [
 		preprocess({
 			scss: {
 				prependData: "@import 'src/lib/styles/index.scss';"
 			}
 		}),
-		mdsvex(mdsvexConfig)
+		mdsvex({
+			extensions: ['.md', '.svx'],
+			layout: './src/routes/blog/_post.layout.svelte'
+		})
 	],
 
 	kit: {

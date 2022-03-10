@@ -3,10 +3,11 @@ declare type ImageSource = {
 	type: string;
 };
 
-export declare type ImageProps = {
+export type ImageProps = {
 	sources: ImageSource[];
-	alt: string;
+	alt?: string;
 	width: number;
 	height: number;
 	placeholder: string;
+	name: string;
 };

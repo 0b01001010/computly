@@ -6,13 +6,13 @@
 	<nav>
 		<ul class="inline">
 			<li>
-				<a href="/" target="_self" rel="external">Home</a>
-			</li>
-			<li>
-				<a sveltekit:prefetch href="/blog/">Blog</a>
+				<a sveltekit:prefetch href="/blog/">Home</a>
 			</li>
 			<li>
 				<a sveltekit:prefetch href="/blog/about">About</a>
+			</li>
+			<li>
+				<a href="/" target="_self" rel="external">Portfolio</a>
 			</li>
 		</ul>
 		<ThemeSwitcher />

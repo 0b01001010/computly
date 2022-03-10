@@ -1,0 +1,227 @@
+---
+title: How I made my own CMS in PHP
+date: 2017-07-12
+description: This is an intermediate level post on how I created a CMS in PHP using custom framework.
+---
+<script context="module">
+export const load = async () => {
+  return {
+    props: {
+      imagesData: (await import('./_info.json')).default,
+    }
+  }
+}
+</script>
+<script>
+	import Image from '$lib/Components/Blog/Image.svelte';
+  export let imagesData;
+</script>
+
+
+**What I learned through this project**
+
+- Build Fully Object Oriented Website From Scratch
+- Practical Learning Design Patterns like :
+  - Dependency Injection
+  - Factory
+  - MVC
+  - Register
+  - Singleton
+  - Front Controller
+- How To Use Namespaces
+- How To Use Interfaces
+- Auto loading Classes "The Classic Way"
+- Using Clean URLs
+- Database Builder
+- Documentation
+- Using Ajax with PHP In
+  - Logging in
+  - Creating/updating forms
+
+### Test it yourself
+
+**Get the [source code here](https://github.com/416d72/Naba)**
+
+### Setting up the environment
+	
+<Image imageData={imagesData.filter((_i) => _i.name === 'workflow')[0]} />
+
+**You'll need**
+
+- Apache web server
+- MySQL database
+- PHP
+
+You can use xampp to set all these for you.
+
+- Good text editor or IDE (I'd strongly suggest Netbeans-PHP).
+
+### Setting up database:
+
+Head to PHPmyadmin and create a new database, name it whatever you want .. Then Get into your database and head to `import` tab.
+
+click on `select` to select the SQL file.
+
+Open the project directory , then open `Z_other_files` sub-directory , and select `blog.sql` file to import.
+
+Being done, You will need to edit `config.php` file which located in the main directory.
+
+Change configurations to get it working.
+
+_This project is an application on this [tutorial](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) (in Arabic)_
+
+# Modifications
+
+## Admin permissions
+
+When I was about to finish that tutorial, I realised that the permissions system is weak and needs some improvements.
+
+**These are the top weaknesses**
+
+- Any admin could delete the site owner account!
+- The site owner and admins could easily view/edit any account's password and private info !!
+- Any admin could delete all User-groups including Admins , that would cause the registration and login system to fail, And even the super admin wouldn't be able to fix that unless getting into database and starting a full rebuilding the missed data manually.
+
+I started to make it more sensible, but because the lack of spare time, I made it a small improvement.
+
+### Super admin permissions
+
+- Editing Users groups permissions (Cannot delete Admins nor Users groups).
+- Add a new users group and edit or delete them.
+- Change his own private data (without status or user-group).
+- Change other users' status and user-group only (Can't change their private data).
+- Deleting any other user.
+
+### Regular admin/moderator persmissions
+
+- Change his own private data (without status or user-group).
+- Change normal users' status (Can't change their private data) except admins.
+- Deleting other users except admins.
+- add/edit/delete posts, categories and ads.
+- delete comments.
+- Edit normal users status and delete them.
+- Change site settings (These settings have small UI effects, In the future I'll tune them).
+
+## Workflow
+
+**There were some logical problems But I've fixed them like below:**
+
+1. Sequences:
+
+- When Admin deletes a category, It should automatically deletes its related posts.
+- When Admin deletes a post, It should automatically deletes its related comments.
+- When disabling a category, It's related posts shouldn't be displayed in front end.
+- When disabling a user, his posts and comments shouldn't be displayed in front end.
+- Any disabled user, category, post or advertisement will only be visible to admins in control panel.
+
+2. Dealing with uploaded images:
+
+- When uploading a new image for any purpose (post, user,ad ,.. etc) , The old image should be deleted first before uploading the new one (except default avatar images as they are not being deleted).
+
+3. Forms:
+
+- Converted from modal form to classic static form in Posts and ads sections, The reason is to implement a basic text editor, and date picker in easy way.
+
+4. Posts routes
+
+- Remade posts route from `/post/title/id` to this `/post/id`. Because any user could just change post's ID in address bar, that would result in displaying the new post based on its ID, but the old title would remain the same.
+
+5. 404 Page:
+
+- Made it more human readable , with a link embedded in a text and picture that will lead you to the page you came from.
+
+## Authentication
+
+### Register
+
+When a user register to the site .. they enter their username, email and password . Username and email must be unique, Password must be between 8-128 characters.
+
+**Behind the scenes:** User input values are going to be validated, If it passes, He will be given a random 1 of 10 egg photos as avatar , like Twitter :) ... Then they will be redirected to Login page.
+
+### Login
+
+Works as expected, if login went successful, user will be redirected to home page.
+
+## Added features
+
+### Tags
+
+You can find post's tags in the bottom , when you click a tag, you will be redirected to a page like `/tag/foo` contains all posts related to that tag.
+
+### Search
+
+Basic search that is redirected to `/search` route to view results.
+
+### Comments
+
+In the dashboard, You will find `Comments` section below posts..
+
+That contains recent comments added by users with only one option to delete them..
+
+Logically, Admin's cannot edit other users' comments ..
+
+I should implement editing own comments, but that will be done in the future. (Narrator, He didn't :P)
+
+### Post views counter
+
+That's a basic counter that depends on a method that update the `view` column of the given post..
+
+That method will be called when a visitor opens a post.
+
+### Author posts:
+
+Every user has a custom URL to view his posts .. Navigating to `/author/name` will redirect you to that author's contributed posts.
+
+### Other features:
+
+- User's profile .. User can change their own name, email, photo and password.
+- Added `User Bio` .. A few words about the user, They can change it in profile page.
+- Added `About` and `contact-us` pages ... They are just static pages.
+
+# UI/UX
+
+## Dashboard
+
+**Common:**
+
+Any disabled element will be displayed in Red colour.
+
+**Header:**
+
+- User bio in the sliding down menu.
+- Home page link embedded in breadcrumb placed in top right.
+
+**Categories:**
+
+- Each category name contains a link refers to that category page contains posts under that category.
+- I've added a new column contains total number of posts in each category.
+
+**Users groups:**
+
+I've added a new column contains total number of users in each group.
+
+**Users**
+
+- Each username contains a link refers to that user page contains his posts.
+- If the user is disabled, his name will be displayed without link.
+- I've added a new column contains total number of posts of that user.
+- I've added a new column contains total number of comments of that user.
+
+**Posts**
+
+- Each post title contains a link refers to that post page.
+- Each category name contains a link refers to that category page.
+- I've added a new column contains the author name of that post, with a link refers to that user's posts.
+- I've added a new column contains total number of comments on that post.
+- Each number of comments has a link refers to comments section of that post.
+
+**Comments**
+
+- Each author name contains a link refers to that author page.
+- Each post title contains a link refers to that post page.
+- Each comment has a link refers to comments section of the parent post.
+
+**Ads**
+
+- Any future starting date will be displayed in Blue colour.
+- Any past ending date will be displayed in Red colour.
