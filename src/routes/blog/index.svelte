@@ -5,10 +5,10 @@
 			method: 'POST'
 		});
 		return {
-			status: 200,
-			props: {
-				posts: await response.json()
-			}
+			status: 200
+			// props: {
+			// 	posts: await response.json()
+			// }
 		};
 	};
 </script>
@@ -17,7 +17,7 @@
 	import { theme as themeStore } from '$lib/stores/theme';
 	import type { Post } from '$lib/types/post';
 	import { Card, Button } from 'spaper';
-	export let posts: Post[];
+	// export let posts: Post[];
 </script>
 
 <svelte:head>

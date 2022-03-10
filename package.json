@@ -6,7 +6,7 @@
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
 		"preview": "svelte-kit preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings 'css-unused-selector:ignore' --threshold 'error'",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .gitignore --ignore-path .prettierignore --write --plugin-search-dir=. . && stylelint \"src/**/*.{css,scss,svelte}\" --config .stylelintrc.json && eslint --ignore-path .gitignore .",
 		"generate:images": "node --loader ts-node/esm ./generate-images.ts",
