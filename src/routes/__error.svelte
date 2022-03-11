@@ -505,7 +505,7 @@
 		width: 75%;
 		max-width: 1260px;
 		margin-bottom: 12px;
-		filter: drop-shadow(4px 10px 20px rgba(0, 0, 0, 0.3));
+		// filter: drop-shadow(4px 10px 20px rgba(0, 0, 0, 0.3));
 	}
 	.fill-main-color {
 		fill: var(--err-clr-1);
