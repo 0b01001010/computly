@@ -8,6 +8,9 @@
 
 ## Blog
 
+- TODO: Add service worker to support PWA.
+- TODO: Fix generate sitemap to include all posts.
+
 ### Topics
 
 - Ta3lab
