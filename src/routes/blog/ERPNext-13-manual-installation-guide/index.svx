@@ -1,0 +1,335 @@
+---
+title: ERPNext 13 manual installation guide
+date: 2021-11-30
+description: A full manual installation guide for ERPNext 13, using VPS + Debian 11.
+---
+<script context="module">
+export const load = async () => {
+  return {
+    props: {
+      imagesData: (await import('./_info.json')).default,
+    }
+  }
+}
+</script>
+
+## Preface
+
+ERPNext is a free and open-source integrated Enterprise Resource Planning software developed by Frappe Technologies Pvt. Ltd. and is built on MariaDB database system using Frappe, a Python based server-side framework. ERPNext is a generic ERP software used by manufacturers, distributors and services companies. [Wikipedia](https://en.wikipedia.org/wiki/ERPNext)
+
+# Installation instructions
+
+Here we are using digitalocean Debian 11 droplet ($5/month)
+
+## Quick notes
+
+### We are going to use these emojis
+
+- `🖥️` refers to you server IP address
+- `👤` refers to your user name
+- `🧑🏽‍🤝‍🧑🏾` is the group name your user belongs to.
+  > It mostly is the same name as the 👤
+- `🔑` is the password you'll use with various settings.
+
+  > You can generate a strong password for this with the command `openssl rand -hex 8`
+
+  > Don't forget to save it somewhere safe
+
+- `🌍` is your website domain (Or subdomain)
+
+### Text editor
+
+> I personally prefer `vim` over `nano` but you can use whatever text editor you want.
+
+> So If you see (Edit some_file), You need to do `vim some_file` or `nano some_file`
+
+## System Update
+
+- Login as root to your server IP
+
+  ```bash
+  ssh root@🖥️
+  ```
+
+- Add `unstable` repo to be able to install some dependencies we'll need later
+
+  ```bash
+  echo 'deb http://ftp.uk.debian.org/debian/ unstable non-free contrib main' >> /etc/apt/sources.list
+  ```
+
+- Now update your system with
+  ```bash
+  apt update && apt upgrade -y
+  ```
+
+## Adding a new user
+
+- First create a new user with a password (You can use the 🔑 you generated before)
+  > This command is interactive
+
+```bash
+adduser 👤
+```
+
+- Copy authorized keys to the new user home directory
+
+```bash
+cp -r /root/.ssh/ /home/👤/.ssh
+```
+
+- Change ownership to the new user
+
+```bash
+chown -R 👤 /home/👤/.ssh
+```
+
+- Logout then login again to the new user account:
+  ```bash
+  ssh 👤@🖥️
+  ```
+
+## Configuring SSH
+
+- Modify `/etc/ssh/sshd_config`: (Use `nano` or `vim`)
+  > Search these options and modify them
+  - Use different port (Optional but recommended to reduce brute force attacks)
+    > **Careful here: If you choose a different port other than the default `22`, Remember to allow it in firewall settings in the next section, or else you won't be able to login with SSH**
+    - `Port 1234 # Or any number 1-65535`
+  - Disallow root login (highly recommended)
+    - `PermitRootLogin no`
+  - Disable login with password (Optional but recommended to reduce brute force attacks)
+    - `PasswordAuthentication no`
+- Finally, restart SSH server with
+
+```bash
+sudo systemctl restart ssh
+```
+
+- Now logout then login again
+  > **Note** If you configured a new port, you'll use that port while connecting as follows:
+  ```bash
+  ssh -p PORT 👤NAME@🖥️
+  ```
+- Add `.local/bin/` to path:
+  ```bash
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+  ```
+  - If you installed and using **ZSH**:
+  ```bash
+  echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.zshrc
+  ```
+
+## Firewall configurations
+
+- Install with `sudo apt install ufw`.
+- Allow SSH, 80 and 443 ports using these commands:
+  ```bash
+  sudo ufw allow ssh # Or the new port you chose above (e.g: sudo ufw allow 1234)
+  sudo ufw allow nginx
+  ```
+- `sudo ufw enable`
+- Check if it's working with `sudo ufw status`
+
+## Setting up locale
+
+```bash
+echo "LC_ALL=en_US.UTF-8" >> /etc/environment
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+sudo locale-gen en_US.UTF-8
+```
+
+## Install basic required dependencies
+
+```bash
+sudo apt install git python3-dev python3-setuptools \
+python3-pip virtualenv nginx wkhtmltopdf redis-server
+```
+
+- Make sure python3 is the default by typing `python --version`.
+  > **If it's not:**
+  - Delete the old one which is probably just a symbolic link to `python2` in this case.
+
+```bash
+sudo rm /usr/bin/python
+```
+
+- Create a new symlink
+
+```bash
+sudo ln -s /usr/bin/python3 /usr/bin/python
+```
+
+### Installing Node.js via NVM
+
+- Use `nvm` following [official guide](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+- Install node.js
+  > Check the required node version for erpnext branch (In the time of writing this document, it is recommended to install version 14)
+
+```bash
+nvm install 14
+```
+
+### Installing MySQL
+
+```bash
+sudo apt install mariadb-server libmysqlclient-dev
+```
+
+- Setup mysql
+
+```bash
+sudo mysql_secure_installation
+```
+
+- Edit `/etc/mysql/my.cnf` to add the following lines
+
+  > **If these sections `[mysqld]` and `mysql` exist, Type below them respectively**
+
+  > **Note** You may find those sections in other file in `/etc/mysql/` so you'd better use something like `grep` to find them so you can add the code below.
+
+```ini
+[mysqld]
+character-set-client-handshake = FALSE
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+
+[mysql]
+default-character-set = utf8mb4
+```
+
+- Add mysql user
+
+```bash
+mysql -u root -p
+```
+
+- Type these commands
+
+```sql
+CREATE USER 👤@localhost IDENTIFIED BY '🔑';
+CREATE DATABASE erpnext;
+GRANT ALL ON erpnext.* TO '👤'@'localhost' with grant option;
+FLUSH PRIVILEGES;
+QUIT;
+```
+
+- Restart mysql
+
+```bash
+sudo systemctl restart mariadb
+```
+
+### Installing ERPnext
+
+```bash
+sudo mkdir /srv/www
+sudo chown -R 👤:🧑🏽‍🤝‍🧑🏾 /srv/www/ # Remember UserName:GroupName
+cd /srv/www/
+pip3 install frappe-bench
+heck if bench installed by running `bench --version
+bench init frappe-bench
+cd frappe-bench
+bench new-site 🌍 # Your website domain (Do you feel dizzy yet?)
+bench get-app erpnext
+bench --site 🌍 install-app erpnext
+sudo apt -y install supervisor
+```
+
+### Configuring ssl
+
+**Generating certificates manually**
+
+> Browser will show it's not trusted site, so you'll need to use it behind cloudflare CDN
+
+- ```bash
+  sudo mkdir -p /etc/letsencrypt/live/🌍/
+  ```
+- ```bash
+  # Replace "🏛️" with your company name (No whitespaces)
+  sudo openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 3650 \
+  -subj "/C=US/ST=Oregon/L=Portland/O=🏛️/OU=Org/CN=🌍" \
+  -out /etc/letsencrypt/live/🌍/fullchain.pem \
+  -keyout /etc/letsencrypt/live/🌍/privkey.pem
+  ```
+- Edit `sites/🌍/site_config.json`.
+
+- Add those two lines.
+  ```json
+  "ssl_certificate": "/etc/letsencrypt/live/🌍/fullchain.pem",
+  "ssl_certificate_key": "/etc/letsencrypt/live/🌍/privkey.pem",
+  ```
+
+### Setup production
+
+```bash
+sudo $HOME/.local/bin/bench setup production 👤
+sudo $HOME/.local/bin/bench setup lets-encrypt 🌍
+```
+
+## Updating ERPnext
+
+```bash
+sudo $HOME/.local/bin/bench update --reset
+sudo $HOME/.local/bin/bench migrate
+```
+
+**Disable maintenance mode by editing** `sites/common_site_config.json` **and set** `maintenance_mode` **to** `0`
+
+## Common issues
+
+**Check if all services are running**
+
+`sudo supervisorctl status`
+
+- `supervisor.service` cannot restart
+
+  > You can always check system logs with `sudo journalctl|grep supervisor`
+
+  > In my case I found it missing section `[supervisord]` in `ini`!
+
+  > So the solution would be adding these sections in `/srv/www/frappe-bench/config/supervisor.conf` and restart the service
+
+```ini
+[supervisord]
+nodaemon=true
+
+[supervisorctl]
+
+[inet_http_server]
+port = 127.0.0.1:9001
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+```
+
+**Also Check** `/srv/www/frappe-bench/config/supervisor.conf` **for** `None` **values and replace it with the bench path** `command -v bench` which most likely will be `/home/👤/.local/bin/bench`.
+
+**Don't forget to** `sudo systemctl restart supervisor.service`.
+
+- If you encounter a problem with redis port
+
+  > **Modify redis port in `/etc/redis/redis.conf`**
+
+- Any time you see this message `Your system is being updated. Please refresh again after a few moments` in your website, it means the maintenance mode is active.
+
+  > To disable it you need to edit `sites/common_site_config.json` and set `maintenance_mode` to `0`
+
+- Socketio error (connection refused)
+  > Check `/socket.io` in `/srv/www/frappe-bench/config/nginx.conf` ..
+  > Update `proxy_pass` to used `http://localhost:9000`
+  > Update this section in `/srv/www/frappe-bench/config/supervisor.conf`
+
+```ini
+[program:frappe-bench-node-socketio]
+; Check where your node is installed, in my case it is in (/home/👤/.nvm/versions/node/v14.18.1/bin/node) so I'm going to use it in the next line 👇🏼
+command=/home/👤/.nvm/versions/node/v14.18.1/bin/node /var/www/frappe-bench/apps/frappe/socketio.js
+priority=4
+autostart=true
+autorestart=true
+stdout_logfile=/var/www/frappe-bench/logs/node-socketio.log
+stderr_logfile=/var/www/frappe-bench/logs/node-socketio.error.log
+user=👤
+directory=/var/www/frappe-bench
+```

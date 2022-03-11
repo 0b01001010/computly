@@ -72,6 +72,8 @@ _This project is an application on this [tutorial](https://www.youtube.com/playl
 
 # Modifications
 
+<Image imageData={imagesData.filter((_i) => _i.name === 'butterfly')[0]} />
+
 ## Admin permissions
 
 When I was about to finish that tutorial, I realised that the permissions system is weak and needs some improvements.

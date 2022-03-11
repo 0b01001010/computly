@@ -1,14 +1,14 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
 	export const load: Load = async ({ fetch }) => {
-		// const response = await fetch('/api/posts.json', {
-		// 	method: 'POST'
-		// });
+		const response = await fetch('/api/posts.json', {
+			method: 'POST'
+		});
 		return {
-			status: 200
-			// props: {
-			// 	posts: await response.json()
-			// }
+			status: 200,
+			props: {
+				posts: await response.json()
+			}
 		};
 	};
 </script>
@@ -16,8 +16,8 @@
 <script lang="ts">
 	import { theme as themeStore } from '$lib/stores/theme';
 	import type { Post } from '$lib/types/post';
-	import { Card, Button } from 'spaper';
-	// export let posts: Post[];
+	import Image from '$lib/Components/Blog/Image.svelte';
+	export let posts: Post[];
 </script>
 
 <svelte:head>
@@ -25,15 +25,23 @@
 </svelte:head>
 
 <div class="main-content border border-primary {$themeStore === 'dark' ? 'bg-dark' : 'bg-light'}">
-	<h1>Blog posts</h1>
-	<!-- {#each posts as post}
-		<Card title={post.title} image={post.mainImage}>
-			Card Content
-			<p slot="bottom">
-				<Button>Read</Button>
-			</p>
-		</Card>
-	{/each} -->
+	<section>
+		{#each posts as post}
+			<div class="post-card">
+				<a sveltekit:prefetch class="image-link" href="/blog/{post.slug}">
+					<Image imageData={post.headerImage} />
+				</a>
+				<div class="post-contents">
+					<a sveltekit:prefetch href="/blog/{post.slug}"><h1>{post.title}</h1></a>
+					<p>{post.excerpt}</p>
+					<div>
+						<sub>{new Date(post.date).toLocaleDateString()}</sub>
+						<a sveltekit:prefetch href="/blog/{post.slug}">Read more</a>
+					</div>
+				</div>
+			</div>
+		{/each}
+	</section>
 </div>
 
 <style lang="scss">
@@ -41,5 +49,39 @@
 		margin: 2rem auto;
 		width: min(960px, 90vw);
 		z-index: 1;
+		section {
+			display: grid;
+			padding: 1rem;
+			grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+			grid-column-gap: 1rem;
+			grid-auto-rows: 1fr;
+			.post-card {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: stretch;
+				a.image-link {
+					text-decoration: none;
+					color: inherit;
+					background: none;
+					height: 100%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+				.post-contents {
+					padding: 1rem;
+					h1 {
+						font-size: 4vmin;
+						text-align: center;
+					}
+					div {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+					}
+				}
+			}
+		}
 	}
 </style>

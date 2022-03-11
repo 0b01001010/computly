@@ -68,6 +68,8 @@ const extractImageMeta = async (source: string) => {
 	/**
 	 * Extract basic metadata from given image, and create a small copy of it to be used as a placeholder
 	 *
+	 * @param {string} source - The source image path
+	 * @returns {Promise<{ placeholder, format, width, height }>}
 	 */
 	try {
 		const imageObject = sharp(source);

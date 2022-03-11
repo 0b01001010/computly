@@ -12,8 +12,10 @@
 </script>
 
 <script lang="ts">
-	export let status = 404;
+	import 'papercss/dist/paper.min.css';
+	import { Button } from 'spaper';
 	import { theme as themeStore } from '$lib/stores/theme';
+	export let status = 404;
 	let errorTitle: string;
 	let errorMessage: string;
 	$: darkmode = $themeStore === 'dark';
@@ -490,7 +492,17 @@
 			/></svg
 		>
 	{/if}
-	<div class="msg-wrpr border"><h1>{errorMessage}</h1></div>
+	<div class="msg-wrpr border">
+		<h1>{errorMessage}</h1>
+		<Button
+			outline="primary"
+			onClick={() => {
+				window.location.href = '/blog';
+			}}
+		>
+			Go to home page
+		</Button>
+	</div>
 </div>
 
 <style lang="scss">
@@ -499,26 +511,31 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin: 2rem auto;
+		justify-content: center;
+		height: 100vh;
+		margin: 0;
 	}
 	.error-page > svg {
-		width: 75%;
-		max-width: 1260px;
+		width: clamp(300px, 60vmin, 960px);
 		margin-bottom: 12px;
-		// filter: drop-shadow(4px 10px 20px rgba(0, 0, 0, 0.3));
+		filter: drop-shadow(2px 5px 15px hsla(0, 0%, 0%, 0.2));
 	}
 	.fill-main-color {
 		fill: var(--err-clr-1);
 	}
 	.msg-wrpr {
+		padding: 1rem;
 		background-color: var(--err-bg-clr);
 		box-shadow: inset 0px 0px 10px hsla(0, 0%, 0%, 50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 	h1 {
 		padding: 0 1rem;
 		font-family: Ubuntu;
 		text-align: center;
-		font-size: 6vmin;
+		font-size: 4vmin;
 		color: transparent;
 		background: linear-gradient(to right, #0fe669, rgb(228, 9, 9));
 		-webkit-background-clip: text;
