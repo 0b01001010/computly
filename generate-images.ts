@@ -2,8 +2,7 @@ import * as fs from 'fs';
 import sharp from 'sharp';
 import * as path from 'path';
 
-const staticPostsRelativePath = 'static/assets/posts';
-const staticPostsPath = path.resolve(staticPostsRelativePath);
+const staticPostsPath = path.resolve('static/assets/posts');
 
 const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'];
 
@@ -163,22 +162,22 @@ const main = async () => {
 			}
 		});
 		const postImages = await Promise.all(postImagesData);
-
 		// Create json object of all the images
 		const outputData = postImages.map((_img) => {
+			const _url = `/assets/posts/${postSlug}/${_img.name}`;
 			return {
 				name: _img.name,
 				sources: [
 					{
-						srcset: `/${staticPostsRelativePath}/${postSlug}/${_img.name}.avif`,
+						srcset: `${_url}.avif`,
 						type: 'image/avif'
 					},
 					{
-						srcset: `/${staticPostsRelativePath}/${postSlug}/${_img.name}.webp`,
+						srcset: `${_url}.webp`,
 						type: 'image/webp'
 					},
 					{
-						srcset: `/${staticPostsRelativePath}/${postSlug}/${_img.name}`,
+						srcset: `${_url}`,
 						type: `image/${_img.format}`
 					}
 				],
