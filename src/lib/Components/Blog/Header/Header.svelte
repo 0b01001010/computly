@@ -12,6 +12,9 @@
 				<a sveltekit:prefetch href="/blog/about">About</a>
 			</li>
 			<li>
+				<a sveltekit:prefetch href="/blog/contact">Contact</a>
+			</li>
+			<li>
 				<a href="/" target="_self" rel="external">Portfolio</a>
 			</li>
 		</ul>

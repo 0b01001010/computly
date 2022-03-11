@@ -50,3 +50,13 @@ article {
 		}
 	}
 }
+
+.post-card img {
+	border-radius: 5px;
+	border: none;
+}
+
+code .section::after {
+	content: '';
+	display: none;
+}
