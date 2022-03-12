@@ -9,13 +9,13 @@
 			});
 		}
 
-		const response = await fetch('/api/posts.json', {
-			method: 'POST'
-		});
+		// const response = await fetch('/api/posts.json', {
+		// 	method: 'POST'
+		// });
 		return {
 			status: 200,
 			props: {
-				posts: await response.json()
+				// posts: await response.json()
 			}
 		};
 	};
