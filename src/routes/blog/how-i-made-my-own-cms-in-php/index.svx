@@ -235,3 +235,7 @@ I've added a new column contains total number of users in each group.
 
 - Any future starting date will be displayed in Blue colour.
 - Any past ending date will be displayed in Red colour.
+
+## Conclusion
+
+This was a very good exercise. I've learned a lot about MVC, PHP design patterns, object oriented programming, database building, routing, and much more.

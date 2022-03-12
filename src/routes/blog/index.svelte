@@ -1,6 +1,14 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
 	export const load: Load = async ({ fetch }) => {
+		const modules = import.meta.glob('./**/index.svx');
+
+		for (const path in modules) {
+			modules[path]().then((_md) => {
+				console.log(path, _md.metadata);
+			});
+		}
+
 		const response = await fetch('/api/posts.json', {
 			method: 'POST'
 		});
@@ -68,11 +76,17 @@
 					display: flex;
 					justify-content: center;
 					align-items: center;
+					filter: opacity(0.8);
+					transition: all 100ms ease-in-out;
+					&:hover {
+						filter: opacity(1);
+					}
 				}
 				.post-contents {
 					padding: 1rem;
 					h1 {
-						font-size: 4vmin;
+						font-size: 5vmin;
+						letter-spacing: -2px;
 						text-align: center;
 					}
 					div {
