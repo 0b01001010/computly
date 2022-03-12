@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
-	export const load: Load = async ({ fetch }) => {
+	export const load: Load = async () => {
 		let posts: Post[] = [];
 
 		const modules = import.meta.glob('./**/index.svx');
@@ -18,14 +18,9 @@
 				headerImage
 			});
 		}
-
-		// const response = await fetch('/api/posts.json', {
-		// 	method: 'POST'
-		// });
 		return {
 			status: 200,
 			props: {
-				// posts: await response.json()
 				posts
 			}
 		};
