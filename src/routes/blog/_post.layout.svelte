@@ -24,7 +24,7 @@
 <svelte:head>
 	<title>{title}</title>
 </svelte:head>
-<article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
+<article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2 post-article">
 	<Image imageData={imagesData.filter((_i) => _i.name === 'header')[0]} />
 	<h1>{title}</h1>
 	<sub>Published at {new Date(date).toLocaleDateString()}</sub>
