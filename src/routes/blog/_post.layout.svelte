@@ -34,7 +34,8 @@
 			}}
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-				<path d="m8.7 15.5 2.5-5 5.4 5 .5-.6-5.3-9.1L6 14Z" /><path fill="none" d="M0 0h24v24H0z" />
+				<path d="m8.7 15.5 2.5-5 5.4 5 .5-.6-5.3-9.1L6 14Z" />
+				<path fill="none" d="M0 0h24v24H0z" />
 			</svg>
 		</button>
 	</aside>
@@ -49,8 +50,8 @@
 	@media screen and (min-width: 600px) {
 		aside {
 			position: fixed;
-			bottom: 2rem;
 			right: 1.5rem;
+			bottom: 1.5rem;
 			button {
 				border-radius: 46% 54% 70% 30% / 30% 50% 50% 70%;
 				padding: 0;
