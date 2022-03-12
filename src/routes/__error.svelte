@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
 	import type { ErrorLoad } from '@sveltejs/kit';
-	import { goto } from '$app/navigation';
 	export const load: ErrorLoad = async ({ error, status }) => {
 		return {
 			props: {
@@ -499,7 +498,6 @@
 </div>
 
 <style lang="scss">
-	@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
 	.error-page {
 		display: flex;
 		flex-direction: column;
