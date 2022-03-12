@@ -1,11 +1,21 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
 	export const load: Load = async ({ fetch }) => {
+		let posts: Post[] = [];
+
 		const modules = import.meta.glob('./**/index.svx');
+		const infoFiles = import.meta.glob('./**/_info.json');
 
 		for (const path in modules) {
-			modules[path]().then((_md) => {
-				console.log(path, _md.metadata);
+			const _dir = path.split('/')[1];
+			const md = await modules[path]();
+			const infoJson = await infoFiles[`./${_dir}/_info.json`]();
+			const headerImage = infoJson.default.filter((i) => i.name === 'header')[0];
+			posts.push({
+				...md.metadata,
+				slug: _dir,
+				excerpt: md.metadata.description.replace(/^(.{100}[^\s]*).*/, '$1'),
+				headerImage
 			});
 		}
 
@@ -16,6 +26,7 @@
 			status: 200,
 			props: {
 				// posts: await response.json()
+				posts
 			}
 		};
 	};
