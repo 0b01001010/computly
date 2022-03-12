@@ -1,12 +1,16 @@
-<script lang="ts">
+<script>
 	import { theme as themeStore } from '$lib/stores/theme';
 	import Image from '$lib/Components/Blog/Image.svelte';
 	import { fly } from 'svelte/transition';
 	import { backInOut } from 'svelte/easing';
 
+	/** @type {string} */
 	export let title;
+	/** @type {import('$lib/types/imageProps').ImageProps[]} */
 	export let imagesData;
+	/** @type {string} */
 	export let date;
+	/** @type {string} */
 	export let description;
 	$: darkMode = $themeStore === 'dark';
 
@@ -27,7 +31,7 @@
 	<slot />
 </article>
 {#if scroll2Top}
-	<aside transition:fly={{ y: 100, duration: 400, easing: backInOut }}>
+	<div class="scroll2top" transition:fly={{ y: 100, duration: 400, easing: backInOut }}>
 		<button
 			on:click={() => {
 				window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -38,33 +42,31 @@
 				<path fill="none" d="M0 0h24v24H0z" />
 			</svg>
 		</button>
-	</aside>
+	</div>
 {/if}
 
-<style lang="scss">
+<style>
 	sub {
 		display: block;
 		width: 100%;
 		text-align: center;
 	}
-	@media screen and (min-width: 600px) {
-		aside {
-			position: fixed;
-			right: 1.5rem;
-			bottom: 1.5rem;
-			button {
-				border-radius: 46% 54% 70% 30% / 30% 50% 50% 70%;
-				padding: 0;
-				svg {
-					width: 2rem;
-					height: 2rem;
-					fill: var(--primary);
-				}
-				&:focus {
-					outline: none;
-					border: 2px solid #41403e;
-				}
-			}
-		}
+	.scroll2top {
+		position: fixed;
+		right: 1.5rem;
+		bottom: 1.5rem;
+	}
+	.scroll2top > button {
+		border-radius: 46% 54% 70% 30% / 30% 50% 50% 70%;
+		padding: 0;
+	}
+	.scroll2top > button:focus {
+		outline: none;
+		border: 2px solid #41403e;
+	}
+	.scroll2top > button > svg {
+		width: 2rem;
+		height: 2rem;
+		fill: var(--primary);
 	}
 </style>

@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import type { ErrorLoad } from '@sveltejs/kit';
-
+	import { goto } from '$app/navigation';
 	export const load: ErrorLoad = async ({ error, status }) => {
 		return {
 			props: {
@@ -494,14 +494,7 @@
 	{/if}
 	<div class="msg-wrpr border">
 		<h1>{errorMessage}</h1>
-		<Button
-			outline="primary"
-			onClick={() => {
-				window.location.href = '/blog';
-			}}
-		>
-			Go to home page
-		</Button>
+		<Button href="/blog" isLink={true} outline="primary">Go to home page</Button>
 	</div>
 </div>
 
