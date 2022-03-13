@@ -10,8 +10,8 @@
 		{ srcset: '/icons/mail.avif', type: 'image/avif' },
 		{ srcset: '/icons/mail.png', type: 'image/png' }
 	];
-	const width = '48px';
-	const height = '48px';
+	const width = '24px';
+	const height = '24px';
 </script>
 
 <svelte:head>
@@ -40,12 +40,21 @@
 </article>
 
 <style lang="scss">
+	article {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 	.contact-methods {
+		width: auto;
 		display: flex;
 		justify-content: center;
 		gap: 1rem;
 		a {
 			background: none;
+			&:first-of-type {
+				transform: scale(0.7);
+			}
 		}
 	}
 </style>

@@ -71,11 +71,11 @@
 		fill: var(--primary);
 	}
 	.scroll2top:hover > button {
-		border: 2px solid #416d72;
+		border: 2px solid var(--secondary);
 	}
 	.scroll2top:hover > button > svg {
 		width: 2rem;
 		height: 2rem;
-		fill: #416d72;
+		fill: var(--secondary);
 	}
 </style>

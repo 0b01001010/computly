@@ -21,7 +21,7 @@
 ### other images
 
 - ✅ Each post should have all files (including images) in one directory
-- ✅ The `generate-images.ts` task will then generate all those images to `/static/assets/posts/{slug}`
+- ✅ The `generate-images.ts` task will then generate all those images to `/static/posts/{slug}`
 
 # Credits
 

@@ -1,4 +1,4 @@
-$scrollbar-primary-color: #f4f5ff;
+$scrollbar-primary-color: hsl(186, 27%, 93%);
 $scrollbar-secondary-color: hsl(186, 27%, 35%);
 $scrollbar-secondary-color-hover: hsl(186, 27%, 25%);
 
@@ -22,21 +22,21 @@ $scrollbar-secondary-color-hover: hsl(186, 27%, 25%);
 	);
 }
 html.dark {
-	$scrollbar-primary-color: #0b0a00;
-	$scrollbar-secondary-color-hover: #a2d1ff;
+	$scrollbar-primary-color: hsl(186, 27%, 7%);
+	$scrollbar-secondary-color-hover: hsl(186, 27%, 45%);
 	$webkit-bg: repeating-linear-gradient(
 		45deg,
 		$scrollbar-primary-color,
-		$scrollbar-primary-color min(5%, 10px),
-		$scrollbar-secondary-color min(5%, 10px),
-		$scrollbar-secondary-color min(10%, 20px)
+		$scrollbar-primary-color 3px,
+		$scrollbar-secondary-color 3px,
+		$scrollbar-secondary-color 6px
 	);
 	$webkit-bg-hover: repeating-linear-gradient(
 		45deg,
 		$scrollbar-primary-color,
-		$scrollbar-primary-color min(5%, 10px),
-		$scrollbar-secondary-color-hover min(5%, 10px),
-		$scrollbar-secondary-color-hover min(10%, 20px)
+		$scrollbar-primary-color 3px,
+		$scrollbar-secondary-color-hover 3px,
+		$scrollbar-secondary-color-hover 6px
 	);
 	*::-webkit-scrollbar {
 		background: linear-gradient(
@@ -62,20 +62,20 @@ html.dark {
 	background: repeating-linear-gradient(
 		45deg,
 		$scrollbar-primary-color,
-		$scrollbar-primary-color min(5%, 10px),
-		$scrollbar-secondary-color min(5%, 10px),
-		$scrollbar-secondary-color min(10%, 20px)
+		$scrollbar-primary-color 3px,
+		$scrollbar-secondary-color 3px,
+		$scrollbar-secondary-color 6px
 	);
 	box-shadow: inset 1px 1px 0px 1px rgba(255, 255, 255, 0.3),
 		inset 1px 1px 0px 2px rgba(255, 255, 255, 0.2), inset 1px 1px 0px 3px rgba(255, 255, 255, 0.1);
-	border-radius: 50vw;
+	border-radius: 60% 26% 0% 83% / 58% 89% 10% 21%;
 	&:hover {
 		background: repeating-linear-gradient(
 			45deg,
 			$scrollbar-primary-color,
-			$scrollbar-primary-color min(5%, 10px),
-			$scrollbar-secondary-color-hover min(5%, 10px),
-			$scrollbar-secondary-color-hover min(10%, 20px)
+			$scrollbar-primary-color 3px,
+			$scrollbar-secondary-color-hover 3px,
+			$scrollbar-secondary-color-hover 6px
 		);
 	}
 }
