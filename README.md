@@ -4,10 +4,6 @@
 
 # Development notes
 
-## Landpage
-
-## Blog
-
 - TODO: Add service worker to support PWA.
 - TODO: Fix generate sitemap to include all posts.
 
@@ -29,6 +25,4 @@
 
 # Credits
 
-- [@wass08's office model](https://github.com/wass08/portfolio-2021)
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
-  > Big infeluencer.

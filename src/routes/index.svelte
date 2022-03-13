@@ -30,7 +30,7 @@
 <script lang="ts">
 	import { theme as themeStore } from '$lib/stores/theme';
 	import type { Post } from '$lib/types/post';
-	import Image from '$lib/Components/Blog/Image.svelte';
+	import Image from '$lib/Components/Image.svelte';
 	export let posts: Post[];
 </script>
 

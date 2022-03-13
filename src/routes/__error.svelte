@@ -493,7 +493,7 @@
 	{/if}
 	<div class="msg-wrpr border">
 		<h1>{errorMessage}</h1>
-		<Button href="/" isLink={true} outline="primary">Go to home page</Button>
+		<Button href="/" isLink={true} outline="primary">Go home</Button>
 	</div>
 </div>
 

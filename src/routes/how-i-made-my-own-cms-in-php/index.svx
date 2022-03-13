@@ -13,7 +13,7 @@ export const load = async () => {
 }
 </script>
 <script>
-	import Image from '$lib/Components/Blog/Image.svelte';
+	import Image from '$lib/Components/Image.svelte';
   export let imagesData;
 </script>
 

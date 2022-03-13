@@ -1,6 +1,6 @@
 <script>
 	import { theme as themeStore } from '$lib/stores/theme';
-	import Image from '$lib/Components/Blog/Image.svelte';
+	import Image from '$lib/Components/Image.svelte';
 	import { fly } from 'svelte/transition';
 	import { backInOut } from 'svelte/easing';
 

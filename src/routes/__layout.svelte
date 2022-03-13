@@ -3,9 +3,9 @@
 	import '$lib/styles/index.scss';
 	import { browser } from '$app/env';
 	import { theme as themeStore } from '$lib/stores/theme';
-	import BlogFooter from '$lib/Components/Blog/Footer/Footer.svelte';
-	import BlogHeader from '$lib/Components/Blog/Header/Header.svelte';
-	import SVGbackground from '$lib/Components/Blog/SVGbackground.svelte';
+	import BlogFooter from '$lib/Components/Footer/Footer.svelte';
+	import BlogHeader from '$lib/Components/Header/Header.svelte';
+	import SVGbackground from '$lib/Components/SVGbackground.svelte';
 	// Using this to check theme before rendering the page
 	// So if you have set it to dark mode, you won't see a white theme that changes to dark after the page loads
 	if (browser) {
