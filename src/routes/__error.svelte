@@ -524,7 +524,7 @@
 	}
 	h1 {
 		padding: 0 1rem;
-		font-family: Ubuntu;
+		font-family: sans-serif;
 		text-align: center;
 		font-size: 4vmin;
 		color: transparent;
