@@ -15,7 +15,7 @@
 				<a sveltekit:prefetch href="/contact">Contact</a>
 			</li>
 			<li>
-				<a href="https://a3k.tech" target="_self" rel="external">Portfolio</a>
+				<a href="https://computly.me" target="_self" rel="external">Portfolio</a>
 			</li>
 		</ul>
 		<ThemeSwitcher />

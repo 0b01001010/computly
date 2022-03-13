@@ -14,6 +14,6 @@
 		enjoy the posts featured here and welcome you to engage with the content using comments (WiP).
 	</p>
 	<p>
-		This blog is part of my portfolio which you can view <a href="https://a3k.tech">here</a>.
+		This blog is part of my portfolio which you can view <a href="https://computly.me">here</a>.
 	</p>
 </article>

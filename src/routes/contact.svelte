@@ -29,7 +29,7 @@
 				{/each}
 			</Picture>
 		</a>
-		<a href="mailto://contact@a3k.tech" target="_blank" rel="external">
+		<a href="mailto://contact@computly.me" target="_blank" rel="external">
 			<Picture alt="Send me an email" src={mailImages[1].srcset} {width} {height}>
 				{#each mailImages as image}
 					<source data-srcset={image.srcset} type={image.type} />

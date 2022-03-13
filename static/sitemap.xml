@@ -10,11 +10,4 @@
   xmlns:pagemap="http://www.google.com/schemas/sitemap-pagemap/1.0"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 	>
-	
-	  <url>
-	    <loc>https://www.a3k.tech/test/</loc>
-		  <lastmod>2022-04-14T10:17:52.000+0100</lastmod>
-		  <changefreq>daily</changefreq>
-		  <priority>0.7</priority>
-	  </url>
 	</urlset>

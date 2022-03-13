@@ -3,7 +3,7 @@
 </script>
 
 <footer class="background-secondary">
-	<div>Copyright a3k.tech &copy; 2022</div>
+	<div>Copyright Computly &copy; 2022</div>
 </footer>
 
 <style lang="scss">
