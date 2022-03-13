@@ -1,6 +1,6 @@
 $scrollbar-primary-color: #f4f5ff;
-$scrollbar-secondary-color: #81c1ff;
-$scrollbar-secondary-color-hover: #6194b6;
+$scrollbar-secondary-color: hsl(186, 27%, 35%);
+$scrollbar-secondary-color-hover: hsl(186, 27%, 25%);
 
 /* Firefox */
 * {
@@ -16,9 +16,9 @@ $scrollbar-secondary-color-hover: #6194b6;
 	border-bottom: none;
 	background: linear-gradient(
 		to right,
-		hsla(233, 100%, 97%, 0.5),
-		hsla(208, 100%, 97%, 0.5),
-		hsla(233, 100%, 97%, 0.5)
+		hsl(186 27% 35% / 0.05),
+		hsl(186 27% 35% / 0.025),
+		hsl(186 27% 35% / 0.05)
 	);
 }
 html.dark {

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @use 'sass:math';
 
-@import './variables.scss';
+@import './scrollbar.scss';
 
 /* HTML elements */
 *,
@@ -24,6 +24,12 @@ html,
 body {
 	margin: 0;
 	padding: 0;
+}
+.bg-light {
+	background-color: hsl(0, 0%, 100%);
+}
+.bg-dark {
+	background-color: hsl(40, 2%, 25%);
 }
 
 article {

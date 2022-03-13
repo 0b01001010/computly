@@ -55,6 +55,7 @@
 		position: fixed;
 		right: 1.5rem;
 		bottom: 1.5rem;
+		transition: all 200ms ease-in-out;
 	}
 	.scroll2top > button {
 		border-radius: 46% 54% 70% 30% / 30% 50% 50% 70%;
@@ -68,5 +69,13 @@
 		width: 2rem;
 		height: 2rem;
 		fill: var(--primary);
+	}
+	.scroll2top:hover > button {
+		border: 2px solid #416d72;
+	}
+	.scroll2top:hover > button > svg {
+		width: 2rem;
+		height: 2rem;
+		fill: #416d72;
 	}
 </style>

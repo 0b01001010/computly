@@ -1,93 +1,107 @@
-<script lang="ts">
-	import {
-		targetPosition,
-		detailsWindow,
-		fogDensity,
-		cameraPosition,
-		ogCameraPosition,
-		ogTargetPosition,
-		playScene
-	} from '$lib/stores/landPage';
-	import { Canvas, PerspectiveCamera, OrbitControls, FogExp2 } from 'threlte';
+<script lang="ts" context="module">
+	import type { Load } from '@sveltejs/kit';
+	export const load: Load = async () => {
+		let posts: Post[] = [];
 
-	import Background from '$lib/Components/Landpage/Background.svelte';
-	import Office from '$lib/Components/Landpage/Office.svelte';
-	import Contents from '$lib/Components/Landpage/Contents.svelte';
-	import Lights from '$lib/Components/Landpage/Lights.svelte';
-	import DetailsWindow from '$lib/Components/Landpage/DetailsWindow.svelte';
-	import Overlay from '$lib/Components/Landpage/Overlay.svelte';
-	import '$lib/styles/landpage.scss';
+		const modules = import.meta.glob('./**/index.svx');
+		const infoFiles = import.meta.glob('./**/_info.json');
 
-	let play = false;
-
-	let controls;
-
-	const updateControls = () => {
-		if (!controls) return;
-		// ogTargetPosition.set(controls.position0);
-		// console.dir(controls);
-	};
-
-	const startTheShow = async () => {
-		play = true;
-		playScene.set(true);
-		await Promise.all([
-			targetPosition.set($ogTargetPosition),
-			cameraPosition.set($ogCameraPosition),
-			detailsWindow.set({ controlsEnabled: true, isOpen: false, title: '' }),
-			fogDensity.set(0)
-		]);
+		for (const path in modules) {
+			const _dir = path.split('/')[1];
+			const md = await modules[path]();
+			const infoJson = await infoFiles[`./${_dir}/_info.json`]();
+			const headerImage = infoJson.default.filter((i) => i.name === 'header')[0];
+			posts.push({
+				...md.metadata,
+				slug: _dir,
+				excerpt: md.metadata.description.replace(/^(.{100}[^\s]*).*/, '$1'),
+				headerImage
+			});
+		}
+		return {
+			status: 200,
+			props: {
+				posts
+			}
+		};
 	};
 </script>
 
+<script lang="ts">
+	import { theme as themeStore } from '$lib/stores/theme';
+	import type { Post } from '$lib/types/post';
+	import Image from '$lib/Components/Blog/Image.svelte';
+	export let posts: Post[];
+</script>
+
 <svelte:head>
-	<title>Home</title>
+	<title>Blog posts</title>
 </svelte:head>
 
-{#if !play}
-	<Overlay on:startTheShow={startTheShow} />
-{/if}
-
-<!-- Camera: lookAt={$targetPosition} -->
-
-<main style:visibility={play ? 'visible' : 'hidden'}>
-	<Canvas>
-		<FogExp2 color={0x000000} density={$fogDensity} />
-		<PerspectiveCamera bind:position={$cameraPosition} fov={60}>
-			<OrbitControls
-				enabled={$detailsWindow.controlsEnabled}
-				minPolarAngle={0.3}
-				maxPolarAngle={1.5}
-				minAzimuthAngle={1}
-				maxDistance={2.3}
-				minDistance={1}
-				enableRotate={true}
-				enableDamping={true}
-				dampingFactor={0.05}
-				target={$targetPosition}
-				bind:controls
-				on:start={updateControls}
-				keys={{ LEFT: 'KeyLeft', UP: 'KeyUp', RIGHT: 'KeyRight', BOTTOM: 'KeyDown' }}
-			/>
-		</PerspectiveCamera>
-		<Background />
-		<Office />
-		<Contents />
-		<Lights />
-	</Canvas>
-</main>
-
-{#if $detailsWindow.isOpen}
-	<DetailsWindow />
-{/if}
+<div class="main-content border border-primary {$themeStore === 'dark' ? 'bg-dark' : 'bg-light'}">
+	<section>
+		{#each posts as post}
+			<div class="post-card">
+				<a sveltekit:prefetch class="image-link" href="/{post.slug}">
+					<Image imageData={post.headerImage} />
+				</a>
+				<div class="post-contents">
+					<a sveltekit:prefetch href="/{post.slug}"><h1>{post.title}</h1></a>
+					<p>{post.excerpt}</p>
+					<div>
+						<sub>{new Date(post.date).toLocaleDateString()}</sub>
+						<a sveltekit:prefetch href="/{post.slug}">Read more</a>
+					</div>
+				</div>
+			</div>
+		{/each}
+	</section>
+</div>
 
 <style lang="scss">
-	main {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
+	div.main-content {
+		margin: 2rem auto;
+		width: min(960px, 90vw);
+		z-index: 1;
+		section {
+			display: grid;
+			padding: 1rem;
+			grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+			grid-column-gap: 1rem;
+			grid-auto-rows: 1fr;
+			.post-card {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: stretch;
+				a.image-link {
+					text-decoration: none;
+					color: inherit;
+					background: none;
+					height: 100%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					filter: opacity(0.8);
+					transition: all 100ms ease-in-out;
+					&:hover {
+						filter: opacity(1);
+					}
+				}
+				.post-contents {
+					padding: 1rem;
+					h1 {
+						font-size: 5vmin;
+						letter-spacing: -2px;
+						text-align: center;
+					}
+					div {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+					}
+				}
+			}
+		}
 	}
 </style>

@@ -9,7 +9,7 @@ const config = {
 		preprocess(),
 		mdsvex({
 			extensions: ['.md', '.svx'],
-			layout: './src/routes/blog/_post.layout.svelte'
+			layout: './src/routes/_post.layout.svelte'
 		})
 	],
 
@@ -17,14 +17,6 @@ const config = {
 		adapter: vercel(),
 		files: {
 			hooks: 'src/hooks'
-		},
-		vite: {
-			optimizeDeps: {
-				exclude: ['three']
-			},
-			ssr: {
-				noExternal: ['three']
-			}
 		}
 	},
 	onwarn: (warning, handler) => {
