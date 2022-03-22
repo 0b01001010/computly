@@ -2,6 +2,7 @@
 	import ThemeSwitcher from './ThemeSwitcher.svelte';
 </script>
 
+<a class="logo" href="/" target="_self" rel="external"> Computly </a>
 <header>
 	<nav>
 		<ul class="inline">
@@ -23,6 +24,21 @@
 </header>
 
 <style lang="scss">
+	@font-face {
+		font-family: Paskowy;
+		src: url('/Paskowy.ttf');
+	}
+	.logo {
+		position: static;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: none;
+		font-family: Paskowy;
+		user-select: none;
+		font-size: 20vmin;
+		text-transform: uppercase;
+	}
 	header {
 		position: sticky;
 		top: 0;
