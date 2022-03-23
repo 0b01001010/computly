@@ -11,7 +11,7 @@
 	/** @type {string} */
 	export let date;
 	/** @type {string} */
-	export let description;
+	export const description = '';
 	$: darkMode = $themeStore === 'dark';
 
 	let scroll2Top = false;
@@ -52,30 +52,36 @@
 		text-align: center;
 	}
 	.scroll2top {
-		position: fixed;
-		right: 1.5rem;
-		bottom: 1.5rem;
-		transition: all 200ms ease-in-out;
+		display: none;
 	}
-	.scroll2top > button {
-		border-radius: 46% 54% 70% 30% / 30% 50% 50% 70%;
-		padding: 0;
-	}
-	.scroll2top > button:focus {
-		outline: none;
-		border: 2px solid #41403e;
-	}
-	.scroll2top > button > svg {
-		width: 2rem;
-		height: 2rem;
-		fill: var(--primary);
-	}
-	.scroll2top:hover > button {
-		border: 2px solid var(--secondary);
-	}
-	.scroll2top:hover > button > svg {
-		width: 2rem;
-		height: 2rem;
-		fill: var(--secondary);
+	@media screen and (min-width: 768px) {
+		.scroll2top {
+			position: fixed;
+			display: block;
+			right: 1.5rem;
+			bottom: 1.5rem;
+			transition: all 200ms ease-in-out;
+		}
+		.scroll2top > button {
+			border-radius: 46% 54% 70% 30% / 30% 50% 50% 70%;
+			padding: 0;
+		}
+		.scroll2top > button:focus {
+			outline: none;
+			border: 2px solid #41403e;
+		}
+		.scroll2top > button > svg {
+			width: 2rem;
+			height: 2rem;
+			fill: var(--primary);
+		}
+		.scroll2top:hover > button {
+			border: 2px solid var(--secondary);
+		}
+		.scroll2top:hover > button > svg {
+			width: 2rem;
+			height: 2rem;
+			fill: var(--secondary);
+		}
 	}
 </style>

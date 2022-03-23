@@ -32,7 +32,7 @@ body {
 	background-color: hsl(40, 2%, 25%);
 }
 
-.post-article {
+article {
 	padding: 1em;
 	margin: 3rem 1rem 5rem;
 	width: 90%;
@@ -46,9 +46,33 @@ body {
 		width: 90%;
 	}
 	blockquote {
+		position: relative;
 		padding: 0.5rem;
+		&:hover {
+			&::before {
+				background: rgba(128, 128, 128, 0.8);
+			}
+		}
+		&::before {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: -2ch;
+			content: '';
+			display: inline;
+			background: rgba(128, 128, 128, 0.3);
+			transition: all 100ms ease-in-out;
+			height: 70%;
+			width: 0.5ch;
+			border-radius: 50vw;
+		}
+	}
+	ul,
+	blockquote {
+		margin: auto 0;
 	}
 	svg {
+		margin: 1rem auto;
 		width: 50vmin;
 		left: 50%;
 	}

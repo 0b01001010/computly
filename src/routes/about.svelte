@@ -85,15 +85,15 @@
 		</g>
 	</svg>
 	<p>
-		Welcome to Computly, a modern way to create next level websites which currently consists of only
-		one man.
+		Welcome to Computly, a revolutionary way to create websites. currently consists of a lone
+		developer.
 	</p>
 	<p>
-		This blog is where I occasionally post articles covering a range of topics, from my perspective
-		on software development to posts highlighting some life events. I hope you enjoy the posts
-		featured here and welcome you to engage with the content using comments (WiP).
+		This blog is where We occasionally post articles covering a range of topics, from our
+		perspective on software development and other IT fields. We hope you enjoy the articles featured
+		here and we welcome you to engage with the content using comments (Coming soon).
 	</p>
 	<p>
-		You can see my portfolio <a href="https://computly.me">here</a>.
+		You can visit our landpage <a href="https://computly.me">here</a>.
 	</p>
 </article>

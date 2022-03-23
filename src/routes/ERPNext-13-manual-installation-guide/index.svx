@@ -23,6 +23,8 @@ Here we are using digitalocean Debian 11 droplet ($5/month)
 
 ## Quick notes
 
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 984 544"><path fill="#3f3d56" d="M882 284H200a9 9 0 0 1-9-9V9a9 9 0 0 1 9-9h682a9 9 0 0 1 9 9v266a9 9 0 0 1-9 9ZM200 2a7 7 0 0 0-7 7v266a7 7 0 0 0 7 7h682a7 7 0 0 0 7-7V9a7 7 0 0 0-7-7Z"/><path fill="#ff6584" d="M519 172h-50c-3-27 4-48 0-60h50a312 312 0 0 0 0 60ZM51 425H1c-3-27 4-48 0-60h50a312 312 0 0 0 0 60Z"/><path fill="#7170f6" d="M822 227h-50c-3-27 4-48 0-60h50a312 312 0 0 0 0 60Z"/><path fill="#e6e6e6" d="M262 198h-49c1-23 7-45 0-60h49q14 30 0 60Zm40 77h-49c1-23 7-45 0-60h49q14 30 0 60Z"/><path fill="#7170f6" d="M742 134h-49c1-23 7-45 0-60h49q14 30 0 60Z"/><path fill="#e6e6e6" d="M595 212h-49c1-23 7-45 0-60h49q14 30 0 60Z"/><path fill="#3f3d56" d="M313 147h50c3-23-4-45 0-60h-50q-14 30 0 60Zm34-110h-93a2 2 0 0 1 0-4h93a2 2 0 0 1 0 4Zm241 0h-93a2 2 0 0 1 0-4h93a2 2 0 0 1 0 4Zm241 0h-93a2 2 0 1 1 0-4h93a2 2 0 0 1 0 4ZM420 1h2v282h-2zm241 0h2v282h-2z"/><circle cx="158.6" cy="208.2" r="53.5" fill="#7170f6"/><path fill="#7170f6" d="M150 543h-15a7 7 0 0 1-6-6V414a7 7 0 0 1 6-7h15a7 7 0 0 1 7 7v123a7 7 0 0 1-7 6Zm29 0h-14a7 7 0 0 1-7-6V414a7 7 0 0 1 7-7h14a7 7 0 0 1 7 7v123a7 7 0 0 1-7 6ZM41 390a7 7 0 0 1-2 0 6 6 0 0 1-4-4l-6-13a6 6 0 0 1 3-9l109-56a7 7 0 0 1 9 3l6 13a7 7 0 0 1-2 9L44 389a6 6 0 0 1-3 1Zm151-57a6 6 0 0 1-5-2l-11-9a7 7 0 0 1-1-9l80-94a7 7 0 0 1 10-1l11 10a6 6 0 0 1 0 9l-79 94a6 6 0 0 1-5 2Z"/><path fill="#2f2e41" d="M161 155c-2-18-14-34-31-39a37 37 0 0 0-26 2 34 34 0 0 0-15 18 48 48 0 0 0-4 23 61 61 0 0 0 8 24c5 9 11 16 18 23 6 7 14 14 19 22 5 7 9 17 4 25a19 19 0 0 1-18 9 15 15 0 0 1-5-2c-2-1-3 2-2 3 7 3 15 2 21-2 7-4 10-12 9-20-2-9-8-17-14-24l-20-21c-6-8-11-16-14-25a51 51 0 0 1-3-23c1-8 4-15 9-21a31 31 0 0 1 23-9 35 35 0 0 1 23 9 43 43 0 0 1 13 21 44 44 0 0 1 2 7c0 2 3 2 3 0Z"/><path fill="#2f2e41" d="M149 154a6 6 0 0 1-1-11l14-4a5 5 0 1 1 3 10l-14 5a6 6 0 0 1-2 0Zm96 276H79a6 6 0 0 1-6-10l84-144a7 7 0 0 1 1-2 6 6 0 0 1 3-2 7 7 0 0 1 1 0 6 6 0 0 1 6 4l83 144a7 7 0 0 1-6 10Zm-47-213v-2c4 0 7 0 10-2a6 6 0 0 0 2-5 4 4 0 0 0-1-3h-6l-2 1 3-23h2l-2 20c2-1 5-1 6 1a5 5 0 0 1 2 4 8 8 0 0 1-3 6c-3 3-7 3-11 3Zm-16-32h11v2h-11z"/><path fill="#7170f6" d="m926 342-104-67a6 6 0 0 1-2-9l8-12a7 7 0 0 1 9-2l104 66a7 7 0 0 1 2 9l-8 13a7 7 0 0 1-9 2Z"/><path fill="#ccc" d="m926 341-43-24a6 6 0 0 1-3-8l10-20a6 6 0 0 1 9-2l41 31a6 6 0 0 1 2 9l-8 12a6 6 0 0 1-8 2Z"/><circle cx="930" cy="209.9" r="53.5" fill="#7170f6"/><path fill="#2f2e41" d="M932 537V414a7 7 0 0 1 6-7h15a7 7 0 0 1 7 7v123a7 7 0 0 1-7 6h-15a7 7 0 0 1-6-6Zm-29 0V414a7 7 0 0 1 6-7h15a7 7 0 0 1 7 7v123a7 7 0 0 1-7 6h-15a7 7 0 0 1-6-6Z"/><path fill="#ccc" d="M891 421V279a7 7 0 0 1 6-7h38a36 36 0 0 1 36 36v113a7 7 0 0 1-7 7h-67a7 7 0 0 1-6-7Z"/><path fill="#2f2e41" d="M883 225v-2l-9-2a6 6 0 0 1-2-5 4 4 0 0 1 1-3h6l2 1-4-23h-2l3 20c-3-1-5-1-7 1a5 5 0 0 0-1 4 8 8 0 0 0 3 6c3 3 7 3 10 3Zm6-32h11v2h-11z"/><path fill="#7170f6" d="m865 418-13-7a7 7 0 0 1-3-9l58-108a7 7 0 0 1 9-3l13 7a7 7 0 0 1 3 9l-58 108a6 6 0 0 1-9 3Z"/><path fill="#ccc" d="m936 307-26 45a6 6 0 0 1-7 3l-21-8a6 6 0 0 1-3-9l28-46a6 6 0 0 1 8-2l18 8a6 6 0 0 1 3 9Z"/><path fill="#2f2e41" d="M915 175c-9 1-20 3-27-5a11 11 0 0 1-3-11c2-4 5-7 9-8 5-3 11-2 17-2a2 2 0 0 0 0-3c-6 0-12 0-18 2-4 1-8 5-10 9-4 9 4 19 13 21 6 2 13 1 20 0 2-1 1-4-1-3Z"/><path fill="#3f3d56" d="M789 320h50c3-23-4-45 0-60h-50q-14 30 0 60Z"/></svg>
+
 ### We are going to use these emojis
 
 - `🖥️` refers to you server IP address
@@ -63,6 +65,8 @@ Here we are using digitalocean Debian 11 droplet ($5/month)
   ```
 
 ## Adding a new user
+
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 676 676"><path fill="#7170f6" d="M676 338a337 337 0 0 1-27 133l-1 3a339 339 0 0 1-369 197l-6-1a335 335 0 0 1-61-18l-9-4-7-3A338 338 0 0 1 0 338a338 338 0 0 1 676 0Z"/><path d="m279 671-6-1c-1-39-6-117-21-199-8-46-20-92-36-133a413 413 0 0 0-20-42c-16-31-36-57-60-75l3-5q31 22 55 62l14 26q7 14 13 31l8 21q17 48 29 110l4 28c13 74 16 143 17 177Zm-76-23-7-3c-2-23-6-51-13-78a255 255 0 0 0-12-35c-8-19-18-35-31-44l3-5c14 10 25 26 33 45 10 22 16 47 20 70l7 50Z" opacity=".2"/><circle cx="102.3" cy="191" r="30.1" opacity=".2"/><circle cx="112" cy="450" r="30.1" opacity=".2"/><path d="M222 242c-7 36 7 68 7 68s25-26 31-62-7-68-7-68-25 26-31 62Zm-100 85c34 13 69 4 69 4s-22-28-56-40-69-5-69-5 21 28 56 41Zm-6 229c24 9 48 3 48 3s-15-20-39-28-48-3-48-3 15 20 39 28Z" opacity=".2"/><circle cx="337.3" cy="281.1" r="131.8" fill="#d0cde1"/><path fill="#d0cde1" d="M286 382s16 78 16 86 79 46 79 46l70-13 24-74s-41-62-41-86Z"/><path fill="#2f2e41" d="m649 471-1 3a339 339 0 0 1-369 197l-6-1a335 335 0 0 1-61-18l-9-4-7-3a338 338 0 0 1-55-32l-16-46 9-6 18-14 19-15 5-4 76-57 6-5 39-30s42 70 104 49 61-80 61-80ZM223 175s42-91 122-70 126 52 129 84-2 78-2 78-8-64-64-50-143 3-143 3l-14 126s-16-23-33-9-51-134 5-162Z"/><path fill="#2f2e41" d="m212 652-9-4-7-3a339 339 0 0 1-87-59l16-19h62l9 31Zm383-188 53 10a338 338 0 0 1-57 88Z"/></svg>
 
 - First create a new user with a password (You can use the 🔑 you generated before)
   > This command is interactive
@@ -120,6 +124,8 @@ sudo systemctl restart ssh
   ```
 
 ## Firewall configurations
+
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 808 500"><path fill="#e6e6e6" d="M56 463a23 23 0 0 0 22-4c8-6 10-17 12-27l6-29-12 9c-9 6-18 12-24 21s-9 20-4 30" data-name="Path 461"/><path fill="#f2f2f2" d="m57 498-2-27c1-8 4-16 9-22a37 37 0 0 1 9-9c1 0 2 1 1 2a35 35 0 0 0-14 17c-3 7-3 16-3 24l2 15a1 1 0 0 1-1 1 1 1 0 0 1-1-1Z" data-name="Path 462"/><path fill="#7170f6" d="M301 306a7 7 0 0 1-3 0l-92 3a14 14 0 0 1 0-29l91-3a7 7 0 0 1 7 7l1 15a7 7 0 0 1-4 7ZM183 499h-15a7 7 0 0 1-7-7V369a7 7 0 0 1 7-7h15a7 7 0 0 1 7 7v123a7 7 0 0 1-7 7Zm39 0h-15a7 7 0 0 1-7-7V369a7 7 0 0 1 7-7h15a7 7 0 0 1 7 7v123a7 7 0 0 1-7 7Z"/><circle cx="196.7" cy="182.7" r="51" fill="#7170f6"/><path fill="#2f2e41" d="M214 405h-37a43 43 0 0 1-37-65l51-89a7 7 0 0 1 11 0l51 87a45 45 0 0 1-39 67Zm-5-201c3 0 7 0 10-2a8 8 0 0 0 4-6 5 5 0 0 0-2-5c-2-1-4-2-7-1l3-20h-2l-3 23 1-1c2 0 5-1 6 1a4 4 0 0 1 2 2 6 6 0 0 1-3 5c-2 2-6 2-9 2Zm18-32h11v2h-11zm-34 0h11v2h-11z"/><path fill="#7170f6" d="M185 394a7 7 0 0 1-1-3l-2-92a14 14 0 0 1 28 0l3 91a7 7 0 0 1-7 7l-15 1a7 7 0 0 1-6-4Z"/><path fill="#2f2e41" d="M192 145c6 8 16 14 26 12 10-1 18-8 21-18a30 30 0 0 0-8-26c-7-7-17-11-27-13-19-2-38 4-53 17a64 64 0 0 0-16 22 63 63 0 0 0-5 27c0 19 8 37 22 49a63 63 0 0 0 5 4c2 1 4-1 2-2a64 64 0 0 1-26-44 60 60 0 0 1 14-48c12-13 29-21 46-22 18-1 39 7 43 26 1 9-2 18-10 23-9 4-19 3-27-4a30 30 0 0 1-4-5c-2-1-4 0-3 2Z"/><path fill="#f1f1f1" d="m275 74 433-62 29 206-432 62z" data-name="ab2e16f2-9798-47da-b25d-769524f3c86f"/><path fill="#fff" d="m290 90 408-59 25 172-408 59z" data-name="bf81c03f-68cf-4889-8697-1102f95f97bb"/><path fill="#e5e5e5" d="M274 62 706 0l3 19-433 62z" data-name="f065dccc-d150-492a-a09f-a7f3f89523f0"/><circle cx="288.7" cy="71.3" r="3.4" fill="#fff" data-name="bdbbf39c-df25-4682-8b85-5a6af4a1bd14"/><circle cx="301.6" cy="69.5" r="3.4" fill="#fff" data-name="abcd4292-0b1f-4102-9b5e-e8bbd87baabc"/><circle cx="314.5" cy="67.6" r="3.4" fill="#fff" data-name="a3fb731e-8b3d-41ca-96f2-91600dc0b434"/><path fill="#e6e6e6" d="M370 100h437v208H370z" data-name="ab2e16f2-9798-47da-b25d-769524f3c86f"/><path fill="#fff" d="M383 118h412v173H383z" data-name="bf81c03f-68cf-4889-8697-1102f95f97bb"/><path fill="#cbcbcb" d="M370 88h437v19H370z" data-name="f065dccc-d150-492a-a09f-a7f3f89523f0"/><circle cx="383.9" cy="99.1" r="3.4" fill="#fff" data-name="bdbbf39c-df25-4682-8b85-5a6af4a1bd14"/><circle cx="396.9" cy="99.1" r="3.4" fill="#fff" data-name="abcd4292-0b1f-4102-9b5e-e8bbd87baabc"/><circle cx="410" cy="99.1" r="3.4" fill="#fff" data-name="a3fb731e-8b3d-41ca-96f2-91600dc0b434"/><path fill="#e6e6e6" d="M620 144h58v4h-58zm0 13h90v4h-90zm1 12h73v4h-73zm-1 14h43v4h-43zm0 13h64v4h-64zm-26-53h7v7h-7zm0 13h7v7h-7zm0 12h7v7h-7zm0 13h7v7h-7zm0 13h7v7h-7zm26 15h58v4h-58zm0 13h90v4h-90zm1 12h73v4h-73zm-1 13h43v4h-43zm0 13h64v4h-64zm-26-52h7v7h-7zm0 12h7v7h-7zm0 13h7v7h-7zm0 13h7v7h-7zm0 13h7v7h-7zm-157-16h58v4h-58zm-8 12h73v4h-73zm74-67a38 38 0 0 1-55 33 38 38 0 1 1 55-33Z"/><circle cx="465.7" cy="176" r="10.3" fill="#fff"/><path fill="#fff" d="M483 208a53 53 0 0 1-35-1l7-15h21Z"/><path fill="#7170f6" d="M352 282c-18 0-33-15-33-34s15-35 33-35 32 16 32 35-14 34-32 34Zm0-60c-14 0-24 11-24 26s10 25 24 25 23-11 23-25-10-26-23-26Z"/><path fill="#3f3d56" d="M382 342h-61a21 21 0 0 1-21-20v-61a14 14 0 0 1 14-14h75a14 14 0 0 1 14 14v61a21 21 0 0 1-21 20Z"/><path fill="#fff" d="M364 282a12 12 0 1 0-18 11v18h11v-18a12 12 0 0 0 7-11Z"/><path fill="#3f3d56" d="M382 500H1a1 1 0 0 1 0-2h381a1 1 0 0 1 0 2Z"/></svg>
 
 - Install with `sudo apt install ufw`.
 - Allow SSH, 80 and 443 ports using these commands:
@@ -243,16 +249,16 @@ sudo apt -y install supervisor
 
 > Browser will show it's not trusted site, so you'll need to use it behind cloudflare CDN
 
-- ```bash
+```bash
   sudo mkdir -p /etc/letsencrypt/live/🌍/
-  ```
-- ```bash
+```
+```bash
   # Replace "🏛️" with your company name (No whitespaces)
   sudo openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 3650 \
   -subj "/C=US/ST=Oregon/L=Portland/O=🏛️/OU=Org/CN=🌍" \
   -out /etc/letsencrypt/live/🌍/fullchain.pem \
   -keyout /etc/letsencrypt/live/🌍/privkey.pem
-  ```
+```
 - Edit `sites/🌍/site_config.json`.
 
 - Add those two lines.
@@ -279,17 +285,17 @@ sudo $HOME/.local/bin/bench migrate
 
 ## Common issues
 
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 819 610"><circle cx="278.9" cy="364.6" r="64.1" fill="#e5e5e5"/><path d="M422 467a64 64 0 0 0 107 68 64 64 0 1 1-107-68Z" opacity=".2" style="isolation:isolate" transform="translate(-190 -145)"/><path fill="#cbcbcb" d="m279 365 3 181h-6l3-181z"/><circle cx="390.5" cy="261.1" r="77.2" fill="#e5e5e5"/><path d="M638 354a77 77 0 0 1-129 82 77 77 0 1 0 129-82Z" opacity=".2" style="isolation:isolate" transform="translate(-190 -145)"/><path fill="#cbcbcb" d="m390 261-4 219h8l-4-219zm-143-72 11-9c-8-1-12 4-13 7-6-2-13 1-13 1l21 8a16 16 0 0 0-6-7Zm-26-73 10-8c-8-1-11 4-13 7-6-3-13 1-13 1l21 8a16 16 0 0 0-5-8Zm148 47 11-8c-8-1-12 3-13 7-6-3-13 1-13 1l21 7a16 16 0 0 0-6-7Zm-10 317s0-9 9-8m47 8s0-9 8-8m-24 8s0-9 8-8m-63 8s0-9-9-8m44 8s-1-8-9-7m-119 73s0-9 9-8m47 8s0-9 8-8m-24 8s0-9 8-8m-63 8s0-9-9-8m44 8s-1-8-9-7"/><path fill="#3f3d56" d="M567 152h108v10H567zm0 35h108v10H567zm0 32h108v10H567z"/><path fill="#7170f6" d="M527 156a12 12 0 1 1 12 13 13 13 0 0 1-12-13Zm0 36a12 12 0 1 1 12 12 13 13 0 0 1-12-12Zm0 31a12 12 0 1 1 12 13 13 13 0 0 1-12-13Z"/><path fill="#3f3d56" d="m421 241-1-2 40-52h53v2h-52l-40 52zM0 266h108v10H0zm0 35h108v10H0zm0 32h108v10H0z"/><path fill="#7170f6" d="M135 283a12 12 0 1 1 13-13 12 12 0 0 1-13 13Zm0 35a12 12 0 1 1 13-12 12 12 0 0 1-13 12Zm0 32a12 12 0 1 1 13-13 12 12 0 0 1-13 13Z"/><path fill="#3f3d56" d="m253 355-40-52h-52v-2h53l1 1 40 51-2 2zM373 8h108v10H373zm0 35h108v10H373zm0 32h108v10H373z"/><path fill="#7170f6" d="M333 12a12 12 0 1 1 12 13 13 13 0 0 1-12-13Zm0 36a12 12 0 1 1 12 12 13 13 0 0 1-12-12Zm0 31a12 12 0 1 1 12 13 13 13 0 0 1-12-13Z"/><path fill="#3f3d56" d="m227 97-1-2 40-52h53v2h-52l-40 52z"/><path fill="#ffb7b7" d="M757 603h-6l-4-26h10v26z"/><path fill="#2f2e41" d="M759 610h-22a8 8 0 0 1 9-9h13Z"/><path fill="#ffb7b7" d="M728 603h-6l-4-26h10v26z"/><path fill="#2f2e41" d="M730 610h-22a8 8 0 0 1 9-9h13Zm-17-177-9 14 15 147 16 1 4-127 5 68-2 59 17 1 9-86 8-68-15-13-48 4z"/><path fill="#7170f6" d="m756 321-25 1-23 115s37 18 53 1l9-6Z"/><path fill="#3f3d56" d="m756 321 22 13-8 54 7 55-23-4s-5-51-2-67 4-51 4-51Zm-25 1-27 14 2 59-13 45s27 9 32-5 6-113 6-113Z"/><path fill="#ffb7b7" d="M766 456a7 7 0 0 0 3-10l8-13-7-7-11 19a7 7 0 0 0 7 11Z"/><path fill="#3f3d56" d="m766 341 11-8s10 8 10 16l2 49-16 49-12-9 14-39-11-33Z"/><path fill="#ffb7b7" d="M699 458a7 7 0 0 1-1-10l-6-14 7-6 8 20a7 7 0 0 1-8 10Z"/><path fill="#3f3d56" d="m715 345-10-10s-10 7-11 15l-10 48 9 51 14-8-9-40 16-31Z"/><circle cx="744.1" cy="296.7" r="17.1" fill="#ffb7b7"/><path fill="#2f2e41" d="M740 282c-2-1-3 0-5 1l-5 1a5 5 0 0 1-3-4 15 15 0 0 1-1-5l2 1-1-2 18-2c5 0 11-1 15 3a15 15 0 0 1 5 7c3 11 7 26-11 30-3-1 2-10 2-13s-2-6-5-6l-1 3c1-2-4-8-5-9a17 17 0 0 1-2-2c-1-2-1-3-3-3Z"/><path fill="#cbcbcb" d="M818 610H639a1 1 0 0 1 0-2h179a1 1 0 0 1 0 2Z"/></svg>
+
 **Check if all services are running**
 
 `sudo supervisorctl status`
 
-- `supervisor.service` cannot restart
+**`supervisor.service` cannot restart**
 
-  > You can always check system logs with `sudo journalctl|grep supervisor`
-
-  > In my case I found it missing section `[supervisord]` in `ini`!
-
-  > So the solution would be adding these sections in `/srv/www/frappe-bench/config/supervisor.conf` and restart the service
+> You can always check system logs with `sudo journalctl|grep supervisor`,
+> In my case I found it missing section `[supervisord]` in `ini`!
+> So the solution would be adding these sections in `/srv/www/frappe-bench/config/supervisor.conf` and restart the service
 
 ```ini
 [supervisord]
