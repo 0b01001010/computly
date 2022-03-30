@@ -60,6 +60,7 @@
 			display: block;
 			right: 1.5rem;
 			bottom: 1.5rem;
+			z-index: 99;
 			transition: all 200ms ease-in-out;
 		}
 		.scroll2top > button {
