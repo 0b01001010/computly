@@ -44,12 +44,12 @@
 
 	.main-wrapper {
 		display: flex;
+		flex-direction: row;
 		justify-content: center;
 		align-items: center;
 		.theme-switch-wrapper {
-			position: relative;
-			width: 4rem;
-			height: 2rem;
+			width: 10vmin;
+			height: 5vmin;
 			background: var(--switch-secondary-color);
 			border-radius: 49% 25% 60% 22% / 40% 84% 64% 86%;
 			box-shadow: inset 1px 1px 5px hsla(0, 0%, 0%, 0.5);
@@ -71,27 +71,27 @@
 				}
 
 				.star-1 {
-					top: 10px;
-					left: 35px;
+					top: 1vmin;
+					left: 4vmin;
 					z-index: 0;
 					width: 30%;
-					height: 3px;
+					height: 0.5vmin;
 				}
 
 				.star-2 {
-					top: 18px;
-					left: 28px;
+					top: 2vmin;
+					left: 3vmin;
 					z-index: 1;
 					width: 30%;
-					height: 3px;
+					height: 0.5vmin;
 				}
 
 				.star-3 {
-					top: 27px;
-					left: 40px;
+					top: 3vmin;
+					left: 4vmin;
 					z-index: 0;
 					width: 30%;
-					height: 3px;
+					height: 0.5vmin;
 				}
 
 				.star-4,
@@ -99,68 +99,64 @@
 				.star-6 {
 					opacity: 0;
 					transition: all 250ms 0 cubic-bezier(0.445, 0.05, 0.55, 0.95);
+					aspect-ratio: 1;
 				}
 
 				.star-4 {
-					top: 16px;
-					left: 11px;
+					top: 4vmin;
+					left: 1vmin;
 					z-index: 0;
-					width: 2px;
-					height: 2px;
-					transform: translate3d(3px, 0, 0);
+					width: 0.4vmin;
 				}
 
 				.star-5 {
-					top: 32px;
-					left: 17px;
+					top: 2vmin;
+					left: 1.5vmin;
 					z-index: 0;
-					width: 3px;
-					height: 3px;
-					transform: translate3d(3px, 0, 0);
+					width: 0.5vmin;
 				}
 
 				.star-6 {
-					top: 36px;
-					left: 28px;
+					top: 3vmin;
+					left: 2vmin;
 					z-index: 0;
-					width: 2px;
-					height: 2px;
-					transform: translate3d(0.5rem, 0, 0);
+					width: 0.4vmin;
 				}
 			}
 			.theme-btn-slider {
 				position: absolute;
-				margin: 5px;
-				width: 1.5rem;
+				margin: 1vmin;
+				width: 3vmin;
 				aspect-ratio: 1;
 				border-radius: 100vw;
 				background: var(--switch-primary-color);
-
 				transform: translateX(0px);
 				transition: transform 250ms;
 			}
 			input:checked + .slider-wrapper .theme-btn-slider {
 				background: transparent;
-				transform: translateX(1.1rem);
-				box-shadow: 0.5rem 0px 0 0 var(--switch-primary-color);
+				transform: translateX(3vmin);
+				box-shadow: 1vmin 0px 0 0 var(--switch-primary-color);
 			}
 			input:checked + .slider-wrapper {
+				.star-1,
+				.star-2,
+				.star-3 {
+					aspect-ratio: 1;
+				}
 				.star-1 {
-					width: 2px;
-					height: 2px;
+					width: 0.4vmin;
 					animation: blink 3s infinite;
 				}
 
 				.star-2 {
-					width: 4px;
-					height: 4px;
-					transform: translate3d(20px, 0, 0);
+					width: 0.4vmin;
+					transform: translate3d(3vmin, 0, 0);
 				}
 
 				.star-3 {
-					width: 2px;
-					height: 2px;
-					transform: translate3d(-7px, 0, 0);
+					width: 0.4vmin;
+					transform: translate3d(-1vmin, 0, 0);
 					animation: blink 2s infinite;
 				}
 
@@ -170,16 +166,16 @@
 					opacity: 1;
 				}
 				.star-4 {
-					transform: translate3d(10px, 0, 0);
+					transform: translate3d(3vmin, 0, 0);
 					transition: all 250ms 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 				}
 				.star-5 {
-					transform: translate3d(0, 0, 0);
+					transform: translate3d(0, -0.4vmin, 0);
 					transition: all 250ms 350ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 					animation: blink 5s infinite;
 				}
 				.star-6 {
-					transform: translate3d(0.7rem, 0, 0);
+					transform: translate3d(2.5vmin, -0.5vmin, 0);
 					transition: all 250ms 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 				}
 			}
