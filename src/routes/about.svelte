@@ -7,7 +7,10 @@
 	<title>About</title>
 </svelte:head>
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
-	<h1>About</h1>
+	<header>
+		<h1>About Computly</h1>
+		<p>Never settle for less than great web design.</p>
+	</header>
 	<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 711 670">
 		<path fill="#e6e6e6" d="M516 380v185l31 50 3 4h122l2-239H516z" />
 		<path d="M516 380v185l31 50 2-235h-33z" opacity=".1" />
@@ -85,8 +88,8 @@
 		</g>
 	</svg>
 	<p>
-		Welcome to Computly, a revolutionary way to create websites. currently consists of a lone
-		developer.
+		Welcome to Computly, where we make modern websites using futuristic technologies. currently
+		consists of a lone developer.
 	</p>
 	<p>
 		This blog is where We occasionally post articles covering a range of topics, from our
@@ -94,6 +97,18 @@
 		here and we welcome you to engage with the content using comments (Coming soon).
 	</p>
 	<p>
-		You can visit our landpage <a href="https://computly.me">here</a>.
+		We invite you to take a look at our portfolio <a href="https://portfolio.computly.me">here</a>.
 	</p>
 </article>
+
+<style lang="scss">
+	header {
+		h1 {
+			margin-bottom: 0;
+		}
+		p {
+			margin-top: 0;
+			text-align: center;
+		}
+	}
+</style>
