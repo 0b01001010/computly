@@ -3,6 +3,7 @@
 	import Image from '$lib/Components/Image.svelte';
 	import { fly } from 'svelte/transition';
 	import { backInOut } from 'svelte/easing';
+	import { browser } from '$app/env';
 
 	/** @type {string} */
 	export let title;
@@ -14,9 +15,19 @@
 	export const description = '';
 	$: darkMode = $themeStore === 'dark';
 
+	const rem = browser && parseFloat(getComputedStyle(document.documentElement).fontSize);
 	let scroll2Top = false;
+	let scrollReachedBottom = false;
+	let scroll2TopTranslate = 0;
 	const handleScroll = () => {
 		scroll2Top = document.body.scrollTop > 500 || document.documentElement.scrollTop > 500;
+		const scrollHeight =
+			(document.body.scrollTop || document.documentElement.scrollTop) + window.innerHeight;
+		const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight;
+		scrollReachedBottom =
+			scrollHeight > document.body.scrollHeight - footerHeight + 1.5 * rem - 0.5 * rem;
+		scroll2TopTranslate =
+			scrollHeight - (document.body.scrollHeight - footerHeight + 1.5 * rem) + 0.5 * rem;
 	};
 </script>
 
@@ -31,7 +42,13 @@
 	<slot />
 </article>
 {#if scroll2Top}
-	<div class="scroll2top" transition:fly={{ y: 100, duration: 400, easing: backInOut }}>
+	<div
+		class="scroll2top"
+		transition:fly={{ y: 100, duration: 400, easing: backInOut }}
+		style="--translateHeight:-{scroll2TopTranslate}px;{scrollReachedBottom
+			? 'transform: translateY(var(--translateHeight));'
+			: ''}"
+	>
 		<button
 			on:click={() => {
 				window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -61,7 +78,7 @@
 			right: 1.5rem;
 			bottom: 1.5rem;
 			z-index: 99;
-			transition: all 200ms ease-in-out;
+			transition: border 200ms ease-in-out;
 		}
 		.scroll2top > button {
 			border-radius: 46% 54% 70% 30% / 30% 50% 50% 70%;
@@ -75,7 +92,7 @@
 			width: 2rem;
 			height: 2rem;
 			fill: var(--primary);
-			transition: all 200ms ease-in-out;
+			transition: fill 200ms ease-in-out;
 		}
 		.scroll2top:hover > button {
 			border: 2px solid var(--secondary);
