@@ -75,6 +75,7 @@
 			width: 2rem;
 			height: 2rem;
 			fill: var(--primary);
+			transition: all 200ms ease-in-out;
 		}
 		.scroll2top:hover > button {
 			border: 2px solid var(--secondary);
