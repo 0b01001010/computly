@@ -4,6 +4,8 @@ date: 2021-11-30
 description: A full manual installation guide for ERPNext 13, using VPS + Debian 11.
 ---
 <script context="module">
+import CodeBlock from '$lib/Components/CodeBlock.svelte';
+
 export const load = async () => {
   return {
     props: {
@@ -49,10 +51,11 @@ Here we are using digitalocean Debian 11 droplet ($5/month)
 
 - Login as root to your server IP
 
-  ```bash
-  ssh root@🖥️
-  ```
-
+<CodeBlock lang="bash">
+ssh root@🖥️
+sudo apt update && sudo apt upgrade -y
+</CodeBlock>
+  
 - Add `unstable` repo to be able to install some dependencies we'll need later
 
   ```bash

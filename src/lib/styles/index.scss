@@ -42,9 +42,6 @@ article {
 	* {
 		width: 100%;
 	}
-	pre {
-		width: 90%;
-	}
 	blockquote {
 		position: relative;
 		padding: 0.5rem;
@@ -65,6 +62,15 @@ article {
 			height: 70%;
 			width: 0.5ch;
 			border-radius: 50vw;
+		}
+	}
+	.code-block {
+		.copy {
+			button {
+				padding: 0;
+				line-height: 0;
+				border-radius: 2px;
+			}
 		}
 	}
 	ul,
