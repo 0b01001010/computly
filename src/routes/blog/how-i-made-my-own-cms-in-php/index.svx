@@ -66,7 +66,17 @@ Open the project directory , then open `Z_other_files` sub-directory , and selec
 
 Being done, You will need to edit `config.php` file which located in the main directory.
 
-Change configurations to get it working.
+```php
+<?php
+return [
+    'server' => 'localhost',
+    'dbname' => 'blog',
+    'user'   => 'root',
+    'pass'   => 'root'
+];
+```
+
+Change those configurations to get it working.
 
 _This project is an application on this [tutorial](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) (in Arabic)_
 

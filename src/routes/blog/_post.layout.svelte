@@ -5,8 +5,6 @@
 	import { backInOut } from 'svelte/easing';
 	import { browser } from '$app/env';
 
-	import '$lib/styles/prism-a11y-dark.scss';
-
 	/** @type {string} */
 	export let title;
 	/** @type {import('$lib/types/imageProps').ImageProps[]} */

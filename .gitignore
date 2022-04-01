@@ -9,3 +9,5 @@ node_modules
 .vercel
 generate*.js
 src/lib/utilities/image.js
+test/main
+test/main.c
