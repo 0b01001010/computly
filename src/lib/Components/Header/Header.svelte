@@ -2,7 +2,7 @@
 	import { Navbar } from 'spaper';
 </script>
 
-<a class="logo" href="/" target="_self" rel="external"> Computly </a>
+<a class="logo" href="/"> Computly </a>
 <header>
 	<Navbar>
 		<ul class="inline">
@@ -19,7 +19,7 @@
 				<a sveltekit:prefetch href="/contact">Contact</a>
 			</li>
 			<li>
-				<a href="https://portfolio.computly.me" target="_self" rel="external">Portfolio</a>
+				<a href="https://portfolio.computly.me" rel="external">Portfolio</a>
 			</li>
 		</ul>
 	</Navbar>

@@ -1,6 +1,7 @@
-import { mdsvex } from 'mdsvex';
-import vercel from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
+import vercel from '@sveltejs/adapter-vercel';
+import { mdsvex } from 'mdsvex';
+import { imagetools } from 'vite-imagetools';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -17,6 +18,9 @@ const config = {
 		adapter: vercel(),
 		files: {
 			hooks: 'src/hooks'
+		},
+		vite: {
+			plugins: [imagetools()]
 		}
 	},
 	onwarn: (warning, handler) => {

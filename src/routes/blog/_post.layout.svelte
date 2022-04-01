@@ -5,6 +5,8 @@
 	import { backInOut } from 'svelte/easing';
 	import { browser } from '$app/env';
 
+	import '$lib/styles/prism-a11y-dark.scss';
+
 	/** @type {string} */
 	export let title;
 	/** @type {import('$lib/types/imageProps').ImageProps[]} */
@@ -44,7 +46,7 @@
 {#if scroll2Top}
 	<div
 		class="scroll2top"
-		transition:fly={{ y: 100, duration: 400, easing: backInOut }}
+		transition:fly={{ y: 100, duration: 500, easing: backInOut }}
 		style="--translateHeight:-{scroll2TopTranslate}px;{scrollReachedBottom
 			? 'transform: translateY(var(--translateHeight));'
 			: ''}"
@@ -96,11 +98,6 @@
 		}
 		.scroll2top:hover > button {
 			border: 2px solid var(--secondary);
-		}
-		.scroll2top:hover > button > svg {
-			width: 2rem;
-			height: 2rem;
-			fill: var(--secondary);
 		}
 	}
 </style>

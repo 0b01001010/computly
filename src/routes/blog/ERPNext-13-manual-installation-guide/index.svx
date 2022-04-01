@@ -49,20 +49,20 @@ Here we are using digitalocean Debian 11 droplet ($5/month)
 
 - Login as root to your server IP
 
-  ```bash
-    ssh root@🖥️
-  ```
+```bash
+  ssh root@🖥️
+```
   
 - Add `unstable` repo to be able to install some dependencies we'll need later
 
-  ```bash
-  echo 'deb http://ftp.uk.debian.org/debian/ unstable non-free contrib main' >> /etc/apt/sources.list
-  ```
+```bash
+echo 'deb http://ftp.uk.debian.org/debian/ unstable non-free contrib main' >> /etc/apt/sources.list
+```
 
 - Now update your system with
-  ```bash
-  apt update && apt upgrade -y
-  ```
+```bash
+apt update && apt upgrade -y
+```
 
 ## Adding a new user
 
@@ -88,9 +88,9 @@ chown -R 👤 /home/👤/.ssh
 ```
 
 - Logout then login again to the new user account:
-  ```bash
-  ssh 👤@🖥️
-  ```
+```bash
+ssh 👤@🖥️
+```
 
 ## Configuring SSH
 
@@ -129,10 +129,10 @@ sudo systemctl restart ssh
 
 - Install with `sudo apt install ufw`.
 - Allow SSH, 80 and 443 ports using these commands:
-  ```bash
-  sudo ufw allow ssh # Or the new port you chose above (e.g: sudo ufw allow 1234)
-  sudo ufw allow nginx
-  ```
+```bash
+sudo ufw allow ssh # Or the new port you chose above (e.g: sudo ufw allow 1234)
+sudo ufw allow nginx
+```
 - `sudo ufw enable`
 - Check if it's working with `sudo ufw status`
 
