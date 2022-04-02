@@ -91,7 +91,7 @@
 		<path fill="#3f3d56" d="m723 234 1-1 52 51-1 2z" />
 		<path fill="#ffb6b6" d="M284 190v-33l-20 2 7 21-24 37a8 8 0 1 0 9 7Z" />
 	</svg>
-	<p>Feel free to get in touch with us using one of these methods:</p>
+	<p>Feel free to get in touch using one of these methods:</p>
 	<div class="contact-methods">
 		<a href="https://www.linkedin.com/in/a3k/" target="_blank" rel="external">
 			<Picture alt="LinkedIn" src={linkedInImages[1].srcset} {width} {height}>

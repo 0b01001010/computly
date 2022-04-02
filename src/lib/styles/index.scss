@@ -33,7 +33,10 @@ body {
 	background-color: hsl(40, 2%, 25%);
 }
 
-.main-content {
+main.main-content {
+	margin: 2rem auto;
+	width: min(960px, 90vw);
+	z-index: 1;
 	// Blog index
 	picture {
 		width: 100%;

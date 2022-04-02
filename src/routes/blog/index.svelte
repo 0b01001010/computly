@@ -38,7 +38,7 @@
 	<title>Blog posts</title>
 </svelte:head>
 
-<div class="main-content border border-primary {$themeStore === 'dark' ? 'bg-dark' : 'bg-light'}">
+<main class="main-content border border-primary {$themeStore === 'dark' ? 'bg-dark' : 'bg-light'}">
 	<section>
 		{#each posts as post}
 			<div class="post-card">
@@ -56,50 +56,45 @@
 			</div>
 		{/each}
 	</section>
-</div>
+</main>
 
 <style lang="scss">
-	div.main-content {
-		margin: 2rem auto;
-		width: min(960px, 90vw);
-		z-index: 1;
-		section {
-			display: grid;
-			padding: 1rem;
-			grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-			grid-column-gap: 1rem;
-			grid-auto-rows: 1fr;
-			.post-card {
+	section {
+		display: grid;
+		padding: 1rem;
+		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		grid-column-gap: 1rem;
+		grid-auto-rows: 1fr;
+		.post-card {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: stretch;
+			a.image-link {
+				text-decoration: none;
+				color: inherit;
+				background: none;
+				height: 100%;
 				display: flex;
-				flex-direction: column;
 				justify-content: center;
-				align-items: stretch;
-				a.image-link {
-					text-decoration: none;
-					color: inherit;
-					background: none;
-					height: 100%;
-					display: flex;
-					justify-content: center;
-					align-items: center;
-					filter: opacity(0.8);
-					transition: all 100ms ease-in-out;
-					&:hover {
-						filter: opacity(1);
-					}
+				align-items: center;
+				filter: opacity(0.8);
+				transition: all 100ms ease-in-out;
+				&:hover {
+					filter: opacity(1);
 				}
-				.post-contents {
-					padding: 1rem;
-					h1 {
-						font-size: 5vmin;
-						letter-spacing: -2px;
-						text-align: center;
-					}
-					div {
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-					}
+			}
+			.post-contents {
+				padding: 1rem;
+				h1 {
+					font-size: 5vmin;
+					letter-spacing: -2px;
+					text-align: center;
+				}
+				div {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
 				}
 			}
 		}

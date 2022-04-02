@@ -87,17 +87,18 @@
 			<path d="M501 208h71v7h-71z" data-name="Rectangle 74" />
 		</g>
 	</svg>
+	<p>Welcome to Computly, where I make modern websites using cutting edge technologies.</p>
 	<p>
-		Welcome to Computly, where we make modern websites using futuristic technologies. currently
-		consists of a lone developer.
+		In this blog I occasionally post articles covering a range of topics, from my perspective on
+		software development and other IT fields. I hope you enjoy the articles featured here and you're
+		welcome to engage with the content using comments (Coming soon).
 	</p>
 	<p>
-		This blog is where We occasionally post articles covering a range of topics, from our
-		perspective on software development and other IT fields. We hope you enjoy the articles featured
-		here and we welcome you to engage with the content using comments (Coming soon).
-	</p>
-	<p>
-		We invite you to take a look at our portfolio <a href="https://portfolio.computly.me">here</a>.
+		I invite you to take a look at my portfolio <a
+			href="https://portfolio.computly.me"
+			rel="external"
+			target="_blank">here</a
+		>.
 	</p>
 </article>
 
