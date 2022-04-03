@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Social from '$lib/Components/Buttons/social.svelte';
 	import { theme as themeStore } from '$lib/stores/theme';
 	$: darkMode = $themeStore === 'dark';
 </script>
@@ -449,6 +450,39 @@
 			target="_blank">here</a
 		>.
 	</p>
+	<h3>Follow us on social media</h3>
+	<ul class="social-links">
+		<li>
+			<Social color="#1d9bf0" title="Twitter" href="https://twitter.com/computly">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path
+						d="M22 6a8 8 0 0 1-2 0 4 4 0 0 0 2-2l-3 1a4 4 0 0 0-7 4 12 12 0 0 1-9-5 4 4 0 0 0 0 3l1 3a4 4 0 0 1-1 0 4 4 0 0 0 3 4 4 4 0 0 1-2 0 4 4 0 0 0 4 3 8 8 0 0 1-6 1 12 12 0 0 0 6 2A12 12 0 0 0 20 8a8 8 0 0 0 2-2z"
+					/>
+				</svg>
+			</Social>
+		</li>
+		<li>
+			<Social color="#3b5998" title="Facebook" href="https://facebook.com/computly">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path
+						d="M12 2a10 10 0 0 0-1.56 19.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.9 3.78-3.9 1.09 0 2.23.2 2.23.2v2.46H15.2c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 12 2z"
+					/>
+				</svg>
+			</Social>
+		</li>
+		<li>
+			<Social color="#0088cc" title="Telegram" href="https://t.me/computly">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path
+						d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm-3.1-8.8.9 2.8c0 .3.2.4.4.4s.3-.2.4-.3l1.2-1.1 2.6 1.9c.4.2.8 0 .9-.5l1.6-7.8c.2-.7 0-1-.7-.8l-9.7 3.8c-.7.3-.6.6-.1.8l2.5.8z"
+					/>
+				</svg>
+			</Social>
+		</li>
+	</ul>
 </article>
 
 <style lang="scss">
@@ -459,6 +493,34 @@
 		p {
 			margin-top: 0;
 			text-align: center;
+		}
+	}
+	ul.social-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		gap: 2vmin;
+		li {
+			width: fit-content;
+			&::before {
+				display: none;
+			}
+			svg {
+				fill: currentColor;
+				margin-left: 0.4em;
+				transition: all 0.5s;
+				width: 1.2rem;
+				height: 1.2rem;
+				margin: 0;
+			}
+			&::hover {
+				svg {
+					transform: rotate(360deg);
+				}
+			}
 		}
 	}
 </style>
