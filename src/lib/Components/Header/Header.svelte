@@ -53,7 +53,7 @@
 			display: flex;
 			justify-content: center;
 			flex-grow: 1;
-			gap: 1ch;
+			gap: 4vmin;
 		}
 	}
 </style>

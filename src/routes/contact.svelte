@@ -1,17 +1,39 @@
 <script lang="ts">
 	import { theme as themeStore } from '$lib/stores/theme';
 	$: darkMode = $themeStore === 'dark';
-	import { Picture } from 'svelte-lazy-loader';
-	const linkedInImages = [
-		{ srcset: '/icons/in.avif', type: 'image/avif' },
-		{ srcset: '/icons/in.png', type: 'image/png' }
-	];
-	const mailImages = [
-		{ srcset: '/icons/mail.avif', type: 'image/avif' },
-		{ srcset: '/icons/mail.png', type: 'image/png' }
-	];
-	const width = '24px';
-	const height = '24px';
+	import liIconMeta from '$lib/assets/icons/linkedin.png?w=32&format=avif;webp;png&metadata';
+	import liPlaceholder from '$lib/assets/icons/linkedin.png?w=32&blur=5&quality=10';
+	import mailIconMeta from '$lib/assets/icons/email.png?w=32&format=avif;webp;png&metadata';
+	import mailPlaceholder from '$lib/assets/icons/email.png?w=32&blur=5&quality=10';
+	import Image from '$lib/Components/Image.svelte';
+
+	const linkedInImages = {
+		sources: liIconMeta.map((li) => {
+			return {
+				srcset: li.src,
+				type: li.format
+			};
+		}),
+		placeholder: liPlaceholder,
+		width: 32,
+		height: 32,
+		alt: 'LinkedIn',
+		name: 'LinkedIn'
+	};
+
+	const mailImages = {
+		sources: mailIconMeta.map((mail) => {
+			return {
+				srcset: mail.src,
+				type: mail.format
+			};
+		}),
+		placeholder: mailPlaceholder,
+		width: 32,
+		height: 32,
+		alt: 'Email',
+		name: 'Email'
+	};
 </script>
 
 <svelte:head>
@@ -94,18 +116,10 @@
 	<p>Feel free to get in touch using one of these methods:</p>
 	<div class="contact-methods">
 		<a href="https://www.linkedin.com/in/a3k/" target="_blank" rel="external">
-			<Picture alt="LinkedIn" src={linkedInImages[1].srcset} {width} {height}>
-				{#each linkedInImages as image}
-					<source data-srcset={image.srcset} type={image.type} />
-				{/each}
-			</Picture>
+			<Image imageData={linkedInImages} />
 		</a>
 		<a href="mailto://contact@computly.me" target="_blank" rel="external">
-			<Picture alt="Send me an email" src={mailImages[1].srcset} {width} {height}>
-				{#each mailImages as image}
-					<source data-srcset={image.srcset} type={image.type} />
-				{/each}
-			</Picture>
+			<Image imageData={mailImages} />
 		</a>
 	</div>
 </article>
@@ -126,8 +140,10 @@
 		gap: 1rem;
 		a {
 			background: none;
-			&:first-of-type {
-				transform: scale(0.7);
+			transition: transform 200ms ease-in-out;
+			&:hover {
+				transform: scale(1.2);
+				filter: contrast(1.5);
 			}
 		}
 	}

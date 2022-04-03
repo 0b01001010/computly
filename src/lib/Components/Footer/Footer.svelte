@@ -17,8 +17,6 @@
 		width: 100%;
 		padding: 1rem;
 		text-align: center;
-		.copyright {
-			font-size: 12px;
-		}
+		font-size: 3vmin;
 	}
 </style>
