@@ -1,9 +1,13 @@
 <script lang="ts">
 	import { theme as themeStore } from '$lib/stores/theme';
 	$: darkMode = $themeStore === 'dark';
+	// @ts-ignore
 	import liIconMeta from '$lib/assets/icons/linkedin.png?w=32&format=avif;webp;png&metadata';
+	// @ts-ignore
 	import liPlaceholder from '$lib/assets/icons/linkedin.png?w=32&blur=5&quality=10';
+	// @ts-ignore
 	import mailIconMeta from '$lib/assets/icons/email.png?w=32&format=avif;webp;png&metadata';
+	// @ts-ignore
 	import mailPlaceholder from '$lib/assets/icons/email.png?w=32&blur=5&quality=10';
 	import Image from '$lib/Components/Image.svelte';
 

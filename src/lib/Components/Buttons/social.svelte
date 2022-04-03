@@ -4,7 +4,7 @@
 	export let color: string;
 </script>
 
-<a class="social-button" {href} target="_blank" style="--icon-color:{color}">
+<a class="social-button" {href} target="_blank" rel="external" style="--icon-color:{color}">
 	<div class="icon">
 		<slot />
 	</div>
