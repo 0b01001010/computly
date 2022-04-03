@@ -482,6 +482,16 @@
 				</svg>
 			</Social>
 		</li>
+		<li>
+			<Social color="#0088cc" title="Linkedin" href="https://linkedin.com/company/computly">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path
+						d="M7 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm0 3.5H3V21h4V8.5zm6.3 0h-4V21h4v-6.6c0-3.6 4.7-4 4.7 0V21h4v-8c0-6.1-7-5.9-8.7-2.8V8.5z"
+					/>
+				</svg>
+			</Social>
+		</li>
 	</ul>
 </article>
 
@@ -512,8 +522,7 @@
 				fill: currentColor;
 				margin-left: 0.4em;
 				transition: all 0.5s;
-				width: 1.2rem;
-				height: 1.2rem;
+				width: 1rem;
 				margin: 0;
 			}
 			&::hover {
