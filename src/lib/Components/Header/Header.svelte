@@ -48,10 +48,12 @@
 		box-shadow: 0px 2px 5px rgba(145, 145, 145, 0.575);
 		display: flex;
 		align-items: center;
-		gap: 1rem;
 		z-index: 100;
 		ul {
+			display: flex;
+			justify-content: center;
 			flex-grow: 1;
+			gap: 1ch;
 		}
 	}
 </style>

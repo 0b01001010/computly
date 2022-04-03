@@ -16,16 +16,16 @@ export const load = async () => {
 	import Image from '$lib/Components/Image.svelte';
   export let imagesData;
 </script>
-# Why
+## Why
 
 Sometimes you may need to convert a large number of bytes that was produced by your program into the appropriate human readable format. For example 297719372 bytes. For human eyes, it is easier to understand 298MB.
 
 Here's a quick code snippet for you, in case you want to convert your data to human readable format. We'll do this in C, but you can understand the algorithm and convert it to your preferred language:
 
-# How
+## How
 <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 609 459"><path fill="#fff" d="M523 341v53H86V64h437v277Z"/><path fill="#f2f2f2" d="M86 394v1h437v-1Zm0-330v1h437v-1Z"/><path fill="#f2f2f2" d="M467 358h2-2Zm-7 5 1-1a14 14 0 0 1 5-3 5 5 0 0 1 0-1h1l-13 5ZM0 63l3 52 606-50v-2Zm609 278v54H0v-2l36-53 236 53a559 559 0 0 0 144-18 123 123 0 0 0 15-5l23-7 12-5a1 1 0 0 1 1 0h2l2-1a467 467 0 0 0 28-12l14-7 17-10q18-10 33-21a361 361 0 0 0 32-25l11-11 3-3v73Z"/><path fill="#f2f2f2" d="M170 337H86v5h84a2 2 0 0 0 0-5Zm0-16H86v5h84a2 2 0 0 0 0-5Zm1-16a2 2 0 0 0-1 0H86v5h84a2 2 0 0 0 2-1 2 2 0 0 0-1-4Z"/><path fill="#e6e6e6" d="m201 299-7-33-3-11a3 3 0 0 0-4-2l-3 1-30 6a3 3 0 0 0-2 4 70 70 0 0 0 9 44 3 3 0 0 0 1 2 3 3 0 0 0 4 1l3-1 3-1 27-6a3 3 0 0 0 2-4Z"/><path fill="#fff" d="m198 297-7-31-2-8a3 3 0 0 0-3-2h-3l-26 6a3 3 0 0 0-2 4c0 12 1 22 6 28a14 14 0 0 0 10 11 14 14 0 0 0 7 0l18-4a3 3 0 0 0 2-4Z"/><path fill="#040404" d="M172 273a4 4 0 0 1 5-1 4 4 0 0 1 2 4l-1 6a5 5 0 0 0 2 5c1 1 2-1 1-2-2-1-1-3-1-5 1-2 2-5 1-7a6 6 0 0 0-10-2c-1 1 0 3 1 2Z"/><circle cx="181.5" cy="291.2" r="2.1" fill="#040404"/><path fill="#a0616a" d="M437 210a16 16 0 0 0-25 9l-30 78-51-29a16 16 0 1 0-10 16c11 11 58 59 77 40 16-15 40-76 46-96a16 16 0 0 0-7-18Z"/><path fill="#a0616a" d="m381 327 9 43 69 6 6-37-84-12z"/><path fill="#2f2e41" d="M477 394h-98l5-15 2-23h1l75 1h2l2 20a86 86 0 0 1 11 17Z"/><path fill="#3f3d56" d="m424 189 34-2 16 26s15 3 13 38-22 68-22 68l2-5-3 7 1 4 3 5v4l-3 7 4 7-88-8-3-12 5-6-3-9 4-8 2-1s-22-34 4-60l10-17 12-14Zm-113 50c-9-4-21-2-27 6-6 7-7 18 0 25 9 8 22 5 32 0 9-4 19-10 19-21a18 18 0 0 0-8-15 18 18 0 0 0-16-2c-3 1-2 5 1 4a14 14 0 0 1 19 11c1 9-7 15-14 19-8 4-19 7-27 3-7-4-9-13-5-20 5-8 17-10 25-7 3 1 4-2 1-3Z"/><path fill="#f2f2f2" d="M134 162c-7-3-15-2-20 4-4 5-5 13 1 18 6 6 15 4 22 0 7-2 14-7 14-15a13 13 0 0 0-6-11 13 13 0 0 0-11-1c-2 1-1 3 0 3a10 10 0 0 1 14 8c1 6-5 10-10 13-6 3-13 6-19 2-6-2-7-9-4-14 4-6 12-7 18-5 2 1 3-2 1-2Z"/><ellipse cx="507.2" cy="389.5" fill="#f2f2f2" rx="18" ry="12.2" transform="rotate(-15 -467 1385)"/><path fill="#f2f2f2" d="M170 158v22a2 2 0 0 0 3 0v-22a2 2 0 0 0-3 0Z"/><path fill="#f2f2f2" d="M160 170h22a2 2 0 0 0 0-3h-22a2 2 0 0 0 0 3Zm-73 11a1 1 0 0 1-1 1v-3a2 2 0 0 1 1 2Z"/><circle cx="92.3" cy="180.8" r="2" fill="#f2f2f2"/><path fill="#fff" d="M159 363c-3 0-6 2-6 5s3 6 6 6h364v-11Z"/><path fill="#040404" d="M436 363v11H159c-3 0-6-3-6-6s3-5 6-5Z"/><circle cx="426.1" cy="368" r="11" fill="#040404"/><path fill="#fff" d="M147 206H86v4h61a2 2 0 0 0 0-4Z"/><path fill="#f2f2f2" d="M299 169c2-5 9-7 13-3l8 6c3 1 6-1 9-2a15 15 0 0 1 5-2 12 12 0 0 1 5 0l10 4a27 27 0 0 0 11 2h29a93 93 0 0 0 14-2c2 0 2-3 0-3a85 85 0 0 1-14 2h-28a27 27 0 0 1-6 0 28 28 0 0 1-5-2l-10-4a14 14 0 0 0-11 1c-2 2-6 5-9 3l-7-6c-6-4-15-1-17 5-1 2 2 3 3 1Zm8 24c2-3 4-7 8-8a6 6 0 0 1 5 1l4 3c3 2 6 2 9 1 2-2 5-4 8-3l6 3a7 7 0 0 0 6 0 2 2 0 0 0-2-2c-1 1-3-1-5-2a14 14 0 0 0-5-2c-3-1-6 1-9 3a7 7 0 0 1-4 1c-2 0-3-2-4-3a11 11 0 0 0-5-3 10 10 0 0 0-5 1c-5 1-7 5-10 9-1 1 2 3 3 1Zm-38-33a3 3 0 0 1-4-4c1-2 5-1 6 0 1 3 1 6-1 8l-8 5a2 2 0 0 0 1 3l11 2c2 1 2-2 1-3l-11-2v3l8-6a9 9 0 0 0 2-9 7 7 0 0 0-7-5 5 5 0 0 0-5 7c1 3 6 5 9 3 2-1 0-3-2-2Z"/><circle cx="279.8" cy="173.3" r="2" fill="#f2f2f2"/><path fill="#f2f2f2" d="M329 206h-67a2 2 0 1 0 0 4h67a2 2 0 0 0 0-4Z"/><path fill="#3f3d56" d="M280 253h-81a1 1 0 1 1 0-2h81a1 1 0 0 1 0 2Z"/><circle cx="193.3" cy="256.1" r="10" fill="#040404"/><path fill="#fff" d="M129 111c-1 2-4 4-7 5l-28 14 1 1v1l-7 10-2 2V89l2-1 19-8 10-2c7 1 11 9 13 16 1 6 3 12-1 17Z"/><path fill="#ccc" d="m96 132-8 11-2 3v-3l2-3 7-9c1-1 2 0 1 1Z"/><path fill="#ccc" d="m131 110-7 6-10 5-19 10h-1v-4c3-6 16-6 23-9l4-2a40 40 0 0 0 4-3 11 11 0 0 0 5-6 18 18 0 0 0 0-8 58 58 0 0 0-2-8c-2-5-5-11-10-12-3-1-6 0-8 1l-9 3-13 6-2 1v-2l2-1 16-7a44 44 0 0 1 9-3 12 12 0 0 1 8 2 17 17 0 0 1 6 6 45 45 0 0 1 3 9c2 5 3 11 1 16Z"/><path fill="#040404" d="M94 98a6 6 0 0 0-7 3 6 6 0 0 0 3 7l10 5 5-11a6 6 0 0 0-3-7 6 6 0 0 0-8 3Z"/><path fill="#a0616a" d="M523 302a171 171 0 0 0-10-20c-8-15-18-30-26-40l-8-11a16 16 0 1 0-25 21l25 37 11 18 10 14-33 15-5 3-15 7h-1a16 16 0 0 0-2-1 16 16 0 0 0-7-1 16 16 0 0 0-4 0 16 16 0 0 0-11 13v1a16 16 0 0 0 9 16h1a15 15 0 0 0 3 1 16 16 0 0 0 4 0 16 16 0 0 0 4 0 16 16 0 0 0 2-1 16 16 0 0 0 9-11 162 162 0 0 0 10-1 154 154 0 0 0 59-21Z"/><path fill="#3f3d56" d="M495 0H114a28 28 0 0 0-28 28v403a28 28 0 0 0 28 28h381a28 28 0 0 0 28-28V28a28 28 0 0 0-28-28Zm26 431a26 26 0 0 1-26 26H114a26 26 0 0 1-26-26V28a26 26 0 0 1 26-26h381a26 26 0 0 1 26 26ZM86 65v328h2V65Z"/><circle cx="122.1" cy="367" r="16" fill="#040404"/><path fill="#fff" d="M120 376a1 1 0 0 1-1 0 1 1 0 0 1 0-1v-15a1 1 0 0 1 1-1l8 7a1 1 0 0 1 0 2l-8 7a1 1 0 0 1 0 1Z"/><circle cx="448.2" cy="111" r="18" fill="#2f2e41"/><path fill="#2f2e41" d="M448 137c-8-5-11-16-5-25a18 18 0 0 1 25-5c8 5 2 15 5 24 5 14-13 13-25 6Zm-41-5-21 2c-7 10 18 53 11 63l-1 1a45 45 0 0 0 6-4l1-12a34 34 0 0 1 5 9c1-1 2-4 9-8a43 43 0 0 1 10-7Z"/><circle cx="416.1" cy="146.9" r="31.9" fill="#a0616a"/><path fill="#2f2e41" d="M440 193a15 15 0 0 1-5-9 33 33 0 0 0 1 13l-5 3a34 34 0 0 0-5-8l-1 12a45 45 0 0 1-6 4l1-2c7-10-11-28-4-38 2-3-7-25-13-26s-6 1-12 2a28 28 0 0 0-2-7 23 23 0 0 1-1 7l-5-1c-14-2-13-17-9-22s17-6 22-7l3-1c11-10 26-12 39-8 15 5 24 15 28 29l2 12c1 3-1 21-2 25-4 14-12 7-26 22Z"/></svg>
 
-## We need to import these header files.
+### First, we need to import these header files.
 
 
 ```c
@@ -35,9 +35,9 @@ Here's a quick code snippet for you, in case you want to convert your data to hu
 #include <inttypes.h> // PRIu64
 ```
 
-### Lets explain what are those header files.
+### So what are those header files?
 
-So header files in C are used to import the functions and variables that are used in the program.
+Header files are used to import the functions and variables that you can use in your program.
 
   - `stdio.h` is used to import the functions that are used to read and write data to the console.
   - `stdlib.h` is used to import the functions for general purposes.
@@ -49,7 +49,7 @@ So header files in C are used to import the functions and variables that are use
 ```c
 static const char *human_size(uint64_t bytes_to_convert)
 {
-	// It takes a long long int and returns a string.
+	// This function takes an integer as argument and returns a string.
 }
 ```
 
@@ -217,7 +217,7 @@ int main(int argc, char **argv)
 }
 ```
 
-# Conclusion
+## Conclusion
 
 In this tutorial, we learned how to convert a number of bytes to a human readable format with a simple function.
 

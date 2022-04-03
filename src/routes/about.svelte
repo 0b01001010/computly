@@ -94,7 +94,7 @@
 		welcome to engage with the content using comments (Coming soon).
 	</p>
 	<p>
-		I invite you to take a look at my portfolio <a
+		You are welcome to take a look at my portfolio <a
 			href="https://portfolio.computly.me"
 			rel="external"
 			target="_blank">here</a

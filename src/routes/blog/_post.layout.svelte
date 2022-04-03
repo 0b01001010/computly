@@ -19,11 +19,12 @@
 	let scroll2Top = false;
 	let scrollReachedBottom = false;
 	let scroll2TopTranslate = 0;
+	const footerHeight = browser && document.getElementsByTagName('footer')[0].offsetHeight;
+
 	const handleScroll = () => {
-		scroll2Top = document.body.scrollTop > 500 || document.documentElement.scrollTop > 500;
+		scroll2Top = document.body.scrollTop > 200 || document.documentElement.scrollTop > 200;
 		const scrollHeight =
 			(document.body.scrollTop || document.documentElement.scrollTop) + window.innerHeight;
-		const footerHeight = document.getElementsByTagName('footer')[0].offsetHeight;
 		scrollReachedBottom =
 			scrollHeight > document.body.scrollHeight - footerHeight + 1.5 * rem - 0.5 * rem;
 		scroll2TopTranslate =
@@ -81,7 +82,7 @@
 			transition: border 200ms ease-in-out;
 		}
 		.scroll2top > button {
-			border-radius: 46% 54% 70% 30% / 30% 50% 50% 70%;
+			border-radius: 30% 70% 39% 61% / 57% 30% 70% 43%;
 			padding: 0;
 		}
 		.scroll2top > button:focus {

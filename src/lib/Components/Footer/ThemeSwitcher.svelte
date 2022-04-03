@@ -52,7 +52,7 @@
 			height: 5vmin;
 			background: var(--switch-secondary-color);
 			border-radius: 49% 25% 60% 22% / 40% 84% 64% 86%;
-			box-shadow: inset 1px 1px 5px hsla(0, 0%, 0%, 0.5);
+			box-shadow: inset 1px 1px 10px -5px hsla(0, 0%, 0%, 0.6);
 			input {
 				display: none;
 			}
@@ -186,7 +186,7 @@
 			opacity: 1;
 		}
 		50% {
-			opacity: 0.7;
+			opacity: 0.5;
 		}
 		51% {
 			opacity: 1;
