@@ -242,6 +242,6 @@
 <style lang="scss">
 	p {
 		margin: 0;
-    font-family: serif;
+		font-family: serif;
 	}
 </style>

@@ -2,12 +2,12 @@
 @use 'sass:math';
 
 @import './scrollbar.scss';
-@import './prism-a11y-dark.scss';
+@import './prism.scss';
 
 /* HTML elements */
 *,
-:after,
-:before {
+*::after,
+*::before {
 	box-sizing: border-box;
 }
 
@@ -32,7 +32,17 @@ body {
 .bg-dark {
 	background-color: hsl(40, 2%, 25%);
 }
-
+header {
+	nav {
+		a {
+			border: none;
+			transition: border 50ms ease;
+			&:hover {
+				border-bottom: 2px solid #41403e;
+			}
+		}
+	}
+}
 main.main-content {
 	margin: 2rem auto;
 	width: min(960px, 90vw);
@@ -117,4 +127,23 @@ article {
 code .section::after {
 	content: '';
 	display: none;
+}
+
+a.social-button {
+	.icon {
+		svg {
+			margin-left: 0.4em;
+			transition: all 0.5s;
+			color: var(--icon-color);
+			width: 1.2rem;
+			height: 1.2rem;
+		}
+	}
+	&:hover {
+		.icon {
+			svg {
+				transform: rotate(360deg);
+			}
+		}
+	}
 }
