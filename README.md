@@ -1,6 +1,7 @@
 # My personal website
 
 ## Some design ideas
+
 - [qurno](https://qurno-nextjs.vercel.app/)
 
 # Development notes

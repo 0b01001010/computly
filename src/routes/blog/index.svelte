@@ -10,12 +10,12 @@
 			const _dir = path.split('/')[1];
 			const md = await modules[path]();
 			const infoJson = await infoFiles[`./${_dir}/_info.json`]();
-			const headerImage = infoJson.default.filter((i) => i.name === 'header')[0];
+			const mainImage = infoJson.default.filter((i) => i.name === 'main')[0];
 			posts.push({
 				...md.metadata,
 				slug: _dir,
 				excerpt: md.metadata.description.replace(/^(.{100}[^\s]*).*/, '$1'),
-				headerImage
+				mainImage
 			});
 		}
 		return {
@@ -43,7 +43,7 @@
 		{#each posts as post}
 			<div class="post-card">
 				<a sveltekit:prefetch class="image-link" href="/blog/{post.slug}">
-					<Image imageData={post.headerImage} />
+					<Image imageData={post.mainImage} />
 				</a>
 				<div class="post-contents">
 					<a sveltekit:prefetch href="/blog/{post.slug}"><h1>{post.title}</h1></a>

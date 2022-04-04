@@ -27,6 +27,7 @@
 		"eslint-plugin-svelte3": "^3.4.1",
 		"front-matter": "^4.0.2",
 		"husky": "^7.0.4",
+		"kleur": "^4.1.4",
 		"mdsvex": "^0.10.5",
 		"prettier": "^2.6.1",
 		"prettier-plugin-svelte": "^2.6.0",

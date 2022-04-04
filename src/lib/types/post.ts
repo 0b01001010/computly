@@ -6,5 +6,5 @@ export declare type Post = {
 	date?: string;
 	description?: string;
 	excerpt?: string;
-	headerImage?: ImageProps;
+	mainImage?: ImageProps;
 };

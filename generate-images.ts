@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import sharp from 'sharp';
 import * as path from 'path';
+import kleur from 'kleur';
 
 const staticPostsPath = path.resolve('static/posts');
 
@@ -36,20 +37,20 @@ const preparePublicDir = async (slug: string, postPubPath: string) => {
 	const postRoute = path.join(blogRoute, slug);
 	// Search post directory for any file that's not index.svx or info.json
 	const postImages = fs.readdirSync(postRoute).filter((_file) => {
-		return !_file.endsWith('.svx') && !_file.endsWith('.json');
+		return _file.startsWith('main');
 	});
 
 	// Copy all images to post public path
 	if (postImages.length === 0) {
-		console.warn('No images found in post: ', slug);
+		kleur.bgRed().bold().white(`Couldn't find main image in ${slug}`);
 		return;
 	}
 	postImages.forEach((_imgFileName) => {
 		const imgSrc = path.join(postRoute, _imgFileName);
 		const imgDest = path.join(postPubPath, _imgFileName);
 		fs.copyFileSync(imgSrc, imgDest);
-		// Delete header image from post directory
-		console.warn(`Deleting ${imgSrc}`);
+		// Delete main image from post directory
+		kleur.bgYellow().blue(`Deleting ${imgSrc}`);
 		fs.unlinkSync(imgSrc);
 	});
 };
@@ -77,18 +78,16 @@ const extractImageMeta = async (source: string) => {
 		const { format, width, height } = await imageObject.metadata();
 
 		const buffer = await imageObject
-			.resize(100)
+			.resize(300)
 			.jpeg({
-				quality: 50,
-				progressive: true,
-				optimiseScans: true
+				quality: 10
 			})
-			.blur(10)
+			.blur(30)
 			.toBuffer({ resolveWithObject: false });
 		const placeholder = `data:image/jpeg;base64,${(await buffer).toString('base64')}`;
 		return { placeholder, format, width, height };
 	} catch (error) {
-		console.error('Error getting image metadata: ', error);
+		kleur.bgRed().bold().white(`Error getting image metadata : ${error}`);
 	}
 };
 
@@ -102,6 +101,7 @@ async function generateFormats({ imgSrc, size }) {
 	 * @returns {Promise<Object>}
 	 */
 	try {
+		kleur.green('Generating formats');
 		const _jobs = [
 			!imgSrc.endsWith('.avif') &&
 				sharp(imgSrc)
@@ -116,7 +116,8 @@ async function generateFormats({ imgSrc, size }) {
 		];
 		return await Promise.all(_jobs);
 	} catch (error) {
-		console.error('Error while generating image format: ', error);
+		kleur.bgRed().bold().white(`Error generating formats :`);
+		console.error(error);
 	}
 }
 
@@ -159,7 +160,6 @@ const main = async () => {
 					name: _imgFileName.split('.').shift()
 				};
 			} catch (error) {
-				console.error('Error while generating format: ', error);
 				return;
 			}
 		});
