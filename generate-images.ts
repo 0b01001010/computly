@@ -50,8 +50,8 @@ const preparePublicDir = async (slug: string, postPubPath: string) => {
 		const imgDest = path.join(postPubPath, _imgFileName);
 		fs.copyFileSync(imgSrc, imgDest);
 		// Delete main image from post directory
-		kleur.bgYellow().blue(`Deleting ${imgSrc}`);
-		fs.unlinkSync(imgSrc);
+		// kleur.bgYellow().blue(`Deleting ${imgSrc}`);
+		// fs.unlinkSync(imgSrc);
 	});
 };
 

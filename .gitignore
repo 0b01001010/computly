@@ -11,3 +11,4 @@ generate*.js
 src/lib/utilities/image.js
 posts
 test
+static/posts/

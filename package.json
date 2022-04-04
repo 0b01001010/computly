@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
+		"build": "pnpm run generate:images && svelte-kit build",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings 'css-unused-selector:ignore' --threshold 'error'",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
