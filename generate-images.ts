@@ -8,7 +8,7 @@ config();
 let staticPostsPath;
 
 if (process.env.PROD) {
-	staticPostsPath = path.resolve('.output/static/posts');
+	staticPostsPath = path.resolve('.output/posts');
 } else {
 	staticPostsPath = path.resolve('/static/posts');
 }
@@ -40,7 +40,7 @@ const preparePublicDir = async (slug: string, postPubPath: string) => {
 	 */
 	if (!fs.existsSync(postPubPath)) {
 		console.info('Creating directory: ', postPubPath);
-		fs.mkdirSync(postPubPath);
+		fs.mkdirSync(postPubPath, { recursive: true });
 	}
 	const postRoute = path.join(blogRoute, slug);
 	// Search post directory for any file that's not index.svx or info.json
@@ -112,20 +112,20 @@ async function generateFormats({ imgSrc, size }) {
 		kleur.green('Generating formats');
 		const _jobs = [
 			!imgSrc.endsWith('.avif') &&
-				sharp(imgSrc)
-					.resize(size)
-					.avif()
-					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.avif')}`, _sharpCallback),
+			sharp(imgSrc)
+				.resize(size)
+				.avif()
+				.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.avif')}`, _sharpCallback),
 			!imgSrc.endsWith('.webp') &&
-				sharp(imgSrc)
-					.resize(size)
-					.webp()
-					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.webp')}`, _sharpCallback),
+			sharp(imgSrc)
+				.resize(size)
+				.webp()
+				.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.webp')}`, _sharpCallback),
 			!imgSrc.endsWith('.png') &&
-				sharp(imgSrc)
-					.resize(size)
-					.png()
-					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.png')}`, _sharpCallback)
+			sharp(imgSrc)
+				.resize(size)
+				.png()
+				.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.png')}`, _sharpCallback)
 		];
 		return await Promise.all(_jobs);
 	} catch (error) {
@@ -193,6 +193,7 @@ const main = async () => {
 		const outputPath = path.join(blogRoute, postSlug, '_info.json');
 		fs.writeFileSync(outputPath, JSON.stringify(outputData, null), 'utf-8');
 	});
+	kleur.bgGreen().bold().white('Done');
 };
 
 main();
