@@ -2,8 +2,16 @@ import * as fs from 'fs';
 import sharp from 'sharp';
 import * as path from 'path';
 import kleur from 'kleur';
+import { config } from 'dotenv';
+config();
 
-const staticPostsPath = path.resolve('static/posts');
+let staticPostsPath;
+
+if (process.env.PROD) {
+	staticPostsPath = path.resolve('.output/static/posts');
+} else {
+	staticPostsPath = path.resolve('/static/posts');
+}
 
 const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'];
 
