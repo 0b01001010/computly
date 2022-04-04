@@ -57,7 +57,7 @@ main.main-content {
 article {
 	padding: 1em;
 	margin: 3rem 1rem 5rem;
-	width: 90%;
+	width: min(960px, 90vw);
 	display: flex !important;
 	flex-direction: column;
 	align-items: center;

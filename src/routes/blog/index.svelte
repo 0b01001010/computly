@@ -78,10 +78,10 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				filter: opacity(0.8);
+				filter: opacity(0.8) grayscale(1);
 				transition: all 100ms ease-in-out;
 				&:hover {
-					filter: opacity(1);
+					filter: opacity(1) grayscale(0);
 				}
 			}
 			.post-contents {

@@ -39,6 +39,7 @@
 		font-family: Paskowy;
 		user-select: none;
 		font-size: 20vmin;
+		color: var(--primary);
 		text-transform: uppercase;
 	}
 	header {
