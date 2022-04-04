@@ -10,7 +10,7 @@
 			const _dir = path.split('/')[1];
 			const md = await modules[path]();
 			const infoJson = await infoFiles[`./${_dir}/_info.json`]();
-			const mainImage = infoJson.default.filter((i) => i.name === 'main')[0];
+			const mainImage = infoJson.default;
 			posts.push({
 				...md.metadata,
 				slug: _dir,

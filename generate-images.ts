@@ -112,7 +112,12 @@ async function generateFormats({ imgSrc, size }) {
 				sharp(imgSrc)
 					.resize(size)
 					.webp()
-					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.webp')}`, _sharpCallback)
+					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.webp')}`, _sharpCallback),
+			!imgSrc.endsWith('.png') &&
+				sharp(imgSrc)
+					.resize(size)
+					.png()
+					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.png')}`, _sharpCallback)
 		];
 		return await Promise.all(_jobs);
 	} catch (error) {
@@ -121,14 +126,14 @@ async function generateFormats({ imgSrc, size }) {
 	}
 }
 
-const filterImageFiles = (postPubPath) => {
+const getPublicMainImageName = (postPubPath): string => {
 	const postImages = fs.readdirSync(postPubPath).filter((_file) => {
 		const fileExt = _file.split('.').pop();
-		if (imageExtensions.includes(fileExt) && !_file.endsWith('.webp') && !_file.endsWith('.avif')) {
+		if (_file.startsWith('main') && imageExtensions.includes(fileExt)) {
 			return _file;
 		}
 	});
-	return postImages;
+	return postImages[0];
 };
 
 const main = async () => {
@@ -145,49 +150,37 @@ const main = async () => {
 	posts.forEach(async (postSlug) => {
 		const postPubPath = path.join(staticPostsPath, postSlug);
 
-		const ogPostImages = filterImageFiles(postPubPath);
+		const mainImageFile = getPublicMainImageName(postPubPath);
 
-		const postImagesData = ogPostImages.map(async (_imgFileName) => {
-			try {
-				const imgSrc = path.join(postPubPath, _imgFileName);
-				const imgMeta = await extractImageMeta(imgSrc);
-				await generateFormats({
-					imgSrc,
-					size: Math.min(imgMeta.width, maxWidth)
-				});
-				return {
-					...imgMeta,
-					name: _imgFileName.split('.').shift()
-				};
-			} catch (error) {
-				return;
-			}
+		const mainImgSrc = path.join(postPubPath, mainImageFile);
+		const mainImgMeta = await extractImageMeta(mainImgSrc);
+		await generateFormats({
+			imgSrc: mainImgSrc,
+			size: Math.min(mainImgMeta.width, maxWidth)
 		});
-		const postImages = await Promise.all(postImagesData);
+
+		const _url = `/posts/${postSlug}/main`;
+
 		// Create json object of all the images
-		const outputData = postImages.map((_img) => {
-			const _url = `/posts/${postSlug}/${_img.name}`;
-			return {
-				name: _img.name,
-				sources: [
-					{
-						srcset: `${_url}.avif`,
-						type: 'image/avif'
-					},
-					{
-						srcset: `${_url}.webp`,
-						type: 'image/webp'
-					},
-					{
-						srcset: `${_url}`,
-						type: `image/${_img.format}`
-					}
-				],
-				placeholder: _img.placeholder,
-				width: _img.width,
-				height: _img.height
-			};
-		});
+		const outputData = {
+			sources: [
+				{
+					srcset: `${_url}.avif`,
+					type: 'image/avif'
+				},
+				{
+					srcset: `${_url}.webp`,
+					type: 'image/webp'
+				},
+				{
+					srcset: `${_url}.png`,
+					type: `image/png`
+				}
+			],
+			placeholder: mainImgMeta.placeholder,
+			width: mainImgMeta.width,
+			height: mainImgMeta.height
+		};
 
 		const outputPath = path.join(blogRoute, postSlug, '_info.json');
 		fs.writeFileSync(outputPath, JSON.stringify(outputData, null), 'utf-8');

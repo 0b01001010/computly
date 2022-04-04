@@ -9,5 +9,5 @@ export type ImageProps = {
 	width: number;
 	height: number;
 	placeholder: string;
-	name: string;
+	name?: string;
 };

@@ -37,7 +37,7 @@
 	<title>{title}</title>
 </svelte:head>
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2 post-article">
-	<Image imageData={imagesData.filter((_i) => _i.name === 'main')[0]} />
+	<Image imageData={imagesData} />
 	<h1>{title}</h1>
 	<sub>Published at {new Date(date).toLocaleDateString()}</sub>
 	<slot />
