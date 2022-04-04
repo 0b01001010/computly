@@ -1,6 +1,6 @@
 declare type ImageSource = {
-	srcset: string;
-	type: string;
+	src: string;
+	format: string;
 };
 
 export type ImageProps = {
@@ -9,5 +9,4 @@ export type ImageProps = {
 	width: number;
 	height: number;
 	placeholder: string;
-	name?: string;
 };

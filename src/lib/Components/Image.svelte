@@ -7,13 +7,13 @@
 </script>
 
 <Picture
-	src={sources[sources.length - 1].srcset}
+	src={sources[sources.length - 1].src}
 	{placeholder}
 	{alt}
 	width={width.toString()}
 	height={height.toString()}
 >
-	{#each sources as { srcset, type }}
-		<source data-srcset={srcset} {type} />
+	{#each sources as { src, format }}
+		<source data-srcset={src} type={format} />
 	{/each}
 </Picture>

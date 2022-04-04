@@ -7,15 +7,12 @@ description: Learn how to write a small C program that converts memory units to 
 export const load = async () => {
   return {
     props: {
-      imagesData: (await import('./_info.json')).default,
+      mainImage: (await import('./_info.json')).default,
     }
   }
 }
 </script>
-<script>
-	import Image from '$lib/Components/Image.svelte';
-  export let imagesData;
-</script>
+
 ## Why
 
 Sometimes you may need to convert a large number of bytes that was produced by your program into the appropriate human readable format. For example 297719372 bytes. For human eyes, it is easier to understand 298MB.

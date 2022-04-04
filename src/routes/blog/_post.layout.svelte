@@ -7,8 +7,8 @@
 
 	/** @type {string} */
 	export let title;
-	/** @type {import('$lib/types/imageProps').ImageProps[]} */
-	export let imagesData;
+	/** @type {import('$lib/types/imageProps').ImageProps} */
+	export let mainImage;
 	/** @type {string} */
 	export let date;
 	/** @type {string} */
@@ -37,7 +37,7 @@
 	<title>{title}</title>
 </svelte:head>
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2 post-article">
-	<Image imageData={imagesData} />
+	<Image imageData={mainImage} />
 	<h1>{title}</h1>
 	<sub>Published at {new Date(date).toLocaleDateString()}</sub>
 	<slot />

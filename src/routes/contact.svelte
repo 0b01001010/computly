@@ -12,31 +12,19 @@
 	import Image from '$lib/Components/Image.svelte';
 
 	const linkedInImages = {
-		sources: liIconMeta.map((li) => {
-			return {
-				srcset: li.src,
-				type: li.format
-			};
-		}),
+		sources: liIconMeta,
 		placeholder: liPlaceholder,
 		width: 32,
 		height: 32,
-		alt: 'LinkedIn',
-		name: 'LinkedIn'
+		alt: 'LinkedIn'
 	};
 
 	const mailImages = {
-		sources: mailIconMeta.map((mail) => {
-			return {
-				srcset: mail.src,
-				type: mail.format
-			};
-		}),
+		sources: mailIconMeta,
 		placeholder: mailPlaceholder,
 		width: 32,
 		height: 32,
-		alt: 'Email',
-		name: 'Email'
+		alt: 'Email'
 	};
 </script>
 

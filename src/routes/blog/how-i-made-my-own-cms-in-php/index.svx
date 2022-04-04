@@ -7,14 +7,41 @@ description: This is an intermediate level post on how I created a CMS in PHP us
 export const load = async () => {
   return {
     props: {
-      imagesData: (await import('./_info.json')).default,
+      mainImage: (await import('./_info.json')).default,
     }
   }
 }
 </script>
 <script>
 	import Image from '$lib/Components/Image.svelte';
-  export let imagesData;
+  // @ts-ignore
+	import workflowMeta from './workflow.jpg?width=600&format=avif;webp;png&metadata';
+
+	// @ts-ignore
+	import workflowPlaceholder from './workflow.jpg??width=100&blur=10&quality=10';
+
+  // @ts-ignore
+	import butterflyMeta from './butterfly.jpg?width=600&format=avif;webp;png&metadata';
+	// @ts-ignore
+	import butterflyPlaceholder from './butterfly.jpg?width=100&blur=10&quality=10';
+
+  const workflowImages = {
+		sources: workflowMeta,
+		placeholder: workflowPlaceholder,
+		width: workflowMeta[0].width,
+		height: workflowMeta[0].height,
+		alt: 'Workflow image illustration',
+	};
+
+  const butterflyImages = {
+		sources: butterflyMeta,
+		placeholder: butterflyPlaceholder,
+		width: butterflyMeta[0].width,
+		height: butterflyMeta[0].height,
+		alt: 'Doing modifications, butterfly image',
+	};
+
+  // console.dir(butterflyImages.sources);
 </script>
 
 
@@ -43,8 +70,8 @@ export const load = async () => {
 **Get the [source code here](https://github.com/416d72/Naba)**
 
 ### Setting up the environment
-	
-<Image imageData={imagesData.filter((_i) => _i.name === 'workflow')[0]} />
+
+<Image imageData={workflowImages} />
 
 **You'll need**
 
@@ -82,7 +109,7 @@ _This project is an application on this [tutorial](https://www.youtube.com/playl
 
 # Modifications
 
-<Image imageData={imagesData.filter((_i) => _i.name === 'butterfly')[0]} />
+<Image imageData={butterflyImages} />
 
 ## Admin permissions
 

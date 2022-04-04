@@ -7,7 +7,7 @@ description: A full manual installation guide for ERPNext 13, using VPS + Debian
 export const load = async () => {
   return {
     props: {
-      imagesData: (await import('./_info.json')).default,
+      mainImage: (await import('./_info.json')).default,
     }
   }
 }

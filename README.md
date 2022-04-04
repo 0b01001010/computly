@@ -6,6 +6,7 @@
 
 # Development notes
 
+- TODO: Figure out how `vite-imagetools` work to do the same with `generate-images.ts`
 - TODO: Show language on top of `<pre>` block.
 - TODO: Add service worker to support PWA.
 - TODO: Fix generate sitemap to include all posts.

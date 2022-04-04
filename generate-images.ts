@@ -165,16 +165,16 @@ const main = async () => {
 		const outputData = {
 			sources: [
 				{
-					srcset: `${_url}.avif`,
-					type: 'image/avif'
+					src: `${_url}.avif`,
+					format: 'image/avif'
 				},
 				{
-					srcset: `${_url}.webp`,
-					type: 'image/webp'
+					src: `${_url}.webp`,
+					format: 'image/webp'
 				},
 				{
-					srcset: `${_url}.png`,
-					type: `image/png`
+					src: `${_url}.png`,
+					format: `image/png`
 				}
 			],
 			placeholder: mainImgMeta.placeholder,
