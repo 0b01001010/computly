@@ -1,6 +1,7 @@
 # My personal website
 
----
+## Some design ideas
+- [qurno](https://qurno-nextjs.vercel.app/)
 
 # Development notes
 
@@ -13,19 +14,8 @@
 ### Topics
 
 - Ta3lab
+- el3nkbot
 
-# Main features
-
-## Images
-
-- ✅ Generating images at build time instead of runtime.
-- ✅ Using `sharp` to create different image sizes & formats.
-
-### other images
-
-- ✅ Each post should have all files (including images) in one directory
-- ✅ The `generate-images.ts` task will then generate all those images to `/static/posts/{slug}`
-
-# Credits
+# Thanks to
 
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
