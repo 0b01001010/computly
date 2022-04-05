@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Social from '$lib/Components/Buttons/social.svelte';
+	import CommonSeo from '$lib/Components/CommonSEO.svelte';
 	import { theme as themeStore } from '$lib/stores/theme';
 	$: darkMode = $themeStore === 'dark';
 </script>
 
-<svelte:head>
-	<title>About</title>
-</svelte:head>
+<CommonSeo title="About Computly" />
+
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
 	<header>
 		<h1>About Computly</h1>

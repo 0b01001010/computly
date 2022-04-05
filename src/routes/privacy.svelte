@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { theme as themeStore } from '$lib/stores/theme';
+	import CommonSEO from '$lib/components/CommonSEO.svelte';
 	$: darkMode = $themeStore === 'dark';
 </script>
 
-<svelte:head>
-	<title>Privacy policy | Computly</title>
-</svelte:head>
+<CommonSEO
+	title="Privacy policy | Computly"
+	description="The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information."
+/>
+
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
 	<header>
 		<h1>Privacy policy</h1>

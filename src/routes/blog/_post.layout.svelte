@@ -13,7 +13,8 @@
 	/** @type {string} */
 	export let date;
 	/** @type {string} */
-	export const description = '';
+	export let description;
+
 	$: darkMode = $themeStore === 'dark';
 
 	/** @type {string} */
@@ -37,9 +38,6 @@
 </script>
 
 <svelte:window on:scroll={handleScroll} />
-<svelte:head>
-	<title>{title}</title>
-</svelte:head>
 
 <MetaTags
 	{title}
