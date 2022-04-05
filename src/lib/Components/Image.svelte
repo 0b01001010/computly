@@ -12,8 +12,8 @@
 	{alt}
 	width={width.toString()}
 	height={height.toString()}
-	--filter="blur(20px)"
-	--transition="filter 500ms ease-in-out"
+	--filter="blur(5px)"
+	--transition="filter 250ms ease-in-out"
 >
 	{#each sources as { src, format }}
 		<source data-srcset={src} type={format} />
