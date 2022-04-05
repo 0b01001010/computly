@@ -1,0 +1,22 @@
+---
+title: Build a simple telegram bot with FastAPI 
+date: 2021-02-03
+description: In this tutorial we will build a simple telegram bot using FastAPI which is a modern micro framework built with Python.
+---
+<script context="module">
+export const load = async () => {
+  return {
+    props: {
+      imagesData: (await import('./_info.json')).default,
+    }
+  }
+}
+</script>
+
+Telegram is 
+
+Telegram users can create their own Telegram bots by simply talking to the official @BotFather.
+
+All the actions to create a bot you can make as a mobile device through an application or desktop app. It does not matter. Both methods have the same capabilities.
+
+Connect to the [@BotFather](https://telegram.me/BotFather). When the chat-window with the bot will be open in the Telegram, press the Start button.

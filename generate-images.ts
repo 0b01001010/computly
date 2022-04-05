@@ -81,11 +81,11 @@ const extractImageMeta = async (source: string) => {
 		const { format, width, height } = await imageObject.metadata();
 
 		const buffer = await imageObject
-			.resize(300)
 			.jpeg({
-				quality: 10
+				quality: 90
 			})
-			.blur(30)
+			.resize(10)
+			.blur(100)
 			.toBuffer({ resolveWithObject: false });
 		const placeholder = `data:image/jpeg;base64,${(await buffer).toString('base64')}`;
 		return { placeholder, format, width, height };
