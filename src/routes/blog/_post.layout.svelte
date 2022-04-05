@@ -100,10 +100,14 @@
 {/if}
 
 <style>
+	h1 {
+		margin-bottom: 0.25em;
+	}
 	sub {
 		display: block;
 		width: 100%;
 		text-align: center;
+		margin-bottom: 3em;
 	}
 	.scroll2top {
 		display: none;

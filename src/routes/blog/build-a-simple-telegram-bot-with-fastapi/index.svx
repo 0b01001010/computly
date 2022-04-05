@@ -7,16 +7,345 @@ description: In this tutorial we will build a simple telegram bot using FastAPI 
 export const load = async () => {
   return {
     props: {
-      imagesData: (await import('./_info.json')).default,
+      mainImage: (await import('./_info.json')).default,
     }
   }
 }
 </script>
 
-Telegram is 
+<script>
+	import Image from '$lib/Components/Image.svelte';
+  // @ts-ignore
+	import botfatherMeta from './botfather.png?width=500&format=avif;webp;png&metadata';
 
-Telegram users can create their own Telegram bots by simply talking to the official @BotFather.
+	// @ts-ignore
+	import botfatherPH from './botfather.png??width=100&blur=10&quality=10';
 
-All the actions to create a bot you can make as a mobile device through an application or desktop app. It does not matter. Both methods have the same capabilities.
+  const botfatherImages = {
+		sources: botfatherMeta,
+		placeholder: botfatherPH,
+		width: botfatherMeta[0].width,
+		height: botfatherMeta[0].height,
+		alt: 'Workflow image illustration',
+	};
 
-Connect to the [@BotFather](https://telegram.me/BotFather). When the chat-window with the bot will be open in the Telegram, press the Start button.
+</script>
+
+Telegram is widely used messaging platform that allows developers to build chat bots that can communicate with other users, manage channels, administer groups, and much more.
+
+Python is a high-level, general-purpose programming language. It's one of the best language for beginners as it's known for the ability to write short, fast, and easy to read programs.
+
+FastAPI is a high performance, easy to learn, fast to code, ready for production framework built on top of starlette and uses modern python features like asyncio, typing, and validation with Pydantic.
+
+Here's a basic example of a FastAPI application:
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+```
+
+In this tutorial we will build a simple telegram bot using FastAPI.
+
+The bot is very simple, it takes a message from the user containing a phone number and replies with a message containing a whatsapp link to a direct chat with that phone number.
+
+<Image imageData={botfatherImages} />
+
+
+# Create a new bot with Botfather.
+
+Open a chat with <a href="https://telegram.me/BotFather" rel="external" target="_blank">@BotFather</a>. then Hit ***Start***.
+
+Create a new bot using the command `/newbot`, then send the bot a message with the name of the bot you want to create.
+
+After that, it will ask you for a username of your bot, notice that the username must end with `bot` for example `mybotbot`.
+
+Then, it will ask you for a description of your bot.
+
+Once the username is chosen, your bot will be automatically created and ready to use.
+
+Please note: The API token is the key for your bot to communicate with the Telegram system. IT MUST BE KEPT SAFE! Do not use that token for anything other than the bot you'll create.
+
+# Create a new Python project
+
+Clone [this projcet](https://github.com/416d72/oiwa.git) using the command:
+
+```bash
+git clone https://github.com/416d72/oiwa.git
+cd oiwa
+```
+
+## Environment Setup
+
+### Create a new virtual environment
+
+Notice you'll need to install the `virtualenv` package.
+
+```bash
+virtualenv -p python3 oiwa
+```
+
+Install the dependencies with the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will install the required dependencies for your project.
+
+
+### Environment variables
+
+**In the `main.py` file**, you'll notice that it includes the following code.
+
+```python
+DOMAIN = environ.get("DOMAIN")
+BOT_TOKEN = environ.get("BOT_TOKEN")
+```
+
+Those are called environment variables which you'll set later on when we reach the deployment step.
+
+# Coding time
+
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 1058 435"><path fill="#e6e6e6" d="m643 222 62-62-62-62 19-19 81 81-81 81-19-19zm-176-87h25v25h-25zm101 0h25v25h-25zm-51 0h25v25h-25zm-85 86-62-62 62-61-18-19-81 80 81 81 18-19z" style="isolation:isolate"/><path fill="#08c" d="m643 210 62-62-62-62 19-19 81 81-81 81-19-19zm-176-58h25v-25h-25Zm126-25h-25v25h25Zm-76 25h25v-25h-25Zm-85 57-62-62 62-61-18-19-81 80 81 81 18-19z"/><path fill="#a0616a" d="m129 410 14 4 20-53-21-5-13 54z"/><path fill="#2f2e41" d="m123 423 4-18 28 7a18 18 0 0 1 13 22Z"/><path fill="#a0616a" d="M192 420h14l7-56h-21v56z"/><path fill="#2f2e41" d="M188 416h29a18 18 0 0 1 18 18h-47Zm0-15 3-87-4-36-6 28-27 89-24-6 28-97-6-61 17-11 58 10-14 168Z"/><path fill="#ccc" d="M211 243c-4 0-10-2-16-6-19-14-43 1-43 1l-1 1v-2l2-106c0-27 18-46 23-51 5-6 10-5 15-5h3c7 0 15 7 15 7l20 152s-7 9-18 9Z"/><circle cx="268.3" cy="269.4" r="29" fill="#a0616a" transform="rotate(-61 37 213)"/><path fill="#a0616a" d="M242 267a12 12 0 0 1-1-18l-16-39 21 4 13 36a12 12 0 0 1-17 17Z"/><path fill="#ccc" d="m237 245-30-61-13-46V98s3-15 15-14c10 1 16 6 18 17 3 9-1 36-1 39 2 5 32 76 27 85a2 2 0 0 1-1 0l6 12Z"/><path fill="#2f2e41" d="M194 48c3 0 6-3 7-7s2-7 5-9c4-2 10 1 14 0 6-1 9-6 9-12s-2-10-4-15v6a12 12 0 0 0-6-11l1 9a10 10 0 0 0-11-8v6c-6-1-12-2-18-1s-13 2-17 6c-7 6-10 16-9 26s5 18 8 26l5 5c2 0 4-2 5-4a13 13 0 0 0 0-6c-1-3-2-6-1-9s3-7 6-7 6 3 5 6Z"/><path fill="#ffb8b8" d="M913 263a10 10 0 0 1 2-15l-7-35 17 7 4 32a10 10 0 0 1-16 11Z"/><path fill="#ccc" d="M911 236v-1l-31-109c6-4 16-4 23 0a17 17 0 0 1 7 18l9 45 11 45v1h-1l-18 1Z"/><path fill="#ffb8b8" d="M831 422h-12l-6-48h18v48z"/><path fill="#2f2e41" d="M834 434h-39v-1a15 15 0 0 1 15-15h24Z"/><path fill="#ffb8b8" d="m947 412-12 3-20-43 17-5 15 45z"/><path fill="#2f2e41" d="M916 434h-1a15 15 0 0 1 10-20l23-7 5 15Z"/><circle cx="884.7" cy="69.9" r="24.6" fill="#ffb8b8"/><path fill="#2f2e41" d="M896 65c0-10-4-19-11-24a17 17 0 0 0-21 0c-6 5-10 15-10 25l42-1Zm-58 342v-1l-32-2h-1c3-18 4-37 5-55l4-53 3-14c8-38 16-74 32-110 15 2 30 7 41 15v17a56 56 0 0 1 8 49l14 45 34 95 1 1h-1l-26 5h-1a713 713 0 0 1-54-130l-11 25a189 189 0 0 0-11 22l-2 48c-1 15-1 29-3 42Z"/><path fill="#2f2e41" d="M876 41c11-2 23 0 31 7s13 20 9 30-15 19-25 16c3-9-1-19-8-24-9-6-11-20-7-29Z"/><path fill="#ccc" d="m889 188-40-15v-2h1l3-7 2-6a19 19 0 0 1-4-21c3-6 10-11 17-12l9-23 18-1c11 2 20 13 22 25 2 11 0 23-7 35a148 148 0 0 1-12 16l-9 11Z"/><path fill="#2f2e41" d="M913 58Zm1-2c-8-1-14-9-13-17s9-13 16-13 14 8 14 16-8 15-17 14Z"/><path fill="#2f2e41" d="M913 51c-8-1-14-9-13-16a15 15 0 0 1 9-12c-6 1-11 6-12 13s5 15 13 16a14 14 0 0 0 8-1 15 15 0 0 1-5 0Z"/><path fill="#ffb8b8" d="M768 183a10 10 0 0 1 15-3l31-19-1 19-29 15a10 10 0 0 1-16-12Z"/><path fill="#ccc" d="m793 172 93-66h1c5 5 8 15 7 22a17 17 0 0 1-15 13l-39 23-39 25h-1l-7-17Z"/><path fill="#3f3d56" d="M382 435H1a1 1 0 0 1 0-2h381a1 1 0 1 1 0 2Zm675 0H676a1 1 0 0 1 0-2h381a1 1 0 0 1 0 2Z"/></svg>
+
+In our case we need the following endpoints:
+
+- `/setwebhook` to set the webhook which will be used to receive updates from Telegram.
+- `/telegram-update` to receive updates from Telegram.
+
+So we'll need to visit `/setwebhook` and set the webhook to the URL `https://<your-domain>/update`.
+
+This is required only once after deploying the application.
+
+### Importing modules
+
+We need to import those modules first.
+  
+```python
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+
+from telegram.bot import Bot
+```
+
+### Bot object
+
+Now we can create our Telegram bot object.
+  
+```python
+bot = Bot(BOT_TOKEN)
+```
+
+This bot object is used to communicate with the Telegram API using built in methods.
+
+Now we initiate the FastAPI application object:
+  
+```python
+app = FastAPI()
+```
+
+### Adding main functions
+
+
+
+Now lets add the first function:
+
+```python
+@app.get("/setwebhook")
+async def set_webhook():
+    s = bot.set_webhook(url=f"{DOMAIN}/telegram-update")
+    if s:
+        return HTMLResponse("ok")
+    else:
+        return HTMLResponse("Error!")
+```
+
+We need to add the webhook handler which receives raw telegram update in a json form and calls the update handler function we'll add later.
+
+But before this, we'll need to import the following modules:
+
+```python
+from fastapi.requests import Request
+from telegram.update import Update
+```
+
+```python
+@app.post("/telegram-update")
+async def webhook_handler(request: Request):
+    data = await request.json()
+    upcoming_update = Update.de_json(data, bot=bot)
+    await update_handler(upcoming_update)
+    return "ok"
+```
+
+Notice it receives a [`POST` request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)
+
+Now lets add the update handler function which receives updates from Telegram.
+
+Again, we'll need to import the following modules first:
+
+```python
+from telegram.chataction import ChatAction
+from telegram.error import Unauthorized
+```
+
+
+```python
+async def update_handler(update: Update):
+    try:
+        if update.effective_message.text:
+            bot.send_chat_action(
+                chat_id=update.effective_chat.id, action=ChatAction.TYPING
+            )
+            if update.effective_message.text == "/start":
+                await cmd_start(update=update)
+            elif update.effective_message.text == "/help":
+                await cmd_help(update=update)
+            elif re.fullmatch("\+[0-9\s?\-?]{5,20}", update.effective_message.text):
+                await phone_handler(update=update)
+            else:
+                await wrong_number(update=update)
+        else:
+            cmd_help(update=update)
+    except (Unauthorized, AttributeError):
+        pass
+```
+
+So this function will receive updates from Telegram and matches the message pattern to call the appropriate helper function.
+
+First , it sends a typing action to telegram so the user will see the bot is Typing.
+
+Then it does the following checks:
+
+- if the message contains the command `/start`, if so it calls the `cmd_start` function.
+
+- if the message contains the command `/help`, if so it calls the `cmd_help` function.
+
+- if the message contains a phone number (using [regular expressions](https://en.wikipedia.org/wiki/Regular_expressions)), if so it calls the `phone_handler` function.
+
+## Adding the helper functions
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 648 648"><path fill="#f2f2f2" d="M648 324a325 325 0 0 1-324 324A323 323 0 0 1 27 454l-1-2A313 313 0 0 1 2 286 322 322 0 0 1 324 0c179 0 324 145 324 324Z"/><path fill="#3f3d56" d="M477 233h12v86h-12z"/><path fill="#3f3d56" d="m490 232-1 1-4 10-8-3-11-4c-67-22-153-33-185-76l-2-1c-14 12-23 12-24-9l-2-1c-56 11-104-21-151-61l10-9c66 2 122 13 144 58l2 1 26 10 2 1c57-12 121 32 185 75l19 8Z"/><path fill="#d0cde1" d="M587 513c-10 15-22 28-34 41-144 2-318 2-458-1-12-12-24-25-34-39a7609 7609 0 0 1 170-3c120-1 248 0 356 2Z"/><path fill="#3f3d56" d="M637 406a319 319 0 0 1-13 41h-16v-41h29Z"/><path fill="#3f3d56" d="M626 443a222 222 0 0 1-10 23l-13 23c-155 18-298 22-419 0v-46h442Z"/><path fill="#d0cde1" d="M618 388v71l-2 7c-44-22-85-19-122 0V309c30-18 61-21 93 0l29 73 2 6Z"/><path fill="#fff" d="M513 318h53v54c-17 9-35 9-53 0-9-18-9-36 0-54Zm93 54c-7 8-19 5-34 0v-53h15l19 53Z"/><path fill="#3f3d56" d="M516 402h12v23h-12zm67-49c7 0 12 5 12 11 0 7-5 12-12 12v-23Zm-451 90h1c6 0 11 5 11 11s-5 12-11 12h-1v-23Z"/><path fill="#d0cde1" d="M642 387a316 316 0 0 1-26 79h-6l-1-19v-4l-1-29-1-34 9 2 26 5Z"/><circle cx="192.2" cy="486.8" r="46" fill="#3f3d56"/><circle cx="192.2" cy="486.8" r="24.2" fill="#d0cde1"/><path fill="#3f3d56" d="M497 437V287h-25c-5 9-8 24-9 42-3 60-52 108-113 108H132v11h338l2 22h25v-33Z"/><path fill="#3f3d56" d="m301 387 7-5 42 57-7 5c-32-4-46-23-42-57Z"/><path fill="#3f3d56" d="m371 194 7 3-83 247-8-3c10-68 42-192 84-247Zm207 181h12v5h-12z"/><path fill="#3f3d56" d="M481 304v-1l-1-1-8 1-274 10h-3l-1 1 1 2 280 35 2-1 4-46Zm-277 11 268-9 7-1-5 43-270-33Z"/><path fill="#3f3d56" d="m284 149-5 10-72 149 48-158 3-12-2-1-3 12-49 164-1 2 1 1h1l76-156 5-11h-2ZM51 316l-4-33-1-9-5-47-3-28-1-2-1 1-3 29-6 52-1 10-4 28-4 39 1 1 15 1h20l1-2-4-40Zm-12 39H20l4-32 4-35 1-9 6-52 2-17 2 17 5 48 1 9 3 33 4 38H39Z"/><path fill="#08c" d="m230 364-6 4-19 5-16 4-34 10-15 4c-49-8-73 9-97 27l-15 4-12 4A314 314 0 0 1 2 286l25-7h2l15-4 2-1 38-11c29-2 51 11 69 30 0 0 27-8 46 6 7 5 12 11 16 21l3 9 12 35Z"/><circle cx="171.5" cy="378.9" r="34" fill="#3f3d56"/><circle cx="171.5" cy="378.9" r="17.9" fill="#d0cde1"/><path fill="#3f3d56" d="M44 424a34 34 0 0 1-17 30l-1-2a313 313 0 0 1-19-62h3a34 34 0 0 1 34 34Z"/><path fill="#d0cde1" d="M28 424c0 6-3 11-7 14a310 310 0 0 1-10-32 18 18 0 0 1 17 18Z"/><path fill="#fff" d="M129 294 24 324l-9-32c14-10 40-15 67-19l47 21ZM11 327l-11 3a265 265 0 0 1 1-34h1c11 7 14 17 9 31Z"/><path fill="#3f3d56" d="m31 347 5-2 3 11-5 2zm187-18a18 18 0 0 1-19-30c7 5 12 11 16 21l3 9ZM31 187l12-24v64H31v-40Z"/><circle cx="483.4" cy="235.5" r="17" fill="#3f3d56"/></svg>
+
+In order to be able to use Markdown formatting code in the bot responses, we need to import the `ParseMode` from the `telegram.parsemode` package.
+
+```python
+from telegram.parsemode import ParseMode
+```
+
+Start command handler
+
+```python
+async def cmd_start(update: Update):
+    bot.send_message(
+        chat_id=update.effective_chat.id,
+        text=f"Hello {update.effective_user.full_name} 👋🏻\nPlease send a phone number you want to chat with including international code",
+        parse_mode=ParseMode.MARKDOWN_V2,
+    )
+```
+
+Help command handler
+
+```python
+async def cmd_help(update: Update):
+    bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="You can send the phone number you want to chat with **including international code** \(eg \+447419651046\)",
+        parse_mode=ParseMode.MARKDOWN_V2,
+    )
+```
+
+It's also recommended to add this function to respond in case the user sent a wrong message.
+
+```python
+async def wrong_number(update: Update):
+    bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="❌ Wrong number",
+        parse_mode=ParseMode.MARKDOWN_V2,
+    )
+```
+
+Finally, we need to add the phone number handler, but for it we'll need to import the inline keyboard modules.
+
+```python
+from telegram.inline.inlinekeyboardbutton import InlineKeyboardButton
+from telegram.inline.inlinekeyboardmarkup import InlineKeyboardMarkup
+```
+The phone handler function should be like this.
+
+```python
+async def phone_handler(update: Update):
+    bot.send_message(
+        text="ok",
+        chat_id=update.effective_chat.id,
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="🔗 Open chat",
+                        url=f"https://api.whatsapp.com/send?phone={update.effective_message.text.replace(' ','').replace('-','')}",
+                    )
+                ]
+            ]
+        ),
+    )
+```
+
+You could use regular expressions to remove whitespaces and dashes from the phone number.
+
+There's also an optional function to tell web crawlers not to index the page.
+
+```python
+@app.get("/robots.txt")
+async def robots():
+    return HTMLResponse("User-agent: *\nDisallow: /")
+```
+
+# Deployment
+
+I choose to use [Vercel](https://vercel.com/) for deployment.
+
+You need to create your own account, then install the [Vercel CLI](https://vercel.com/cli/).
+
+In the project directory, run the following command:
+
+```bash
+vc
+```
+
+Then you can deploy your project to Vercel.
+
+```bash
+vc --production
+```
+
+Now open your account in the browser and go to the project page.
+
+Open the projcet settings and look for Environment Variables tab.
+
+Add the following environment variables:
+
+- `BOT_TOKEN` - your bot token
+- `DOMAIN` - the project URL (for example `https://my-project.vercel.app`)
+
+Now visit your project URL to invoke the `setwebhook` function. (for example `https://my-project.vercel.app/setwebhook`)
+
+## Test your bot
+
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 869 475"><path fill="#f2f2f2" d="M47 432c-18 16-22 42-22 42s26 0 45-16 22-41 22-41-26-1-45 15Z"/><path fill="#f2f2f2" d="M56 439c-8 23-31 36-31 36s-9-25-2-48 31-36 31-36 10 25 2 48Z"/><path fill="#2f2e41" d="M249 98c-4-5-10-10-10-17-1-6 4-12 2-18-1-5-6-8-11-9a43 43 0 0 0-28 1h1c-6-2-12 0-17 4-4 3-6 8-8 14l-7 15c-2 5-7 9-12 11 2 3 7 5 11 2a14 14 0 0 0 2-2l7-9c2 5-1 10 2 14 1 2 4 3 6 4a121 121 0 0 0 60-3l4-2-2-5Z"/><path fill="#ffb7b7" d="M305 119a11 11 0 0 0 0 2l-43 25-11-6-11 14 18 13a8 8 0 0 0 9-1l45-35a10 10 0 1 0-7-12Z"/><path fill="#08c" d="m260 147-13 18a5 5 0 0 1-7 0l-16-16a12 12 0 0 1 15-20l20 11a5 5 0 0 1 1 7Z"/><path fill="#ffb7b7" d="M241 460h13l5-47h-18v47z"/><path fill="#2f2e41" d="M238 456h24a15 15 0 0 1 16 16h-40Z"/><path fill="#ffb7b7" d="M157 460h13l5-47h-18v47z"/><path fill="#2f2e41" d="M154 456h24a15 15 0 0 1 16 16h-40Z"/><circle cx="378.4" cy="301.6" r="21.2" fill="#ffb7b7" transform="rotate(-84 177 288)"/><path fill="#2f2e41" d="m225 121 13 6s14 24 6 47c-4 11 7 47 7 47s17 161 17 211c-21 3-41 7-42-3l-12-128s-15 131-27 133-36-1-36-1 19-192 32-204l2-10v-90l15-7Z"/><path fill="#ffb7b7" d="M181 257a11 11 0 0 0 3-16l14-97-19-1-11 97a11 11 0 0 0 13 17Z"/><path fill="#08c" d="m198 168-23-1a5 5 0 0 1-4-6l5-22a12 12 0 0 1 25 2l2 22a5 5 0 0 1-5 5Z"/><path fill="#3f3d56" d="M825 77H323a14 14 0 0 0-14 13v280a14 14 0 0 0 14 14h502a14 14 0 0 0 14-14V90a14 14 0 0 0-14-13Z"/><path fill="#fff" d="M328 101h492v278H328z"/><circle cx="573.7" cy="88.4" r="5" fill="#fff"/><path fill="#f2f2f2" d="M679 379H328V101l351 278z" style="isolation:isolate"/><path fill="#3f3d56" d="M853 374h-49v-4a1 1 0 0 0 0-1h-17a1 1 0 0 0 0 1v4h-11v-4a1 1 0 0 0 0-1h-17a1 1 0 0 0 0 1v4h-11v-4a1 1 0 0 0 0-1h-17a1 1 0 0 0-1 1v4h-10v-4a1 1 0 0 0-1-1h-16a1 1 0 0 0-1 1v4h-10v-4a1 1 0 0 0-1-1h-16a1 1 0 0 0-1 1v4h-10v-4a1 1 0 0 0-1-1h-16a1 1 0 0 0-1 1v4h-10v-4a1 1 0 0 0-1-1H506a1 1 0 0 0-1 1v4h-10v-4a1 1 0 0 0-1-1h-16a1 1 0 0 0-1 1v4h-10v-4a1 1 0 0 0-1-1h-16a1 1 0 0 0-1 1v4h-10v-4a1 1 0 0 0-1-1h-16a1 1 0 0 0-1 1v4h-10v-4a1 1 0 0 0-1-1h-17a1 1 0 0 0 0 1v4h-11v-4a1 1 0 0 0 0-1h-17a1 1 0 0 0 0 1v4h-11v-4a1 1 0 0 0 0-1h-17a1 1 0 0 0-1 1v4h-31a16 16 0 0 0-17 16v7a16 16 0 0 0 17 17h548a16 16 0 0 0 16-17v-7a16 16 0 0 0-16-16Zm-269-32a12 12 0 0 1-1 1 15 15 0 0 1-4 5 15 15 0 0 1-23-12v-2h2a51 51 0 0 0 26 8Zm28-7v1a15 15 0 0 1-27 7 12 12 0 0 1-1-1h1a51 51 0 0 0 27-7Zm20-176h-2a49 49 0 0 1 1 36h2a18 18 0 0 0-1-36Zm-92 0h-1a18 18 0 0 0-1 36h1a49 49 0 0 1 1-36Z"/><path fill="#3f3d56" d="M632 159a50 50 0 1 0 4 19 50 50 0 0 0-4-19Zm-1 36a49 49 0 1 1 3-17 49 49 0 0 1-3 17Z"/><path fill="#3f3d56" d="M611 167h-51a10 10 0 0 0 0 20h51a10 10 0 0 0 0-20Zm20 99v-2a52 52 0 1 0-48 79 32 32 0 0 0 2 0 52 52 0 0 0 27-7 53 53 0 0 0 20-22l1-1a52 52 0 0 0-2-47Zm1 47-1 1a52 52 0 0 1-19 21 51 51 0 0 1-27 7h-1a51 51 0 1 1 46-77v1a51 51 0 0 1 2 47Z"/><path fill="#3f3d56" d="M626 267a6 6 0 0 0-4-1h-23a6 6 0 1 0 0 12h23a6 6 0 0 0 1 0 7 7 0 0 0 2 0 6 6 0 0 0 1-11Z"/><circle cx="600.8" cy="272" r="3.1" fill="#f1f1f1"/><circle cx="610.7" cy="272" r="3.1" fill="#f1f1f1"/><circle cx="620.7" cy="272" r="3.1" fill="#08c"/><path fill="#fff" d="M736 171c-8 5-22 11-37 5l-9-4 19-21a90 90 0 1 1 27 20Z"/><path fill="#08c" d="M736 172c-8 5-22 11-37 5l-11-5 19-21a91 91 0 1 1 129 7 90 90 0 0 1-100 14ZM841 31a89 89 0 1 0-132 119l1 1-18 20 8 4c14 6 28 0 35-5h1A89 89 0 0 0 841 31Z"/><path d="M1016 303a82 82 0 0 0-75-82l7-1a82 82 0 0 1 0 165h-7a82 82 0 0 0 75-82Z" opacity=".1" style="isolation:isolate" transform="translate(-166 -213)"/><path fill="#08c" d="M728 74h59v6h-59zm0 19h103v6H728zm0 18h103v6H728z"/><path fill="#cbcbcb" d="M382 473H1a1 1 0 0 1 0-2h381a1 1 0 0 1 0 2Z"/><path fill="#2f2e41" d="M235 75c-1-4-3-7-7-9a27 27 0 0 0-34 2 18 18 0 0 0-5 9 10 10 0 0 0 2 9v1c0-2 1-4 3-4a19 19 0 0 1 5-2 18 18 0 0 0 12-8 20 20 0 0 0 11 12c3 1 11 3 13 1 4-2 1-7 0-11Z"/></svg>
+
+Open telegram, look for your bot username, start it and send a message containing a phone number.
+
+# Conclusion
+
+In this tutorial, we learned how to create a fast and simple telegram bot using [FastAPI](https://fastapi.tiangolo.com/) and [Python Telegram bot library](https://python-telegram-bot.org/).
+
+The source code of the whole project lives at [My github repo](https://github.com/416d72/oiwa)
+
+If you find this tutorial helpful, please star my repo, and feel free to share this article with your friends.

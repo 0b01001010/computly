@@ -483,7 +483,7 @@
 			</Social>
 		</li>
 		<li>
-			<Social color="#0088cc" title="Linkedin" href="https://linkedin.com/company/computly">
+			<Social color="#006192" title="Linkedin" href="https://linkedin.com/company/computly">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 					<path fill="none" d="M0 0h24v24H0z" />
 					<path
