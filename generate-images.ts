@@ -5,13 +5,7 @@ import kleur from 'kleur';
 import { config } from 'dotenv';
 config();
 
-let staticPostsPath;
-
-if (process.env.PROD) {
-	staticPostsPath = path.resolve('.output/posts');
-} else {
-	staticPostsPath = path.resolve('/static/posts');
-}
+const staticPostsPath = path.resolve('/static/posts');
 
 const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif'];
 
