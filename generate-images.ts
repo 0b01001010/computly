@@ -107,20 +107,20 @@ async function generateFormats({ imgSrc, size }) {
 		kleur.green('Generating formats');
 		const _jobs = [
 			!imgSrc.endsWith('.avif') &&
-			sharp(imgSrc)
-				.resize(size)
-				.avif()
-				.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.avif')}`, _sharpCallback),
+				sharp(imgSrc)
+					.resize(size)
+					.avif()
+					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.avif')}`, _sharpCallback),
 			!imgSrc.endsWith('.webp') &&
-			sharp(imgSrc)
-				.resize(size)
-				.webp()
-				.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.webp')}`, _sharpCallback),
+				sharp(imgSrc)
+					.resize(size)
+					.webp()
+					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.webp')}`, _sharpCallback),
 			!imgSrc.endsWith('.png') &&
-			sharp(imgSrc)
-				.resize(size)
-				.png()
-				.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.png')}`, _sharpCallback)
+				sharp(imgSrc)
+					.resize(size)
+					.png()
+					.toFile(`${imgSrc.replace(/\.[^/.]+$/, '.png')}`, _sharpCallback)
 		];
 		return await Promise.all(_jobs);
 	} catch (error) {

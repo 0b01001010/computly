@@ -4,6 +4,7 @@
 	import { fly } from 'svelte/transition';
 	import { backInOut } from 'svelte/easing';
 	import { browser } from '$app/env';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	/** @type {string} */
 	export let title;
@@ -14,6 +15,9 @@
 	/** @type {string} */
 	export const description = '';
 	$: darkMode = $themeStore === 'dark';
+
+	/** @type {string} */
+	const mainImageURL = `https://computly.me/${mainImage.sources[2].src}`;
 
 	const rem = browser && parseFloat(getComputedStyle(document.documentElement).fontSize);
 	let scroll2Top = false;
@@ -36,6 +40,40 @@
 <svelte:head>
 	<title>{title}</title>
 </svelte:head>
+
+<MetaTags
+	{title}
+	titleTemplate="%s | Computly blog"
+	{description}
+	canonical="https://computly.me"
+	openGraph={{
+		url: 'https://computly.me',
+		title,
+		description,
+		images: [
+			{
+				url: mainImageURL,
+				width: mainImage.width,
+				height: mainImage.height,
+				alt: `${title} main image`
+			}
+		],
+		site_name: 'Computly'
+	}}
+	twitter={{
+		handle: '@computly',
+		site: '@computly',
+		cardType: 'summary_large_image',
+		title,
+		description,
+		image: mainImageURL,
+		imageAlt: `${title} main image`
+	}}
+	facebook={{
+		appId: '431973582019624'
+	}}
+/>
+
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2 post-article">
 	<Image imageData={mainImage} />
 	<h1>{title}</h1>

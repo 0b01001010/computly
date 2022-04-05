@@ -6,12 +6,10 @@
 
 # Development notes
 
-- TODO: Figure out how `vite-imagetools` work to do the same with `generate-images.ts`
 - TODO: Show language on top of `<pre>` block.
 - TODO: Add service worker to support PWA.
-- TODO: Fix generate sitemap to include all posts.
-- TODO: Enhance SEO with [this package](https://github.com/oekazuma/svelte-meta-tags)
 - TODO: Add support for infinite scrolling on blog index page using [this package](https://github.com/skayo/svelte-infinite-loading).
+- TODO: Fix generate sitemap to include all posts.
 
 ### Topics
 

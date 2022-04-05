@@ -26,6 +26,7 @@ specifiers:
   svelte: ^3.46.4
   svelte-check: ^2.4.6
   svelte-lazy-loader: ^1.0.0
+  svelte-meta-tags: ^2.5.1
   svelte-preprocess: ^4.10.4
   ts-node: ^10.7.0
   tslib: ^2.3.1
@@ -44,7 +45,7 @@ optionalDependencies:
 
 devDependencies:
   '@sveltejs/adapter-vercel': 1.0.0-next.47
-  '@sveltejs/kit': 1.0.0-next.305_sass@1.49.9+svelte@3.46.4
+  '@sveltejs/kit': 1.0.0-next.306_sass@1.49.9+svelte@3.46.4
   '@types/node': 17.0.23
   '@types/sharp': 0.30.0
   '@typescript-eslint/eslint-plugin': 5.17.0_689ff565753ecf7c3328c07fad067df5
@@ -62,6 +63,7 @@ devDependencies:
   sass: 1.49.9
   svelte: 3.46.4
   svelte-check: 2.4.6_2d280441a4a58bfcb7f7644c6ba6a360
+  svelte-meta-tags: 2.5.1_svelte@3.46.4+typescript@4.6.3
   svelte-preprocess: 4.10.4_9284c95eee26363ad8bee520856e038c
   ts-node: 10.7.0_ee885bc7281b682b6adbed6ae09ee090
   tslib: 2.3.1
@@ -149,8 +151,8 @@ packages:
       esbuild: 0.14.29
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.305_sass@1.49.9+svelte@3.46.4:
-    resolution: {integrity: sha512-xnykqWuN/9pRQOG8M+qnqbOyM/UK6UnnrdWIy82DkQ+ZO0jKA+puM7V6r0jso2vQr8n7LGSabgwioeJ/EINKpg==}
+  /@sveltejs/kit/1.0.0-next.306_sass@1.49.9+svelte@3.46.4:
+    resolution: {integrity: sha512-dLHoGTr4uwdHuI318O0jLDLOHaLsR2tZHQJLmf1+29H3tL79Kch4B4XCichJ0yIQFrnNATjNBYttM19POW4pyA==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -1743,6 +1745,14 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /schema-dts/1.1.0_typescript@4.6.3:
+    resolution: {integrity: sha512-vdmbs/5ycj4zyKpZIDqTcy+IZi4s7c38RVAYuDmRi7zgxUT8wRWPMLzg0jr7FjdVunYu9yZ00F3+XcZTTFcTOQ==}
+    peerDependencies:
+      typescript: '>=4.1.0'
+    dependencies:
+      typescript: 4.6.3
+    dev: true
+
   /semver/7.3.5:
     resolution: {integrity: sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==}
     engines: {node: '>=10'}
@@ -1954,6 +1964,17 @@ packages:
   /svelte-lazy-loader/1.0.0:
     resolution: {integrity: sha512-AZD6R60vksyojn21FgXLglmBiBB9K5Dkdu0hdGrLbCaRCYT68IsWkZfRUqKhMx1IfzqWcZQ8X9y/f+Ih0oNQkQ==}
     dev: false
+
+  /svelte-meta-tags/2.5.1_svelte@3.46.4+typescript@4.6.3:
+    resolution: {integrity: sha512-t2+2Ve0Rbmc5tZxUvaEv959PffkUsNk5afXSmgRbVbKiCAbsb2XhWJwUQdQDqeYlb3lRDLBywfwbjurdtb+NRQ==}
+    peerDependencies:
+      svelte: ^3.39.0
+    dependencies:
+      schema-dts: 1.1.0_typescript@4.6.3
+      svelte: 3.46.4
+    transitivePeerDependencies:
+      - typescript
+    dev: true
 
   /svelte-preprocess/4.10.4_9284c95eee26363ad8bee520856e038c:
     resolution: {integrity: sha512-fuwol0N4UoHsNQolLFbMqWivqcJ9N0vfWO9IuPAiX/5okfoGXURyJ6nECbuEIv0nU3M8Xe2I1ONNje2buk7l6A==}
