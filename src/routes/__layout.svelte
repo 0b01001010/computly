@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import 'papercss/dist/paper.min.css';
 	import '$lib/styles/index.scss';
 	import { browser } from '$app/env';
@@ -16,6 +17,14 @@
 		}
 		$themeStore === 'dark' && document.documentElement.classList.toggle('dark');
 	}
+	onMount(() => {
+		const gFontCSS = document.createElement('link');
+		gFontCSS.href =
+			'https://fonts.googleapis.com/css2?family=Acme&family=Josefin+Sans&display=swap';
+		gFontCSS.rel = 'stylesheet';
+		gFontCSS.type = 'text/css';
+		document.querySelector('head').appendChild(gFontCSS);
+	});
 </script>
 
 <BlogHeader />
