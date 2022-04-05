@@ -1,10 +1,10 @@
 <script lang="ts">
-	import CommonSeo from '$lib/Components/CommonSEO.svelte';
+	import CommonSEO from '$lib/Components/CommonSEO.svelte';
 	import { theme as themeStore } from '$lib/stores/theme';
 	$: darkMode = $themeStore === 'dark';
 </script>
 
-<CommonSeo title="Computly" />
+<CommonSEO title="Home | Computly" />
 
 <main class="main-content border border-primary {darkMode ? 'bg-dark' : 'bg-light'}">
 	<div class="text">

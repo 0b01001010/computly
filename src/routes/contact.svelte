@@ -10,7 +10,7 @@
 	// @ts-ignore
 	import mailPlaceholder from '$lib/assets/icons/email.png?w=32&blur=5&quality=10';
 	import Image from '$lib/Components/Image.svelte';
-	import CommonSeo from '$lib/Components/CommonSEO.svelte';
+	import CommonSEO from '$lib/Components/CommonSEO.svelte';
 
 	const linkedInImages = {
 		sources: liIconMeta,
@@ -29,7 +29,7 @@
 	};
 </script>
 
-<CommonSeo title="Contact us" descriptions="Feel free to get in touch using one of these methods" />
+<CommonSEO title="Contact us" description="Feel free to get in touch using one of these methods" />
 
 <article class="{darkMode ? 'bg-dark' : 'bg-light'} border border-2">
 	<h1>Contact</h1>

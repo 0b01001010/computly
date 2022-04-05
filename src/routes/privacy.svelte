@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { theme as themeStore } from '$lib/stores/theme';
-	import CommonSEO from '$lib/components/CommonSEO.svelte';
+	import CommonSEO from '$lib/Components/CommonSEO.svelte';
+
 	$: darkMode = $themeStore === 'dark';
 </script>
 
