@@ -87,6 +87,7 @@
 			.post-contents {
 				padding: 1rem;
 				h1 {
+					font-family: Acme, sans-serif;
 					font-size: 5vmin;
 					letter-spacing: -2px;
 					text-align: center;
