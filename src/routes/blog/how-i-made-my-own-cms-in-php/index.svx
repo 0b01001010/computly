@@ -123,6 +123,45 @@ When I was about to finish that tutorial, I realised that the permissions system
 
 I started to make it more sensible, but because the lack of spare time, I made it a small improvement.
 
+And here's the Access controller for admin routes.
+
+```php
+<?php
+
+namespace app\Controllers\Admin;
+
+use System\Controller;
+
+class AccessController extends Controller
+{
+
+    /**
+     * Check user permissions
+     *
+     * @return void
+     */
+    public function index()
+    {
+        $loginModel   = $this->load->model('Login');
+        $ignored      = ['/admin/login', '/admin/login/submit', '/404'];
+        $currentRoute = $this->app->route->getCurrentRoute();
+        if (($isNotLogged  = !$loginModel->isLogged()) && !in_array($currentRoute, $ignored)) {
+            return $this->url->redirect('/admin/login');
+        }
+        if ($isNotLogged) {
+            return FALSE;
+        }
+        $user = $loginModel->user();
+        $ugm  = $this->load->model('UsersGroups');
+        $ug   = $ugm->get($user->ugid);
+        if (!in_array($currentRoute, $ug->page)) {
+            return $this->url->redirect('/404');
+        }
+    }
+
+}
+```
+
 ### Super admin permissions
 
 - Editing Users groups permissions (Cannot delete Admins nor Users groups).
@@ -185,11 +224,107 @@ When a user register to the site .. they enter their username, email and passwor
 
 Works as expected, if login went successful, user will be redirected to home page.
 
+Here's the function responsible for the login process:
+
+```php
+
+    /**
+     * Submit Login form
+     *
+     * @return mixed
+     */
+    public function submit()
+    {
+        if ($this->isValid()) {
+            $email      = $this->request->post('email');
+            $pass       = $this->request->post('password');
+            $loginModel = $this->load->model('Login');
+            if (!$loginModel->isValidLogin($email, $pass)) {
+                $json['errors'] = 'Invalid email or password';
+                return $this->json($json);
+            }
+            $logged_in_user = $loginModel->user();
+            if ($logged_in_user->status === 'disabled') {
+                $json['errors'] = 'Please confirm your email by openeing the link we\'ve sent to';
+                return $this->json($json);
+            }
+            // save login data in cookie and session
+            $this->cookie->set('login', $logged_in_user->code);
+            $this->session->set('login', $logged_in_user->code);
+            $json               = [];
+            $json['success']    = 'Welcome Back ' . $logged_in_user->name;
+            $json['redirectTo'] = $this->url->link('/');
+            return $this->json($json);
+        } else {
+            $json           = [];
+            $json['errors'] = $this->validator->flatMsg();
+            return $this->json($json);
+        }
+    }
+```
+
 ## Added features
 
 ### Tags
 
 You can find post's tags in the bottom , when you click a tag, you will be redirected to a page like `/tag/foo` contains all posts related to that tag.
+
+The tag controller is just plain and simple :)
+
+```php
+<?php
+
+namespace app\Controllers\Blog;
+
+use System\Controller;
+
+class TagController extends Controller
+{
+
+    /**
+     * Display Tag Page
+     *
+     * @param string name
+     * @param int $id
+     * @return mixed
+     */
+    public function index($tag)
+    {
+        $postsModel = $this->load->model('Posts');
+        $posts      = $postsModel->getPostsByTag($tag);
+        if (!$posts) {
+            return $this->url->redirect('/404');
+        }
+        $this->blogLayout->title($tag);
+        if ($this->pagination->page() != 1) {
+            // then just redirect him to the first page of the category
+            // regardless there is posts or not in that category
+            return $this->url->redirect("/tag/$tag");
+        }
+        $data['tag']    = $tag;
+        $data['posts']  = $posts;
+        $postController = $this->load->controller('Blog/Post');
+
+        // the idea here as follows:
+        // first we will pass the $post variable to $post_box variable
+        // in the view file
+        // why ? because $post_box is an anonymous function
+        // when calling it, it will call the "box" method
+        // from the post controller
+        // so it will pass to it the "$post" variable to be used in the
+        // post-box view
+        $data['post_box'] = function ($post) use ($postController) {
+            return $postController->box($post);
+        };
+
+        $data['url']        = $this->url->link('/tag/' . seo($tag) . '/' . '?page=');
+        $data['pagination'] = $this->pagination->paginate();
+        $view               = $this->view->render('blog/tag', $data);
+        return $this->blogLayout->render($view);
+    }
+
+}
+```
 
 ### Search
 
@@ -211,6 +346,28 @@ That's a basic counter that depends on a method that update the `view` column of
 
 That method will be called when a visitor opens a post.
 
+This is a simple function that does the job well!
+
+```php
+    /**
+     * View counter
+     *
+     * @param ing $id
+     * @return void
+     */
+    public function addView($id)
+    {
+        $views = $this->db
+                        ->select('views')
+                        ->where('id=?', $id)
+                        ->fetch($this->table)->views + 1;
+        $this->db
+                ->data('views', $views)
+                ->where('id=?', $id)
+                ->update($this->table);
+    }
+```
+
 ### Author posts:
 
 Every user has a custom URL to view his posts .. Navigating to `/author/name` will redirect you to that author's contributed posts.
@@ -221,7 +378,6 @@ Every user has a custom URL to view his posts .. Navigating to `/author/name` wi
 - Added `User Bio` .. A few words about the user, They can change it in profile page.
 - Added `About` and `contact-us` pages ... They are just static pages.
 
----
 
 # UI/UX
 
