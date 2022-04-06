@@ -72,7 +72,7 @@ Please note: The API token is the key for your bot to communicate with the Teleg
 
 # Create a new Python project
 
-Clone [this projcet](https://github.com/416d72/oiwa.git) using the command:
+Clone <a href="https://github.com/416d72/oiwa" target="_blank" rel="external">this repo</a> using the command:
 
 ```bash
 git clone https://github.com/416d72/oiwa.git
@@ -183,7 +183,7 @@ async def webhook_handler(request: Request):
     return "ok"
 ```
 
-Notice it receives a [`POST` request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)
+Notice it receives a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST" target="_blank" rel="external">`POST` request</a>
 
 Now lets add the update handler function which receives updates from Telegram.
 
@@ -226,7 +226,7 @@ Then it does the following checks:
 
 - if the message contains the command `/help`, if so it calls the `cmd_help` function.
 
-- if the message contains a phone number (using [regular expressions](https://en.wikipedia.org/wiki/Regular_expressions)), if so it calls the `phone_handler` function.
+- if the message contains a phone number (using <a href="https://en.wikipedia.org/wiki/Regular_expressions" rel="external" target="_blank">regular expressions</a>), if so it calls the `phone_handler` function.
 
 ## Adding the helper functions
 
@@ -309,9 +309,9 @@ async def robots():
 
 # Deployment
 
-I choose to use [Vercel](https://vercel.com/) for deployment.
+I choose to use <a href="https://vercel.com/" target="_blank" rel="external">Vercel</a> for deployment.
 
-You need to create your own account, then install the [Vercel CLI](https://vercel.com/cli/).
+You need to create your own account, then install the <a href="https://vercel.com/cli" target="_blank" rel="external">Vercel CLI</a>.
 
 In the project directory, run the following command:
 
@@ -344,8 +344,8 @@ Open telegram, look for your bot username, start it and send a message containin
 
 # Conclusion
 
-In this tutorial, we learned how to create a fast and simple telegram bot using [FastAPI](https://fastapi.tiangolo.com/) and [Python Telegram bot library](https://python-telegram-bot.org/).
+In this tutorial, we learned how to create a fast and simple telegram bot using <a href="https://fastapi.tiangolo.com/" target="_blank" rel="external">FastAPI</a> and <a href="https://python-telegram-bot.org/" rel="external" target="_blank">Python Telegram bot library</a>.
 
-The source code of the whole project lives at [My github repo](https://github.com/416d72/oiwa)
+The source code of the whole project lives at <a href="https://github.com/416d72/oiwa" target="_blank" rel="external">my github repo</a>
 
 If you find this tutorial helpful, please star my repo, and feel free to share this article with your friends.

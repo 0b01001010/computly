@@ -67,7 +67,7 @@ export const load = async () => {
 
 ### Test it yourself
 
-**Get the [source code here](https://github.com/416d72/Naba)**
+**Get the <a href="https://github.com/416d72/Naba" target="_blank" rel="external">source code here</a>**
 
 ### Setting up the environment
 
@@ -105,7 +105,7 @@ return [
 
 Change those configurations to get it working.
 
-_This project is an application on this [tutorial](https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH) (in Arabic)_
+_This project is an application on this <a href="https://www.youtube.com/playlist?list=PLGO8ntvxgiZPZBHUGED6ItUujXylNGpMH" target="_blank" rel="external">tutorial</a> (in Arabic)_
 
 # Modifications
 

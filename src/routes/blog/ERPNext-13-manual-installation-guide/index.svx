@@ -15,7 +15,7 @@ export const load = async () => {
 
 ## Preface
 
-ERPNext is a free and open-source integrated Enterprise Resource Planning software developed by Frappe Technologies Pvt. Ltd. and is built on MariaDB database system using Frappe, a Python based server-side framework. ERPNext is a generic ERP software used by manufacturers, distributors and services companies. [Wikipedia](https://en.wikipedia.org/wiki/ERPNext)
+ERPNext is a free and open-source integrated Enterprise Resource Planning software developed by Frappe Technologies Pvt. Ltd. and is built on MariaDB database system using Frappe, a Python based server-side framework. ERPNext is a generic ERP software used by manufacturers, distributors and services companies. <a href="https://en.wikipedia.org/wiki/ERPNext" rel="external" target="_blank">Wikipedia</a>
 
 # Installation instructions
 
@@ -168,7 +168,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 
 ### Installing Node.js via NVM
 
-- Use `nvm` following [official guide](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Use `nvm` following <a href="https://github.com/nvm-sh/nvm#installing-and-updating" target="_blank" rel="external">official guide</a>
 
 - Install node.js
   > Check the required node version for erpnext branch (In the time of writing this document, it is recommended to install version 14)

@@ -13,6 +13,7 @@
 
 <style lang="scss">
 	/* From cssbuttons.io by @fanishah */
+	$transition: all 500ms ease-in-out;
 	a {
 		font-family: inherit;
 		background: var(--icon-color);
@@ -41,12 +42,19 @@
 			justify-content: center;
 			left: 5%;
 			top: 10%;
-			transition: all 0.5s;
+			transition: $transition;
+		}
+		p {
+			transition: $transition;
 		}
 		&:hover {
 			.icon {
 				width: 90%;
 				border-radius: 0.5em;
+				box-shadow: 0px 0px 10px 3px hsla(0, 0%, 0%, 0.4);
+			}
+			p {
+				opacity: 0;
 			}
 		}
 	}
