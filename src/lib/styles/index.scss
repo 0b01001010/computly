@@ -4,6 +4,12 @@
 @import './scrollbar.scss';
 @import './prism.scss';
 
+@font-face {
+	font-display: swap;
+	font-family: Paskowy;
+	src: url('/Paskowy.ttf');
+}
+
 /* HTML elements */
 *,
 *::after,

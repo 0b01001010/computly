@@ -26,10 +26,6 @@
 </header>
 
 <style lang="scss">
-	@font-face {
-		font-family: Paskowy;
-		src: url('/Paskowy.ttf');
-	}
 	.logo {
 		position: static;
 		display: flex;
