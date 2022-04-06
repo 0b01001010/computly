@@ -125,6 +125,18 @@ article {
 			display: inline;
 		}
 	}
+	a[target='_blank'] {
+		&::after {
+			content: '';
+			background-color: var(--primary);
+			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M10 8v2L4 7v13h13l-2-6h2l1 6-1 1H4l-1-1V7l1-1Zm11-5-2 11V5l-7 8h-2l8-8-6 1Z'/%3E%3C/svg%3E");
+			width: 1em;
+			height: 1em;
+			margin-left: 0.25ch;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
 }
 
 .post-card img {
