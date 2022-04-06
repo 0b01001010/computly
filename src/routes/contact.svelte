@@ -110,7 +110,7 @@
 		<a href="https://www.linkedin.com/in/a3k/" target="_blank" rel="external">
 			<Image imageData={linkedInImages} />
 		</a>
-		<a href="mailto://contact@computly.me" target="_blank" rel="external">
+		<a href="mailto://contact@computly.me">
 			<Image imageData={mailImages} />
 		</a>
 	</div>

@@ -71,14 +71,14 @@
 		<path fill="#cbcbcb" d="M866 637H485a1 1 0 0 1 0-2h381a1 1 0 0 1 0 2Z" />
 	</svg>
 	<p>
-		At Computly, accessible from <a href="https://computly.me">https://computly.me</a>, one of our
+		At Computly, accessible from <a sveltekit:prefetch href="/">https://computly.me</a>, one of our
 		main priorities is the privacy of our visitors. This Privacy Policy document contains types of
 		information that is collected and recorded by Computly and how we use it.
 	</p>
 
 	<p>
 		If you have additional questions or require more information about our Privacy Policy, do not
-		hesitate to <a href="/contact">contact us</a>.
+		hesitate to <a sveltekit:prefetch href="/contact">contact us</a>.
 	</p>
 
 	<p>
