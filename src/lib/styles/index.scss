@@ -56,7 +56,13 @@ main.main-content {
 	z-index: 1;
 	// Blog index
 	picture {
+		height: 100%;
 		width: 100%;
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
 	}
 }
 

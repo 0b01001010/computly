@@ -28,16 +28,12 @@ export const load = async () => {
   const workflowImages = {
 		sources: workflowMeta,
 		placeholder: workflowPlaceholder,
-		width: workflowMeta[0].width,
-		height: workflowMeta[0].height,
 		alt: 'Workflow image illustration',
 	};
 
   const butterflyImages = {
 		sources: butterflyMeta,
 		placeholder: butterflyPlaceholder,
-		width: butterflyMeta[0].width,
-		height: butterflyMeta[0].height,
 		alt: 'Doing modifications, butterfly image',
 	};
 

@@ -10,8 +10,8 @@
 	src={sources[sources.length - 1].src}
 	{placeholder}
 	{alt}
-	width={width.toString()}
-	height={height.toString()}
+	width={width ? width.toString() : 'auto'}
+	height={height ? height.toString() : 'auto'}
 	--filter="blur(5px)"
 	--transition="filter 250ms ease-in-out"
 >

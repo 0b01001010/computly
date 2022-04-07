@@ -1,0 +1,46 @@
+---
+title: VPN over SSH with sshuttle
+date: 2022-04-07
+description: Here I explain how to use sshuttle to setup a VPN over SSH tunnel, and the reasons for this method.
+---
+<script context="module">
+export const load = async () => {
+  return {
+    props: {
+      mainImage: (await import('./_info.json')).default,
+    }
+  }
+}
+</script>
+
+<script>
+	import Image from '$lib/Components/Image.svelte';
+  // @ts-ignore
+	// import botfatherMeta from './botfather.png?width=500&format=avif;webp;png&metadata';
+
+	// @ts-ignore
+	// import botfatherPH from './botfather.png??width=100&blur=10&quality=10';
+
+  // const botfatherImages = {
+	// 	sources: botfatherMeta,
+	// 	placeholder: botfatherPH,
+	// 	width: botfatherMeta[0].width,
+	// 	height: botfatherMeta[0].height,
+	// 	alt: 'Workflow image illustration',
+	// };
+
+</script>
+
+
+<!-- <Image imageData={botfatherImages} /> -->
+
+I hvae a VPS (Virtual Private Server) and I wanted to use it to setup a VPN, I tried things like <a href="https://www.wireguard.com/" target="_blank" rel="external">wireguard</a>, but it got blocked by my ISP.
+
+There are so many free and commercial VPN providers available. But VPNs can be blocked in certain countries like China.
+
+In my country, the government uses advanced censorship techniques to block VPNs, one of those techniques is using DPI (Deep Packet Inspection) to block VPNs.
+
+
+
+
+But sshuttle is the simplest, but powerful way to setup VPN on any network to which you have SSH access. The beauty of this application is you need root access in your local system, but don’t need any administrative access on your remote side. Cool, isn’t it?

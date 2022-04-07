@@ -24,8 +24,6 @@ export const load = async () => {
   const botfatherImages = {
 		sources: botfatherMeta,
 		placeholder: botfatherPH,
-		width: botfatherMeta[0].width,
-		height: botfatherMeta[0].height,
 		alt: 'Workflow image illustration',
 	};
 

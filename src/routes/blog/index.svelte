@@ -18,10 +18,12 @@
 				mainImage
 			});
 		}
+		const sortedPosts = posts.sort((a, b) => (a.date < b.date) - (a.date > b.date)); // in reverse
+
 		return {
 			status: 200,
 			props: {
-				posts
+				posts: sortedPosts
 			}
 		};
 	};

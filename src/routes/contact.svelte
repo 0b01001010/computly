@@ -15,16 +15,12 @@
 	const linkedInImages = {
 		sources: liIconMeta,
 		placeholder: liPlaceholder,
-		width: 32,
-		height: 32,
 		alt: 'LinkedIn'
 	};
 
 	const mailImages = {
 		sources: mailIconMeta,
 		placeholder: mailPlaceholder,
-		width: 32,
-		height: 32,
 		alt: 'Email'
 	};
 </script>

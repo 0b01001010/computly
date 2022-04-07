@@ -6,7 +6,7 @@ declare type ImageSource = {
 export type ImageProps = {
 	sources: ImageSource[];
 	alt?: string;
-	width: number;
-	height: number;
+	width?: number;
+	height?: number;
 	placeholder: string;
 };
