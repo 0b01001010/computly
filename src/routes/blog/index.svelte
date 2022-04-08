@@ -1,5 +1,7 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
+	import type { Post } from '$lib/types/post';
+
 	export const load: Load = async () => {
 		let posts: Post[] = [];
 
@@ -18,7 +20,7 @@
 				mainImage
 			});
 		}
-		const sortedPosts = posts.sort((a, b) => (a.date < b.date) - (a.date > b.date)); // in reverse
+		const sortedPosts = posts.sort((a: Post, b: Post) => ('' + b.date).localeCompare(a.date)); // in reverse
 
 		return {
 			status: 200,
@@ -31,7 +33,6 @@
 
 <script lang="ts">
 	import { theme as themeStore } from '$lib/stores/theme';
-	import type { Post } from '$lib/types/post';
 	import Image from '$lib/Components/Image.svelte';
 	export let posts: Post[];
 </script>
