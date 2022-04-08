@@ -82,7 +82,7 @@
 				align-items: center;
 				transition: all 250ms ease-in-out;
 				&:hover {
-					filter: grayscale(1);
+					filter: hue-rotate(45deg);
 				}
 			}
 			.post-contents {
@@ -90,7 +90,6 @@
 				h1 {
 					font-family: Acme, sans-serif;
 					font-size: 5vmin;
-					letter-spacing: -2px;
 					text-align: center;
 				}
 				div {

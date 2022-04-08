@@ -13,34 +13,267 @@ export const load = async () => {
 }
 </script>
 
-<script>
-	import Image from '$lib/Components/Image.svelte';
-  // @ts-ignore
-	// import botfatherMeta from './botfather.png?width=500&format=avif;webp;png&metadata';
+There are so many free and paid VPN providers available. But VPNs can be blocked in some countries like China.
 
-	// @ts-ignore
-	// import botfatherPH from './botfather.png??width=100&blur=10&quality=10';
+In my country, the government uses advanced censorship techniques to block VPNs, one of those techniques is using **DPI** <a href="https://en.wikipedia.org/wiki/Deep_packet_inspection" target="_blank" rel="external">(Deep Packet Inspection)</a> to block VPNs, so using VPNs is not possible. Even if I used a different port for it like 8080 or 443, it still will be blocked.
 
-  // const botfatherImages = {
-	// 	sources: botfatherMeta,
-	// 	placeholder: botfatherPH,
-	// 	width: botfatherMeta[0].width,
-	// 	height: botfatherMeta[0].height,
-	// 	alt: 'Workflow image illustration',
-	// };
+That's where <a href="https://sshuttle.readthedocs.io/en/stable/manpage.html" target="_blank" rel="external">sshuttle</a> comes in. sshuttle is a free open source software that can be used to setup a VPN over SSH tunnel, this means that if you already have a VPS where you can connect to it with SSH, you can make use of that connection to tunnel your traffic through it.
 
-</script>
+sshuttle need the root access on client side to modify the system firewall to tunnel all traffic through the SSH connection, But it doesn't need root privileges on the server side, because all it automatically uploads its source code on the server to handle traffic.
+
+So after installing sshuttle, via `pacman`, I ran it normally with `sshuttle -r user@host:port 0/0` and it worked fine.
+
+## Gotchas
+
+sshuttle needs the root password each time I run it, but there's an easy solution for this, just running `sshuttle --sudoers` will auto generate the proper sudoers.d file using the current user. But It didn't work for me!
+
+Another annoying behaviour is when I put my machine into sleep mode, and open it up after some time, I find that `sshuttle` process is stopped! and most times I find myself browsing the web from my original IP address, without noticing!
+
+So I thought that I may need a systemd service that works all the time... After some research, I found an old systemd service file, but it didn't work for me!
+
+So after some research I found another [python script](https://gist.github.com/perfecto25/6e9a0c982fb76401f720b661f1a8a9f1?permalink_comment_id=3331894#gistcomment-3331894) that controls the sshuttle process, with systemd.
+
+But it still fails to run because sshuttle asks for password in an interactive way that cannot be solved with that script.
+
+So I needed to solve all of this.
+
+- Getting rid of the SSH passphrase.
+- Using the sshuttle service without root password.
+- Controlling sshuttle process via systemd.
+
+<svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 598 519"><path fill="#f2f2f2" d="m554 481 16-5a55 55 0 0 0 0-26c-7 14-26 18-37 29a33 33 0 0 0-8 28l-3 11a55 55 0 0 0 40-23 53 53 0 0 0 6-11l-14-3Z"/><path fill="#f2f2f2" d="m537 460 12-12a55 55 0 0 0-12-23c1 16-15 27-19 43a33 33 0 0 0 4 28l2 11a55 55 0 0 0 26-38 53 53 0 0 0 0-13l-13 4Z"/><path fill="#3f3d56" d="M456 34H2a2 2 0 0 1 0-3h454a2 2 0 0 1 0 3Z"/><ellipse cx="32.7" cy="10.8" fill="#3f3d56" rx="10.6" ry="10.8"/><ellipse cx="69.3" cy="10.8" fill="#3f3d56" rx="10.6" ry="10.8"/><ellipse cx="105.8" cy="10.8" fill="#3f3d56" rx="10.6" ry="10.8"/><path fill="#3f3d56" d="M434 3h-26a2 2 0 0 0 0 4h26a2 2 0 0 0 0-4Zm0 7h-26a2 2 0 0 0 0 4h26a2 2 0 0 0 0-4Zm0 7h-26a2 2 0 0 0 0 4h26a2 2 0 0 0 0-4Z"/><circle cx="35.2" cy="94.8" r="13.1" fill="#e6e7e8"/><path fill="#e6e7e8" d="M369 124H26a4 4 0 1 1 0-8h343a4 4 0 1 1 0 8Zm-90 15H26a4 4 0 0 1 0-8h253a4 4 0 1 1 0 8Z"/><circle cx="35.2" cy="299.1" r="13.1" fill="#e6e7e8"/><path fill="#e6e7e8" d="M369 328H26a4 4 0 1 1 0-8h343a4 4 0 0 1 4 4 4 4 0 0 1-4 4Zm-90 15H26a4 4 0 0 1 0-7h253a4 4 0 1 1 0 7Z"/><circle cx="35.2" cy="189.2" r="13.1" fill="#e6e7e8"/><path fill="#e6e7e8" d="M369 218H26a4 4 0 1 1 0-8h343a4 4 0 1 1 0 8Zm-48 16H26a4 4 0 0 1 0-8h295a4 4 0 0 1 0 8Zm-20 15H26a4 4 0 0 1 0-8h275a4 4 0 1 1 0 8Z"/><circle cx="306.5" cy="324.4" r="96.9" fill="#9381f3"/><circle cx="306.4" cy="344.4" r="13.8" fill="#3f3d56"/><circle cx="306.4" cy="344.4" r="6.4" fill="#9381f3"/><path fill="#fff" d="M332 375h-51a19 19 0 0 1-19-19v-23a19 19 0 0 1 19-19h51a19 19 0 0 1 19 19v23a19 19 0 0 1-19 19Zm-51-59a17 17 0 0 0-17 17v23a17 17 0 0 0 17 17h51a17 17 0 0 0 17-17v-23a17 17 0 0 0-17-17Z"/><path fill="#3f3d56" d="M278 362h45a18 18 0 0 0 18-17v-20a18 18 0 0 0-1-6 18 18 0 0 1 7 14v19a18 18 0 0 1-18 18h-45a18 18 0 0 1-17-11 18 18 0 0 0 11 3Z"/><path fill="#a0616a" d="M417 507h-11l-6-43h17v43z"/><path fill="#2f2e41" d="M417 518h-34a13 13 0 0 1 13-14l7-4 11 4h3Z"/><path fill="#a0616a" d="M496 507h11l5-43h-16v43z"/><path fill="#2f2e41" d="M495 518h35a13 13 0 0 0-14-14l-6-4-12 4h-3Zm-95-86 1-16 4-29 5-76v-5l29-6 20-9 24 7 18 7v7l2 11 1 17a251 251 0 0 0 4 43c-1 1 2 36 2 36s5 60 2 69-17 4-17 4 1-3-3-4-15-87-15-87-2-18-4-23l-4-19s-12-24-12-29c0 0-2-5-3 0l-6 19-5 16-5 23-3 20-6 28v25s-3 21-9 24-19 0-19 0l-1-53Z"/><path fill="#2f2e41" d="m412 236 7 20-8 9 3 4-2 5-7 53 37 14 12-16 10 16 43-10-11-68v-5l-3-8v-19l8-54-24-8-12-9-4 12-16-2v-10l-12 11-10 3-13 3-1 4 3-1-1 51 1 5z"/><path fill="#a0616a" d="m401 307 6-60 2-25-17-3s0 18-2 28 0 59 0 60a8 8 0 1 0 11 0Z"/><path fill="#2f2e41" d="m384 260 5 1 17 3h1l2-8 2-2 4-23v-1l7-14 4-42-16 3-1 1-6 10a125 125 0 0 0-17 60 9 9 0 0 0-2 12Z"/><path fill="#a0616a" d="m509 307-6-60-2-25 18-3s-1 18 1 28 1 59 0 60a8 8 0 1 1-11 0Z"/><path fill="#2f2e41" d="m526 260-5 1-16 3h-1l-2-8-2-2-5-23v-1l-7-14 2-42 11 3v1l7 10a125 125 0 0 1 16 60 9 9 0 0 1 2 12Z"/><path fill="#9381f3" d="m437 181 8-21h20l7 21 24 134s-74 20-73-4l4-61Z"/><circle cx="454.6" cy="130.4" r="23.7" fill="#a0616a"/><path fill="#2f2e41" d="M430 113c3-4 8-12 23-15 18-4 26 12 22 13 13 4 5 31 1 29a19 19 0 0 1-8-13v-6c-1 5-6 6-12 4a7 7 0 0 1 5-5 24 24 0 0 1-14 6 10 10 0 0 1 5-6v-1a23 23 0 0 1-8 4c-3 1-6 1-8-2a7 7 0 0 1-2-2c1 4-2 9-4 8-2 0-3-11 0-14Z"/><path fill="#ccc" d="M598 518a1 1 0 0 1-1 1H317a1 1 0 0 1 0-2h280a1 1 0 0 1 1 1Z"/><path fill="#3f3d56" d="M307 272c-9 0-18 4-22 11a29 29 0 0 1 17-6c15 0 27 10 27 23v10h5v-15c0-13-12-23-27-23Z"/><path fill="#fff" d="M337 316h-61v-18c0-15 13-27 30-27s31 12 31 27Zm-59-2h57v-16c0-14-13-25-29-25s-28 11-28 25Z"/><path fill="#fff" d="M322 309h-31a5 5 0 0 1-6-6v-7c0-10 10-18 21-18s22 8 22 18v7a5 5 0 0 1-6 6Zm-16-29c-10 0-19 7-19 16v7a3 3 0 0 0 4 4h31a3 3 0 0 0 4-4v-7c0-9-9-16-20-16Z"/></svg>
+
+## Going Passwordless
+
+### SSH without passphrase
+
+SSHuttle uses the default private key used for authentication with the SSH server, it is usually located in `~/.ssh/id_rsa`.
+
+To make things a bit easier, so I don't have to type SSH passphrase every time I use sshuttle, there are two methods:
+
+1- Using a key without a passphrase:
+
+	**This requires keeping the device safe or else the remote server may be compromised.**
+
+	To minimize the risk of compromise, it would be good idea to create a new user in the remote server just for this purpose.
+
+	Creating a new user is fairly easy, just typing this command:
+
+```bash
+sudo adduser example -s /usr/bin/true
+```
+
+	The `-s /usr/bin/true` is to disallow user from controling the server via SSH.
+
+	After this, comes the authentication step, with a new or a the current SSH key.
+
+	- Generating a new key is easy using the command `ssh-keygen` and entering an empty password.
+
+	- Or using the same key but after changing the password to an empty one with `ssh-keygen -p`
+
+	Finally, the regular connection goes as usual: `ssh-copy-id username@remote_host` then `sshuttle -r username@remote_host 0/0`
+
+2- Storing the passphrase to system wallet.
+
+	For me, I'm using this method with the [Gnome Seahorse app](https://wiki.gnome.org/Apps/Seahorse/), this app is great and stores credentials like SSH, GPG private keys passwords.
+
+### SSHuttle without root password
+
+To overcome the root password issue, I had to go another approach which is to use my local root user for all of this.
+
+So I moved my SSH key to `/root/.ssh` and changed it with empty password, and now the passwordless step is completed.
+
+## The python script
+
+Here's the python script which handles sshuttle through systemd:
+
+```python
+#!/usr/bin/env python3
+
+from __future__ import print_function
+
+import os
+import sys
+import json
+import signal
+import socket
+import subprocess
+from subprocess import CalledProcessError
+import logging
+import logging.handlers
+
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
+handler = logging.handlers.SysLogHandler(address="/dev/log")
+formatter = logging.Formatter("%(module)s.%(funcName)s: %(message)s")
+handler.setFormatter(formatter)
+log.addHandler(handler)
+
+conf = f"{os.path.abspath(os.path.dirname(__file__))}/sshuttle.config.json"
 
 
-<!-- <Image imageData={botfatherImages} /> -->
+def precheck():
+    if len(sys.argv) < 2:
+        print("need to pass argument: start | stop | restart | status ")
+        sys.exit()
 
-I hvae a VPS (Virtual Private Server) and I wanted to use it to setup a VPN, I tried things like <a href="https://www.wireguard.com/" target="_blank" rel="external">wireguard</a>, but it got blocked by my ISP.
+    if sys.argv[1] in ["help", "-h", "--help", "h"]:
+        print("sshuttle.py start | stop | restart | status")
+        sys.exit()
 
-There are so many free and commercial VPN providers available. But VPNs can be blocked in certain countries like China.
+    if not sys.argv[1] in ["start", "stop", "restart", "status"]:
+        print("usage: sshuttle.py start | stop | restart | status")
+        sys.exit()
 
-In my country, the government uses advanced censorship techniques to block VPNs, one of those techniques is using DPI (Deep Packet Inspection) to block VPNs.
+    if not os.path.exists(conf):
+        print("no sshuttle config file present, exiting.")
+        sys.exit()
+
+    # check if sshuttle is installed
+    try:
+        subprocess.check_output(["which", "sshuttle"]).strip()
+    except CalledProcessError:
+        print("sshuttle is not installed on this host")
+        sys.exit()
 
 
+def start():
+
+    with open(conf) as jsondata:
+        data = json.load(jsondata)
+
+    assert (
+        "user" in data
+    ), "'user' key (for the SSH user) needs to be present in json config file"
+    assert "path" in data, "'path' key needs to be present in json config file"
+
+    ssh_user = data["user"]
+
+    for rhost in data["path"].keys():
+        netrange = ""
+
+        # if single network, turn into List
+        if not type(data["path"][rhost]) is list:
+            networks = data["path"][rhost].split()
+        else:
+            networks = data["path"][rhost]
+
+        for network in networks:
+
+            # check if CIDR format
+            if "/" in network:
+                netrange = netrange + " " + network
+            else:
+                netrange = netrange + " " + socket.gethostbyname(network)
+        netrange = netrange.strip()
+
+        # Modern kernels have iptables changes will kill and try to then route the connection to the
+        # emote server through the connection to the remote server, breaking the link. Therefore
+        # so we need to exclude the direct connection to the remote server.
+        # See https://github.com/sshuttle/sshuttle/issues/191
+        exclude_host_direct = socket.gethostbyname(rhost.split(":")[0])
+
+        # build rpath
+        rpath = f"-r {ssh_user}@{rhost} {netrange} -x {exclude_host_direct}"
+
+        try:
+            print("starting sshuttle..")
+            log.info("starting sshuttle for networks: %s via %s" % (netrange, rhost))
+            command = "sshuttle --no-latency-control --dns {}".format(rpath)
+            log.info("Command invocation: '%s': ", command)
+            subprocess.Popen(command, shell=True)
+        except CalledProcessError as err:
+            log.error("error running sshuttle: %s" % str(err))
 
 
-But sshuttle is the simplest, but powerful way to setup VPN on any network to which you have SSH access. The beauty of this application is you need root access in your local system, but don’t need any administrative access on your remote side. Cool, isn’t it?
+def get_pid():
+    search = "ps -ef | grep '/usr/bin/python3 /usr/bin/sshuttle --dns -r' | grep -v grep | awk {'print $2'}"
+    pids = []
+    for line in os.popen(search):
+        fields = line.split()
+        pids.append(fields[0])
+    return pids
+
+
+def stop():
+    pids = get_pid()
+    for pid in pids:
+        print("stopping sshuttle PID %s " % pid)
+        log.info("stopping sshuttle")
+        os.kill(int(pid), signal.SIGKILL)
+
+
+def status():
+    pids = get_pid()
+    if pids:
+        print("sshuttle is running..")
+    else:
+        print("sshuttle is not running..")
+
+
+if __name__ == "__main__":
+
+    precheck()
+
+    cmd = sys.argv[1].lower()
+
+    if cmd == "start":
+        start()
+
+    if cmd == "stop":
+        stop()
+
+    if cmd == "restart":
+        print("restarting sshuttle..")
+        stop()
+        start()
+
+    if cmd == "status":
+        status()
+```
+
+This script requires a json file which contains the configuration for the sshuttle service:
+
+```json
+{
+	"user": "example",
+	"path": {
+		"server_ip:port": [
+			"0/0"
+		]
+	}
+}
+```
+
+Putting those files in any directory that exists in `$PATH` will do the trick, so I put them in `/usr/local/bin`.
+
+### SystemD
+
+SystemD is a huge set of programs that manages the startup and shutdown of services, along with other system configuration like networking.
+
+To make SSHuttle work with systemD, a service file should be created in `/etc/systemd/system/sshuttle.service` with this content:
+
+```bash
+[Unit]
+Description=sshuttle service
+After=network.target
+
+[Service]
+User=root
+Restart=always
+Type=forking
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/local/bin/sshuttle.py start
+ExecStop=/usr/local/bin/sshuttle.py stop
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then, running `sudo systemctl daemon-reload` will add this service, after that, I ran `sudo systemctl enable --now sshuttle.service` to start sshuttle which will run on boot.
+
+## Conclusion
+
+For people with specific requirements, sshuttle can be a great tool to allow users to maintain their privacy online without having to deal with government censorship.
+
+Those scripts facilitate the process of creating a VPN connection to a remote server, which automatically works after boot, and can be easily configured and enabled/restarted, and all of this with the help of systemD.
