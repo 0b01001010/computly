@@ -5,13 +5,13 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "pnpm run generate:images && svelte-kit build",
+		"build": "pnpm run generate:images && pnpm run generate:sitemap && svelte-kit build",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings 'css-unused-selector:ignore' --threshold 'error'",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .gitignore --ignore-path .prettierignore --write --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
 		"generate:images": "node --loader ts-node/esm ./generate-images.ts",
-		"generate:sitemap": "node --loader ts-node/esm ./generate-sitemap.ts",
+		"generate:sitemap": "node ./generate-sitemap.js",
 		"prepare": "husky install"
 	},
 	"devDependencies": {

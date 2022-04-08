@@ -1,13 +1,18 @@
+/**
+ * @copyright
+ * https://github.com/rodneylab/sveltekit-blog-mdx/blob/main/generate-sitemap.js
+ * All rights reserved to the original author (@rodneylab)
+ *
+ * I only changed a few things to make it work with my implementation.
+ */
+
 import { config } from 'dotenv';
 import fm from 'front-matter';
 import fs from 'fs';
 import path from 'path';
-import { BLOG_PATH } from './src/lib/utilities/blog.js';
 
 config();
 
-const DEFAULT_BLOG_POST_PRIORITY = 0.7;
-const DEFAULT_PAGE_PRIORITY = 0.7;
 const siteUrl = process.env.VITE_SITE_URL;
 
 const TIMESTAMP = new Date().toISOString();
@@ -15,7 +20,8 @@ const TIMESTAMP = new Date().toISOString();
 const __dirname = path.resolve();
 const sitemapFile = path.join(__dirname, 'static/sitemap.xml');
 
-function getPages(location) {
+function getPages() {
+	const location = path.resolve(`./src/routes`);
 	const pages = fs.readdirSync(location).reduce((accumulator, currentValue) => {
 		if (
 			path.extname(currentValue) === '.svelte' &&
@@ -23,26 +29,25 @@ function getPages(location) {
 		) {
 			accumulator.push(`${siteUrl}/${currentValue.replace('.svelte', '/').replace('index/', '')}`);
 		}
-
 		return accumulator;
 	}, []);
 	return pages;
 }
 
-export const getPosts = (location) => {
+export const getPosts = () => {
+	const location = path.join('./src/routes/blog/');
 	const directories = fs
 		.readdirSync(location)
 		.filter((element) => fs.lstatSync(`${location}/${element}`).isDirectory());
 	const articles = [];
 
 	directories.forEach((element) => {
-		const contentPath = `${location}/${element}/post.md`;
+		const contentPath = `${location}/${element}/index.svx`;
 		if (fs.existsSync(contentPath)) {
 			const content = fs.readFileSync(contentPath, { encoding: 'utf-8' });
 			const frontmatter = fm(content);
-			const { lastUpdated } = frontmatter.attributes;
-
-			articles.push({ slug: element, lastUpdated });
+			const { date } = frontmatter.attributes;
+			articles.push({ slug: element, date });
 		}
 	});
 	return articles;
@@ -65,26 +70,25 @@ const render = (pages, posts) => `<?xml version="1.0" encoding="UTF-8" ?>
 			(element) => `  <url>
 	    <loc>${element}</loc>
 		  <lastmod>${`${TIMESTAMP}`}</lastmod>
-		  <changefreq>monthly</changefreq>
-		  <priority>${DEFAULT_PAGE_PRIORITY}</priority>
+		  <changefreq>daily</changefreq>
+		  <priority>0.4</priority>
 	  </url>`
 		)
 		.join('')}
 	${posts
 		.map((element) => {
-			const { lastUpdated, slug } = element;
+			const { slug } = element;
 			return `  <url>
-	    <loc>${siteUrl}/${slug}/</loc>
-		  <lastmod>${`${lastUpdated}`}</lastmod>
+	    <loc>${siteUrl}/blog/${slug}/</loc>
+		  <lastmod>${`${TIMESTAMP}`}</lastmod>
 		  <changefreq>daily</changefreq>
-		  <priority>${DEFAULT_BLOG_POST_PRIORITY}</priority>
+		  <priority>0.7</priority>
 	  </url>
 	`;
 		})
 		.join('')}</urlset>`;
 
-const location = path.join(__dirname, BLOG_PATH);
-const pages = getPages(location);
-const posts = getPosts(location);
+const pages = getPages();
+const posts = getPosts();
 
 fs.writeFileSync(sitemapFile, render(pages, posts));

@@ -8,8 +8,9 @@ node_modules
 !.env.example
 .vercel
 .vercel_build_output
-generate*.js
+generate-images.js
 src/lib/utilities/image.js
 test
 posts
 static/posts/
+static/sitemap.xml
