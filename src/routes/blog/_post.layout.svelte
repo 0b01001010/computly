@@ -5,7 +5,8 @@
 	import { backInOut } from 'svelte/easing';
 	import { browser } from '$app/env';
 	import { MetaTags } from 'svelte-meta-tags';
-
+	// import { Utterances } from '@codewithshin/svelte-utterances';
+	import Utterances from '$lib/Components/Utterances.svelte';
 	/** @type {string} */
 	export let title;
 	/** @type {import('$lib/types/imageProps').ImageProps} */
@@ -77,6 +78,12 @@
 	<h1>{title}</h1>
 	<sub>Published at {new Date(date).toLocaleDateString()}</sub>
 	<slot />
+	<Utterances
+		reponame="computly/computly"
+		theme={darkMode ? 'github-dark' : 'github-light'}
+		issueTerm="title"
+		label="💬"
+	/>
 </article>
 {#if scroll2Top}
 	<div

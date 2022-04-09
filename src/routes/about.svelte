@@ -441,7 +441,7 @@
 	<p>
 		In this blog I occasionally post articles covering a range of topics, from my perspective on
 		software development and other IT fields. I hope you enjoy the articles featured here and you're
-		welcome to engage with the content using comments (Coming soon).
+		welcome to engage with the content using comments (Supported by Github).
 	</p>
 	<p>
 		You are welcome to take a look at my portfolio <a
