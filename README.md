@@ -9,11 +9,6 @@
 - TODO: Add service worker to support PWA.
 - TODO: Add support for infinite scrolling on blog index page using [this package](https://github.com/skayo/svelte-infinite-loading).
 
-### Topics
-
-- Ta3lab
-- el3nkbot
-
-# Thanks to
+## Thanks to
 
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
