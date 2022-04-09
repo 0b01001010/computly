@@ -1,4 +1,4 @@
-# My personal website
+# Computly website
 
 # Development notes
 
