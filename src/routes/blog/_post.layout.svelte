@@ -78,10 +78,11 @@
 	<h1>{title}</h1>
 	<sub>Published at {new Date(date).toLocaleDateString()}</sub>
 	<slot />
+	<h3>Comments</h3>
 	<Utterances
 		reponame="computly/computly"
 		theme={darkMode ? 'github-dark' : 'github-light'}
-		issueTerm="title"
+		issueTerm="pathname"
 		label="💬"
 	/>
 </article>
