@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CommonSEO from '$lib/Components/CommonSEO.svelte';
+	import { Utterances } from '@codewithshin/svelte-utterances';
 	import { theme as themeStore } from '$lib/stores/theme';
 	$: darkMode = $themeStore === 'dark';
 </script>
@@ -108,6 +109,14 @@
 		</svg>
 	</div>
 </main>
+<div class="hidden">
+	<Utterances
+		reponame="computly/computly"
+		theme={darkMode ? 'github-dark' : 'github-light'}
+		issueTerm="pathname"
+		label="💬"
+	/>
+</div>
 
 <style lang="scss">
 	$home-btn-shadow: 2px 8px 10px -5px hsla(0, 0%, 0%, 0.1);
@@ -226,5 +235,8 @@
 				place-self: flex-end;
 			}
 		}
+	}
+	.hidden {
+		display: none;
 	}
 </style>

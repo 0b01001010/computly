@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@codewithshin/svelte-utterances': ^0.2.1
   '@sveltejs/adapter-vercel': ^1.0.0-next.47
   '@sveltejs/kit': ^1.0.0-next.310
   '@types/node': ^17.0.23
@@ -44,6 +45,7 @@ optionalDependencies:
   sharp: 0.30.3
 
 devDependencies:
+  '@codewithshin/svelte-utterances': 0.2.1
   '@sveltejs/adapter-vercel': 1.0.0-next.47
   '@sveltejs/kit': 1.0.0-next.310_sass@1.50.0+svelte@3.47.0
   '@types/node': 17.0.23
@@ -71,6 +73,10 @@ devDependencies:
   vite-imagetools: 4.0.3
 
 packages:
+
+  /@codewithshin/svelte-utterances/0.2.1:
+    resolution: {integrity: sha512-vcuoe9Xzd2Apu/odEZB8UXOhiyhkwCYOCBj+GB63rpx0/7XOcB214z4e1T05t2qpdFj8OE5uhQUdeXLt3U5wTg==}
+    dev: true
 
   /@cspotcode/source-map-consumer/0.8.0:
     resolution: {integrity: sha512-41qniHzTU8yAGbCp04ohlmSrZf8bkf/iJsl3V0dRGsQN/5GFfx+LbCSsCpp2gqrqjTVg/K6O8ycoV35JIwAzAg==}
