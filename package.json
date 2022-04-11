@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "pnpm run generate:images && pnpm run generate:sitemap && svelte-kit build",
+		"build": " node --loader ts-node/esm ./generate-images.ts&& node ./generate-sitemap.js && svelte-kit build",
 		"preview": "svelte-kit preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json --compiler-warnings 'css-unused-selector:ignore' --threshold 'error'",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
