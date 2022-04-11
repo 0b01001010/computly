@@ -9,6 +9,7 @@
 - TODO: Dynamically add link before headers in README without the need to write `id` like Github.
 - TODO: Add service worker to support PWA.
 - TODO: Add support for infinite scrolling on blog index page using [this package](https://github.com/skayo/svelte-infinite-loading).
+- TODO: Check if it's possible to generate `_info.json` in `/static` folder.
 
 ## Thanks to
 
