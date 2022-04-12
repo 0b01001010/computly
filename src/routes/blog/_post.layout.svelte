@@ -5,7 +5,8 @@
 	import { backInOut } from 'svelte/easing';
 	import { browser } from '$app/env';
 	import { MetaTags } from 'svelte-meta-tags';
-	import { Utterances } from '@codewithshin/svelte-utterances';
+	// import { Utterances } from '@codewithshin/svelte-utterances';
+	import Utterances from '$lib/Components/Utterances.svelte';
 	/** @type {string} */
 	export let title;
 	/** @type {import('$lib/types/imageProps').ImageProps} */
