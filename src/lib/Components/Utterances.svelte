@@ -26,7 +26,6 @@
 		try {
 			const iFrame = browser && divElm.getElementsByClassName('utterances-frame')[0];
 			if (iFrame) {
-				console.log('Posting message to utterances iFrame');
 				// @ts-ignore
 				iFrame.contentWindow.postMessage({ type: 'set-theme', theme }, 'https://utteranc.es');
 			}
@@ -42,6 +41,7 @@
 			return;
 		}
 		iFrame.addEventListener('load', () => {
+			console.log('Posting message to utterances iFrame');
 			// @ts-ignore
 			iFrame.contentWindow.postMessage({ type: 'set-theme', theme }, 'https://utteranc.es');
 		});

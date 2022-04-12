@@ -226,6 +226,9 @@
 				}
 			}
 		}
+		.hero {
+			width: 100%;
+		}
 	}
 	@media screen and (max-width: 768px) {
 		main {
