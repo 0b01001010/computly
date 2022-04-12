@@ -51,6 +51,14 @@
 			justify-content: center;
 			flex-grow: 1;
 			gap: 4vmin;
+			a {
+				border: none;
+				border-radius: 10% 10% 31% 23% / 10% 10% 8% 2%;
+
+				&:hover {
+					border-bottom: 2px solid var(--primary);
+				}
+			}
 		}
 	}
 </style>
