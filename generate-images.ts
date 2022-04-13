@@ -166,6 +166,7 @@ const main = async () => {
 
 		// Create json object of all the images
 		const outputData = {
+			slug: postSlug,
 			sources: [
 				{
 					src: `${_url}.avif`,

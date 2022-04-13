@@ -39,7 +39,9 @@
 </script>
 
 <svelte:window on:scroll={handleScroll} />
-
+<svelte:head>
+	<link rel="canonical" href="https://computly.me/blog/{mainImage.slug}" />
+</svelte:head>
 <MetaTags
 	{title}
 	titleTemplate="%s | Computly blog"
