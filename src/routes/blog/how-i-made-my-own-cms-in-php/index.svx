@@ -15,14 +15,14 @@ export const load = async () => {
 <script>
 	import Image from '$lib/Components/Image.svelte';
   // @ts-ignore
-	import butterflyMeta from './butterfly.jpg?width=600&format=avif;webp;png&metadata';
+	import diecastMeta from './diecast.jpg?width=600&format=avif;webp;png&metadata';
 	// @ts-ignore
-	import butterflyPlaceholder from './butterfly.jpg?width=100&blur=10&quality=10';
+	import diecastPlaceholder from './diecast.jpg?width=100&blur=10&quality=10';
 
-  const butterflyImages = {
-		sources: butterflyMeta,
-		placeholder: butterflyPlaceholder,
-		alt: 'Doing modifications, butterfly image',
+  const diecastImages = {
+		sources: diecastMeta,
+		placeholder: diecastPlaceholder,
+		alt: 'Doing modifications, diecast image',
 	};
 </script>
 
@@ -91,7 +91,7 @@ _This project is an application on this <a href="https://www.youtube.com/playlis
 
 # Modifications
 
-<Image imageData={butterflyImages} />
+<Image imageData={diecastImages} />
 
 ## Admin permissions
 
