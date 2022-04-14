@@ -15,10 +15,8 @@ jobs:
         uses: actions/cache@v2
       - name: Setup PNPM
         uses: pnpm/action-setup@v2.2.1
-
         with:
           node-version: '14.x'
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
