@@ -27,6 +27,7 @@ const directives = {
 	'default-src': ["'self'", rootDomain],
 	'script-src': ["'self'", "'unsafe-inline'", 'https://utteranc.es'],
 	'worker-src': ["'self'"],
+	'require-trusted-types-for': ["'script'"],
 	'report-to': ['csp-endpoint'],
 	'report-uri': [
 		`https://o1128842.ingest.sentry.io/api/6329949/security/?sentry_key=323711c731c14daa9181f1e638bcc49a`
