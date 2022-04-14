@@ -39,6 +39,7 @@ jobs:
 
       #  your build commands
       - run: |
+          pnpm install --frozen-lockfile
           pnpm run build
       - uses: amondnet/vercel-action@v20 #deploy
         with:
