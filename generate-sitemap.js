@@ -13,7 +13,7 @@ import path from 'path';
 
 config();
 
-const siteUrl = process.env.VITE_SITE_URL;
+const siteUrl = process.env.WEBSITE_URL;
 
 const TIMESTAMP = new Date().toISOString();
 

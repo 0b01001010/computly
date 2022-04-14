@@ -2,7 +2,13 @@
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 // https://scotthelme.co.uk/content-security-policy-an-introduction/
 // scanner: https://securityheaders.com/
+// Sentry documentation: https://docs.sentry.io/product/security-policy-reporting/
+
 import type { Handle } from '@sveltejs/kit';
+import { config } from 'dotenv';
+
+config();
+
 const rootDomain = import.meta.env.DEV ? 'localhost' : import.meta.env.VITE_DOMAIN; // or your server IP for dev
 
 const directives = {
@@ -15,12 +21,13 @@ const directives = {
 	'form-action': ["'self'"],
 	'frame-ancestors': ["'self'"],
 	'frame-src': [
-		"'self'"
+		"'self'",
 		// "https://*.stripe.com",
 		// "https://*.facebook.com",
 		// "https://*.facebook.net",
 		// 'https://hcaptcha.com',
 		// 'https://*.hcaptcha.com',
+		'https://utteranc.es'
 	],
 	'manifest-src': ["'self'"],
 	'media-src': ["'self'", 'data:'],
@@ -29,8 +36,8 @@ const directives = {
 	// 'style-src': ["'self'", "'unsafe-inline'", 'https://hcaptcha.com', 'https://*.hcaptcha.com'],
 	'default-src': [
 		"'self'",
-		rootDomain,
-		`ws://${rootDomain}`
+		rootDomain
+		// `ws://${rootDomain}`
 		// 'https://*.google.com',
 		// 'https://*.googleapis.com',
 		// 'https://*.firebase.com',
@@ -57,8 +64,7 @@ const directives = {
 	// remove report-to & report-uri if you do not want to use Sentry reporting
 	'report-to': ["'csp-endpoint'"],
 	'report-uri': [
-		// `https://sentry.io/api/${import.meta.env.VITE_SENTRY_PROJECT_ID}/security/?sentry_key=${import.meta.env.VITE_SENTRY_KEY
-		// }`,
+		`https://o1128842.ingest.sentry.io/api/6329949/security/?sentry_key=323711c731c14daa9181f1e638bcc49a`
 	]
 };
 
@@ -79,17 +85,19 @@ export const handle: Handle = async ({ event, resolve }) => {
 	 * on switch comment out the Report-Only line
 	 */
 	// response.headers.set('Content-Security-Policy-Report-Only', csp);
-	// response.headers.set('Content-Security-Policy', csp);
-	response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-	// response.headers.set(
-	//   'Expect-CT',
-	//   `max-age=86400, report-uri="https://sentry.io/api/${import.meta.env.VITE_SENTRY_PROJECT_ID
-	//   }/security/?sentry_key=${import.meta.env.VITE_SENTRY_KEY}"`,
-	// );
-	// response.headers.set(
-	//   'Report-To',
-	//   `{group: "csp-endpoint", "max_age": 10886400, "endpoints": [{"url": "https://sentry.io/api/${import.meta.env.VITE_SENTRY_PROJECT_ID
-	//   }/security/?sentry_key=${import.meta.env.VITE_SENTRY_KEY}"}]}`,
-	// );
+	response.headers.set('Content-Security-Policy', csp);
+	response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+	response.headers.set(
+		'Expect-CT',
+		`max-age=86400, report-uri="https://o1128842.ingest.sentry.io/api/6329949/security/?sentry_key=323711c731c14daa9181f1e638bcc49a"`
+	);
+	response.headers.set(
+		'Report-To',
+		`{group: "csp-endpoint", "max_age": 10886400, "endpoints": [{"url": "https://o1128842.ingest.sentry.io/api/6329949/security/?sentry_key=323711c731c14daa9181f1e638bcc49a"}]}`
+	);
+	response.headers.set(
+		'Public-Key-Pins',
+		'report-uri="https://o1128842.ingest.sentry.io/api/6329949/security/?sentry_key=323711c731c14daa9181f1e638bcc49a"'
+	);
 	return response;
 };
