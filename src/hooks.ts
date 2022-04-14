@@ -15,55 +15,19 @@ const directives = {
 	'base-uri': ["'self'"],
 	'child-src': ["'self'"],
 	'connect-src': ["'self'", 'ws://localhost:*'],
-	// 'connect-src': ["'self'", 'ws://localhost:*', 'https://hcaptcha.com', 'https://*.hcaptcha.com'],
 	'img-src': ["'self'", 'data:'],
 	'font-src': ["'self'", 'data:', 'https://fonts.gstatic.com'],
 	'form-action': ["'self'"],
 	'frame-ancestors': ["'self'"],
-	'frame-src': [
-		"'self'",
-		// "https://*.stripe.com",
-		// "https://*.facebook.com",
-		// "https://*.facebook.net",
-		// 'https://hcaptcha.com',
-		// 'https://*.hcaptcha.com',
-		'https://utteranc.es'
-	],
+	'frame-src': ["'self'", 'https://utteranc.es'],
 	'manifest-src': ["'self'"],
 	'media-src': ["'self'", 'data:'],
 	'object-src': ["'none'"],
 	'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-	// 'style-src': ["'self'", "'unsafe-inline'", 'https://hcaptcha.com', 'https://*.hcaptcha.com'],
-	'default-src': [
-		"'self'",
-		rootDomain
-		// `ws://${rootDomain}`
-		// 'https://*.google.com',
-		// 'https://*.googleapis.com',
-		// 'https://*.firebase.com',
-		// 'https://*.gstatic.com',
-		// 'https://*.cloudfunctions.net',
-		// 'https://*.algolia.net',
-		// 'https://*.facebook.com',
-		// 'https://*.facebook.net',
-		// 'https://*.stripe.com',
-		// 'https://*.sentry.io',
-	],
-	'script-src': [
-		"'self'",
-		"'unsafe-inline'",
-		'https://utteranc.es'
-		// 'https://*.stripe.com',
-		// 'https://*.facebook.com',
-		// 'https://*.facebook.net',
-		// 'https://hcaptcha.com',
-		// 'https://*.hcaptcha.com',
-		// 'https://*.sentry.io',
-		// 'https://polyfill.io',
-	],
+	'default-src': ["'self'", rootDomain],
+	'script-src': ["'self'", "'unsafe-inline'", 'https://utteranc.es'],
 	'worker-src': ["'self'"],
-	// remove report-to & report-uri if you do not want to use Sentry reporting
-	'report-to': ["'csp-endpoint'"],
+	'report-to': ['csp-endpoint'],
 	'report-uri': [
 		`https://o1128842.ingest.sentry.io/api/6329949/security/?sentry_key=323711c731c14daa9181f1e638bcc49a`
 	]
