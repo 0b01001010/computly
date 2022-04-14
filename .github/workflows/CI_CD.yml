@@ -44,7 +44,6 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm run build
-      - id: vercel-deploy
       - uses: amondnet/vercel-action@v20 #deploy
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
@@ -60,4 +59,4 @@ jobs:
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
-          urls: ${{ outputs.vercel-deploy.outputs.preview-url }}
+          urls: ${{ needs.deploy.outputs.preview-url }}
