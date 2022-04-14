@@ -4,7 +4,7 @@
 ![Security Headers](https://img.shields.io/security-headers?url=https%3A%2F%2Fwww.computly.me&color=4ba62c)
 ![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/computly.me?publish&color=2034b6)
 
-[![CI/CD](https://github.com/computly/computly/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/computly/computly/actions/workflows/ci-cd.yml)
+[![CI/CD](https://github.com/computly/computly/actions/workflows/CI_CD.yml/badge.svg)](https://github.com/computly/computly/actions/workflows/CI_CD.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=computly_computly&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=computly_computly)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=computly_computly&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=computly_computly)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=computly_computly&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=computly_computly)

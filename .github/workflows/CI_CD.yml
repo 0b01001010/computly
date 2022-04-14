@@ -21,11 +21,16 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm run lint
+      - name: Check
+        run: pnpm run check
 
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
+      - id: vercel-deploy
       - uses: actions/checkout@v3
       - name: Setup PNPM
         uses: pnpm/action-setup@v2.2.1
@@ -36,11 +41,10 @@ jobs:
         with:
           node-version: '14.x'
           cache: pnpm
-
-      #  your build commands
-      - run: |
-          pnpm install --frozen-lockfile
-          pnpm run build
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm run build
       - uses: amondnet/vercel-action@v20 #deploy
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
@@ -49,5 +53,11 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID}} #Required
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
           working-directory: ./
-          alias-domains: |
-            www.computly.me
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          urls: ${{ outputs.vercel-deploy.outputs.preview-url }}
