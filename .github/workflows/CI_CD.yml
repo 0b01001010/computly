@@ -41,8 +41,14 @@ jobs:
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
           working-directory: ./
         id: deploy
-      - uses: actions/checkout@master
+      - name: Creating artifacts directory
+      - run: mkdir ${{ github.workspace }}/tmp/artifacts
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
           urls: ${{ steps.deploy.outputs.preview-url }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: ${{ github.workspace }}/tmp/artifacts
