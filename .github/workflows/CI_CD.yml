@@ -1,7 +1,7 @@
 name: CI/CD
 on:
   push:
-    branches: [main]
+    branches: ['*']
   pull_request:
   workflow_dispatch:
 jobs:
@@ -12,40 +12,40 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # - name: Setup PNPM
-      #   uses: pnpm/action-setup@v2.2.1
-      #   with:
-      #     version: 6.23.2
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 6.23.2
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: '14.x'
-      #     cache: pnpm
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+          cache: pnpm
 
-      # - name: Install dependencies
-      #   run: pnpm install --frozen-lockfile
-      # - name: Lint
-      #   run: pnpm run lint
-      # - name: Check
-      #   run: pnpm run check
-      # - name: Build
-      #   run: pnpm run build
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm run lint
+      - name: Check
+        run: pnpm run check
+      - name: Build
+        run: pnpm run build
 
-      # - uses: amondnet/vercel-action@v20 #deploy
-      #   with:
-      #     vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-      #     github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
-      #     vercel-args: '--prod' #Optional
-      #     vercel-org-id: ${{ secrets.ORG_ID}} #Required
-      #     vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
-      #     working-directory: ./
-      #   id: deploy
+      - uses: amondnet/vercel-action@v20 #deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
+          vercel-args: '--prod' #Optional
+          vercel-org-id: ${{ secrets.ORG_ID}} #Required
+          vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
+          working-directory: ./
+        id: deploy
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
-          # urls: ${{ steps.deploy.outputs.preview-url }}
-          urls: 'https://www.computly.me'
+          urls: ${{ steps.deploy.outputs.preview-url }}
+          # urls: 'https://www.computly.me'
         id: lighthouse
       - name: Fetching lighthouse results
         run: echo ${{ steps.lighthouse.outputs.lighthouseCheckResults }}
