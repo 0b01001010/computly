@@ -57,7 +57,7 @@ jobs:
     needs: [deploy]
     steps:
       - name: Print preview URL
-        run: echo ${{needs.deploy.outputs.preview-url}}
+        run: echo "Preview URL ${{needs.deploy.outputs.preview-url}}"
       - uses: actions/checkout@master
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
