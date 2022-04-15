@@ -42,9 +42,9 @@ jobs:
           working-directory: ./
         id: deploy
       - name: Print preview URL
-        run: echo "Preview URL ${{needs.deploy.outputs.preview-url}}"
+        run: echo "Preview URL ${{steps.deploy.outputs.preview-url}}"
       - uses: actions/checkout@master
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
-          urls: ${{ needs.deploy.outputs.preview-url }}
+          urls: ${{ steps.deploy.outputs.preview-url }}
