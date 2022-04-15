@@ -41,6 +41,7 @@
 
 I'm using CI/CD to deploy to vercel instead of their integrated tool, because I ran into an issue where I thought there was a problem with my dependencies, but after 5 days of trial and errors, I tried setting the project to use `npm` instead of `pnpm`, the issue went away.
 
+
 ## Thanks to
 
 - [SvelteKit MDsvex Blog Starter](https://github.com/rodneylab/sveltekit-blog-mdx)
