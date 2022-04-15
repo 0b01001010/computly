@@ -49,4 +49,3 @@ jobs:
         id: lighthouse
       - name: Fetching lighthouse results
         run: echo ${{ steps.lighthouse.outputs.lighthouseCheckResults }}
-

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import CommonSEO from '$lib/Components/CommonSEO.svelte';
-	import { Utterances } from '@codewithshin/svelte-utterances';
 	import { theme as themeStore } from '$lib/stores/theme';
 	$: darkMode = $themeStore === 'dark';
 </script>
