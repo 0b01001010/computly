@@ -42,7 +42,7 @@ jobs:
           working-directory: ./
         id: deploy
       - name: Creating artifacts directory
-        run: mkdir ${{ github.workspace }}/tmp/artifacts
+        run: mkdir -p ${{ github.workspace }}/tmp/artifacts
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
