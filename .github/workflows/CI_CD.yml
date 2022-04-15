@@ -41,8 +41,6 @@ jobs:
           vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
           working-directory: ./
         id: deploy
-      - name: Print preview URL
-        run: echo "Preview URL ${{steps.deploy.outputs.preview-url}}"
       - uses: actions/checkout@master
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
