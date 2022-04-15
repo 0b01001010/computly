@@ -11,11 +11,13 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=computly_computly&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=computly_computly)
 
 ![LICENSE](https://img.shields.io/github/license/computly/computly?style=flat&color=fcdaff)
+![GitHub language count](https://img.shields.io/github/languages/count/computly/computly?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/computly/computly?color=fdf629)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/computly/computly?color=c4fff9&label=Repo%20size)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/computly/computly)
 ![GitHub last commit](https://img.shields.io/github/last-commit/computly/computly?color=9897fc)
 ![Lines of code](https://img.shields.io/tokei/lines/github/computly/computly?color=e63977)
+[![Hits-of-Code](https://hitsofcode.com/github/computly/computly?branch=main)](https://hitsofcode.com/github/computly/computly/view?branch=main)
 
 [![HitCount](https://hits.dwyl.com/computly/computly.svg?style=flat&show=unique)](http://hits.dwyl.com/computly/computly)
 ![Discord](https://img.shields.io/discord/963931940522704966?color=fffffa)
@@ -31,6 +33,7 @@
 - TODO: Add service worker to support PWA.
 - TODO: Add support for infinite scrolling on blog index page using [this package](https://github.com/skayo/svelte-infinite-loading).
 - TODO: Review security advisories from [Mozilla observatory tool](https://observatory.mozilla.org/analyze/computly.me)
+- TODO: Add RSS support
 
 ## Notes:
 

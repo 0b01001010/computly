@@ -45,7 +45,7 @@ jobs:
         uses: foo-software/lighthouse-check-action@master
         with:
           # urls: ${{ steps.deploy.outputs.preview-url }}
-          urls: "https://www.computly.me"
+          urls: 'https://www.computly.me'
         id: lighthouse
       - name: Fetching lighthouse results
         run: echo ${{ steps.lighthouse.outputs.lighthouseCheckResults }}
